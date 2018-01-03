@@ -24,6 +24,7 @@ class App extends React.Component {
       </div>
 
       <div id='playerField'>
+        <Card.Group>
         {playerSamples.map((player) => {
           return (
               <Card className='cards' key={player.name}>
@@ -56,11 +57,14 @@ class App extends React.Component {
                     </a>
                   </Card.Content>
                 </Card>
+
             )
         })}
+        </Card.Group>
       </div>
 
       <div id='monsterField'>
+        <Card.Group>
         {monsterSamples.map((monster) => {
           return (
               <Card key={monster.name} className='cards'>
@@ -100,6 +104,7 @@ class App extends React.Component {
               </Card>
             )
         })}
+        </Card.Group>
       </div>
 
     </div>)

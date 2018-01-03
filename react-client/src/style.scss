@@ -21,16 +21,17 @@ h1 {
 }
 
 .cards {
-  display: inline-block;
   float: left;
   margin: 10px !important;
 }
 
 #playerField {
+  display: block;
   background-color: black !important;
   width: 100%;
 }
 
 #monsterField {
+  display: block;
   width: 100%;
 }
