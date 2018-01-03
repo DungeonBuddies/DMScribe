@@ -1,4 +1,5 @@
 window.monsterSamples = [{
+	"_id": "592f6c32c9e7ce9f72157fcc",
 	"name": "Acolyte",
 	"armor_class": 10,
 	"hit_points": 9,
@@ -17,6 +18,7 @@ window.monsterSamples = [{
 		}
 	]
 }, {
+	"_id": "592f6c32c9e7ce9f72157ff2",
 	"name": "Basilisk",
 	"armor_class": 12,
 	"hit_points": 52,
@@ -36,6 +38,7 @@ window.monsterSamples = [{
 		}
 	]
 }, {
+	"_id": "592f6c32c9e7ce9f72158009",
 	"name": "Cave Bear",
 	"armor_class": 12,
 	"hit_points": 42,
