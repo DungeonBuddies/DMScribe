@@ -1,6 +1,7 @@
 body {
-    font-family: helvetica;
-    background-color: gray;
+  margin-top: 10px;
+  margin-left: 10px;
+  font-family: helvetica;
 }
 
 h1 {
@@ -9,4 +10,27 @@ h1 {
 
 .tab {
     width: 33.3% !important;
+}
+
+.stats {
+  text-align: center;
+}
+
+.stat {
+  margin: 0px 7px;
+}
+
+.cards {
+  display: inline-block;
+  float: left;
+  margin: 10px !important;
+}
+
+#playerField {
+  background-color: black !important;
+  width: 100%;
+}
+
+#monsterField {
+  width: 100%;
 }

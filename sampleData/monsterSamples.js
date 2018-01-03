@@ -1,4 +1,4 @@
-window.monsterSamples = [{
+const monsterSamples = [{
 	"_id": "592f6c32c9e7ce9f72157fcc",
 	"name": "Acolyte",
 	"armor_class": 10,
@@ -70,3 +70,5 @@ window.monsterSamples = [{
 		}
 	]
 }]
+
+export default monsterSamples;
