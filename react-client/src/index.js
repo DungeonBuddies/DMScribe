@@ -14,6 +14,17 @@ import monsterSamples from '../../sampleData/monsterSamples';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      order: []
+    }
+  }
+
+  componentDidMount () {
+    this.setState({
+      order: (playerSamples.concat(monsterSamples))
+      .sort((a, b) => (b.init - a.init))
+      
+    })
   }
 
   render () {
@@ -108,6 +119,34 @@ class App extends React.Component {
         })}
         </Card.Group>
       </div>
+
+    <div id='monsterField'>
+      <Card.Group>  
+        {this.state.order.map((card, index) => {
+          return (
+              <Card key={card.name}>
+                <Image />
+                <Card.Content>
+                  <Card.Header>
+                    {card.name}
+                  </Card.Header>
+                  <Card.Meta>
+                    <span className='date'>
+                      {index + 1}
+                    </span>
+                  </Card.Meta>
+                </Card.Content>
+                <Card.Content extra>
+                  <a>
+                    <Icon name='address card outline' />
+                    Drag Me!
+                  </a>
+                </Card.Content>
+              </Card>
+            )
+        })}
+      </Card.Group>
+    </div>
 
     </div>)
   }

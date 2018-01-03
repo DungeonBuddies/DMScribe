@@ -9,6 +9,7 @@ const monsterSamples = [{
 	"intelligence": 10,
 	"wisdom": 14,
 	"charisma": 11,
+	"init": 2,
 	"actions": [
 		{
 			"damage_dice": "1d4",
@@ -28,6 +29,7 @@ const monsterSamples = [{
 	"intelligence": 2,
 	"wisdom": 8,
 	"charisma": 7,
+	"init": 12,
 	"actions": [
 		{
 			"damage_bonus": 3,
@@ -48,6 +50,7 @@ const monsterSamples = [{
 	"intelligence": 2,
 	"wisdom": 13,
 	"charisma": 7,
+	"init": 6,
 	"actions": [
 		{
 			"attack_bonus": 0,
