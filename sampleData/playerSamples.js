@@ -2,14 +2,14 @@ const playerSamples = [{
 	"name": "Jake",
 	"armor_class": 15,
 	"hit_points": 20,
-	"init": 3,
+	"init": 5,
 	"perception": 1,
 	"speed": "30 ft."
 }, {
 	"name": "Brooks",
 	"armor_class": 16,
 	"hit_points": 18,
-	"init": 3,
+	"init": 7,
 	"perception": 1,
 	"speed": "30 ft."
 }, {
@@ -23,7 +23,7 @@ const playerSamples = [{
 	"name": "Spencer",
 	"armor_class": 17,
 	"hit_points": 25,
-	"init": 3,
+	"init": 10,
 	"perception": 1,
 	"speed": "30 ft."
 }]
