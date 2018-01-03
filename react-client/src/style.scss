@@ -17,20 +17,24 @@ h1 {
 }
 
 .stat {
+  border-style: solid;
+  border-width: thin;
+  padding: 2px;
   margin: 0px 7px;
 }
 
 .cards {
-  display: inline-block;
   float: left;
   margin: 10px !important;
 }
 
 #playerField {
+  display: block;
   background-color: black !important;
   width: 100%;
 }
 
 #monsterField {
+  display: block;
   width: 100%;
 }
