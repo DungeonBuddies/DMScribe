@@ -12,9 +12,9 @@ class App extends React.Component {
     return (
     <div>
       <div className="ui menu">
-        <a className="item">Editorials</a>
-        <a className="item">Reviews</a>
-        <a className="item">Upcoming Events</a>
+        <a className="item tab">Arena</a>
+        <a className="item tab">Players</a>
+        <a className="item tab">Monsters</a>
       </div>
     </div>)
   }
