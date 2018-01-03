@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
+import store from './store.js';
+import { Provider } from 'react-redux';
+
 import './style.scss';
 
 class App extends React.Component {
@@ -20,4 +22,8 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render((
+  <Provider store={store} >
+    <App />
+  </Provider>
+), document.getElementById('app'));
