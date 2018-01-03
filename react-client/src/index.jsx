@@ -11,7 +11,11 @@ class App extends React.Component {
   render () {
     return (
     <div>
-      <h1>Hello World</h1>
+      <div className="ui menu">
+        <a className="item">Editorials</a>
+        <a className="item">Reviews</a>
+        <a className="item">Upcoming Events</a>
+      </div>
     </div>)
   }
 }
