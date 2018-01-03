@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
+import store from './store.js';
+import { Provider } from 'react-redux';
+
 import './style.scss';
 import { Card, Icon, Image } from 'semantic-ui-react'
 import PlayerCard from './components/playerCard';
@@ -111,4 +113,8 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render((
+  <Provider store={store} >
+    <App />
+  </Provider>
+), document.getElementById('app'));
