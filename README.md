@@ -1,7 +1,7 @@
 TO START APP ON LOCAL SERVER <br/>
 
 In terminal use:<br/><br/>
-  $ yarn install<br/>
+  <strong>$ yarn install</strong><br/>
   
 Once all dependencies have been installed, open two terminal tabs, both residing in the dungeon-master folder.<br/>
 In one tab, to get react running and able to re-render, in the terminal use:<br/><br/>
