@@ -5,17 +5,17 @@ In terminal use:<br/><br/>
   
 Once all dependencies have been installed, open two terminal tabs, both residing in the dungeon-master folder.<br/>
 In one tab, to get react running and able to re-render, in the terminal use:<br/><br/>
-  $ npm run react-dev<br/>
+  <strong>$ npm run react-dev</strong><br/>
   
 In the other terminal tab, to get the server up and running, in the terminal use:<br/><br/>
-  $ npm run server-dev<br/>
+  <strong>$ npm run server-dev</strong><br/>
   
 Now if you navigate to localhost:3000 you should see the app up and running!<br/>
 
 If you want to have data stored using mongo and mongoose on your local machine navigate to the folder database-mongo.<br/>
 Inside this folder in the terminal use:<br/><br/>
-  $ mkdir mongoDb<br/><br/>
-  $ mongod --dbpath mongoDb<br/>
+  <strong>$ mkdir mongoDb</strong><br/><br/>
+  <strong>$ mongod --dbpath mongoDb</strong><br/>
   
 This creates a folder for all of the mongo data and start up the connection to the mongo database between your server and mongo.<br/>
 In the future on your local machine, once mongoDb has been created you simply need to run $ mongod --dbpath mongoDb to connect to your database.
