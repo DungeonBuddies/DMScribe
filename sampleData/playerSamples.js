@@ -1,4 +1,4 @@
-window.playerSamples = [{
+const playerSamples = [{
 	"name": "Jake",
 	"armor_class": 15,
 	"hit_points": 20,
@@ -20,3 +20,5 @@ window.playerSamples = [{
 	"perception": 1,
 	"speed": "30 ft."
 }]
+
+export default playerSamples;
