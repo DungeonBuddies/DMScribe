@@ -120,7 +120,7 @@ class App extends React.Component {
         </Card.Group>
       </div>
 
-    <div id='monsterField'>
+    <div id='orderField'>
       <Card.Group>  
         {this.state.order.map((card, index) => {
           return (
