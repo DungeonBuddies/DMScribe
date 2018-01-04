@@ -1,10 +1,11 @@
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
+import logger from 'redux-logger';
 import reducer from './reducers/index';
 
-const store = createStore(reducer, {});
+const store = createStore(reducer, applyMiddleware(logger));
 
-store.subscribe(() => {
-  console.log('Store has changed: ', store.getState());
-});
+//////////////////////TEST///////////////////////
+store.dispatch({type: 'ADD_MONSTER'});
+//////////////////////TEST///////////////////////
 
 export default store;
