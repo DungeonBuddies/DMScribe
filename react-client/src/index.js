@@ -117,8 +117,19 @@ class App extends React.Component {
               </Card>
             )
         })}
+
+        
+
         </Card.Group>
+
+        <img 
+          src="http://www.20cents-video.com/userdata/animated-gif/library/43817.gif"
+          onClick={() => (console.log('click me!!!'))}
+        ></img>
+
       </div>
+
+    
 
     <div id='orderField'>
       <Card.Group>  
