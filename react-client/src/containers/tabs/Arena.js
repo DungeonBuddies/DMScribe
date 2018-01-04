@@ -11,7 +11,7 @@ import SearchBar from '../SearchBar';
 
 class Arena extends Component {
   render () {
-    if (this.props.currentTab !== 'Arena') {
+    if (this.props.currentTab !== 'arena') {
       return null;
     }
 
