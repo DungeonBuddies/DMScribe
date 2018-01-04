@@ -119,10 +119,7 @@ class App extends React.Component {
 
         </Card.Group>
 
-        <img 
-          src="http://www.20cents-video.com/userdata/animated-gif/library/43817.gif"
-          onClick={this.populateMonsterUrls}
-        ></img>
+        <img src="http://www.20cents-video.com/userdata/animated-gif/library/43817.gif" />
 
       </div>
 

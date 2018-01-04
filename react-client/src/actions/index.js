@@ -7,7 +7,6 @@ const populateMonsterUrls = () => {
       type: 'POPULATE_MONSTER_URLS',
       payload: res.results
     });
-    console.log(searchMonsterUrls('bl'));
   });
 };
 
@@ -27,9 +26,18 @@ const searchMonsterUrls = (query) => {
   return results;
 };
 
-// get req a specific monster with only name input
-// eg. input: '(monster name/key)'
-//     output (on callback): store.dispatch({type: ADD_MONSTER, payload: (res)})
-// const addMonster = ()
+const addMonster = (monster) => {
+  $.get(monster.url, (res) => {
+    // console.log(res);
+    res.id = extendMonsterId(res._id);
+    store.dispatch({type: 'ADD_MONSTER', payload: res});
+  });
+};
+
+const extendMonsterId = (id) => {
+  const monsters = store.getState().monsters;
+  const duplicateMonsters = Object.keys(monsters).filter(m => m._id === id);
+  return `${id}-${duplicateMonsters.length}`;
+};
 
 export default { populateMonsterUrls, searchMonsterUrls };
