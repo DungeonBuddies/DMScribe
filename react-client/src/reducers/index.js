@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import monstersReducer from './monstersReducer';
 import playersReducer from './playersReducer.js';
-import monsterIdsReducer from './monsterIdsReducer.js';
+import monsterUrlsReducer from './monsterUrlsReducer.js';
 
 const reducer = combineReducers({
   monsters: monstersReducer,
   players: playersReducer,
-  monsterIds: monsterIdsReducer
+  monsterUrls: monsterUrlsReducer
 });
 
 export default reducer;

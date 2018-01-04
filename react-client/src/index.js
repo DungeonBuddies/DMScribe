@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import store from './store.js';
 import { Provider } from 'react-redux';
-
 import './style.scss';
 import { Card, Icon, Image } from 'semantic-ui-react'
 import PlayerCard from './components/playerCard';
 import MonsterCard from './components/monsterCard';
 import playerSamples from '../../sampleData/playerSamples';
 import monsterSamples from '../../sampleData/monsterSamples';
+
+import $ from 'jquery';
 
 
 class App extends React.Component {
@@ -26,6 +27,18 @@ class App extends React.Component {
       
     })
   }
+
+  //////////////////////////////////////////
+  populateMonsterUrls(){
+    $.get('http://www.dnd5eapi.co/api/monsters', (res) => {
+      store.dispatch({
+        type: 'POPULATE_MONSTER_URLS',
+        payload: res.results
+      });
+    });
+  }
+
+  //////////////////////////////////////////
 
   render () {
     return (
@@ -118,13 +131,11 @@ class App extends React.Component {
             )
         })}
 
-        
-
         </Card.Group>
 
         <img 
           src="http://www.20cents-video.com/userdata/animated-gif/library/43817.gif"
-          onClick={() => (console.log('click me!!!'))}
+          onClick={this.populateMonsterUrls}
         ></img>
 
       </div>
@@ -162,6 +173,7 @@ class App extends React.Component {
     </div>)
   }
 }
+
 
 ReactDOM.render((
   <Provider store={store} >
