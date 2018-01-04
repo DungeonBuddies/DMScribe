@@ -8,155 +8,32 @@ import PlayerCard from './components/playerCard';
 import MonsterCard from './components/monsterCard';
 import playerSamples from '../../sampleData/playerSamples';
 import monsterSamples from '../../sampleData/monsterSamples';
-import { populateMonsterUrls } from './actions/index';
-import SearchBar from './containers/SearchBar';
+import {populateMonsterUrls} from './actions/index';
+import Players from './containers/tabs/Players';
+import Arena from './containers/tabs/Arena';
+import Monsters from './containers/tabs/Monsters';
+import Menu from './containers/Menu';
+
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      order: []
-    }
   }
 
   componentDidMount () {
-    this.setState({
-      order: (playerSamples.concat(monsterSamples))
-      .sort((a, b) => (b.init - a.init))
-      
-    });
-    populateMonsterUrls();
-  }
+      populateMonsterUrls();
+    }
 
   render () {
     return (
-    <div>
-      <div className="ui menu">
-        <a className="item tab">Arena</a>
-        <a className="item tab">Players</a>
-        <a className="item tab">Monsters</a>
+      <div>
+        <Menu />
+        <Arena />
+        <Players />
+        <Monsters />
       </div>
-
-      <SearchBar />
-
-      <div id='playerField'>
-        <Card.Group>
-        {playerSamples.map((player, index) => {
-          return (
-              <Card className='cards' key={`${player.name}${index}`}>
-                  <Image />
-                  <Card.Content>
-                    <Card.Header>
-                      {player.name}
-                    </Card.Header>
-                    <Card.Meta>
-                      <span className='date'>
-                        {`Class: ${player.class}`}
-                      </span>
-                    </Card.Meta>
-                    <Card.Description>
-                        <p className='stats'>
-                          <span className='stat'>AC: {player.armor_class}</span>
-                          <span className='stat'>HP: {player.hit_points}</span>
-                          <span className='stat'>INIT: {player.init}</span>
-                        </p>
-                        <p className='stats'>
-                          <span className='stat'>PP: {player.perception}</span>
-                          <span className='stat'>SPD: {player.speed}</span>
-                        </p>
-                    </Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <a>
-                      <Icon name='address card outline' />
-                      More player info
-                    </a>
-                  </Card.Content>
-                </Card>
-
-            )
-        })}
-        </Card.Group>
-      </div>
-
-      <div id='monsterField'>
-        <Card.Group>
-        {monsterSamples.map((monster, index) => {
-          return (
-              <Card key={`${monster.name}${index}`} className='cards'>
-                <Image />
-                <Card.Content>
-                  <Card.Header>
-                    {monster.name}
-                  </Card.Header>
-                  <Card.Meta>
-                    <span className='date'>
-                    </span>
-                  </Card.Meta>
-                  <Card.Description>
-                      <p className='stats'>
-                        <span className='stat'>AC: {monster.armor_class}</span>
-                        <span className='stat'>HP: {monster.hit_points}</span>
-                        <span className='stat'>INIT: {monster.init}</span>
-                      </p>
-                      <p className='stats'>
-                        <span className='stat'>STR: {monster.perception}</span>
-                        <span className='stat'>DEX: {monster.dexterity}</span>
-                        <span className='stat'>CON: {monster.constitution}</span>
-                      </p>
-                      <p className='stats'>
-                        <span className='stat'>WIS: {monster.wisdom}</span>
-                        <span className='stat'>CHA: {monster.charisma}</span>
-                      </p>
-                  </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                  <a>
-                    <Icon name='address card outline' />
-                    More monster info
-                  </a>
-                </Card.Content>
-              </Card>
-            )
-        })}
-
-        </Card.Group>
-
-        <img src="http://www.20cents-video.com/userdata/animated-gif/library/43817.gif" />
-
-      </div>
-
-    
-
-    <div id='orderField'>
-      <Card.Group>  
-        {this.state.order.map((card, index) => {
-          return (
-              <Card className='orderCards' key={`${card.name}${index}`}>
-                <Image />
-                <Card.Content>
-                  <Card.Header>
-                    {card.name}
-                  </Card.Header>
-                  <Card.Meta>
-                  </Card.Meta>
-                </Card.Content>
-                <Card.Content extra>
-                  <div className='date turn'>
-                    {index + 1}
-                  </div>
-                  <a>
-                    <Icon name='address card outline' />
-                    Drag Me! 
-                  </a>
-                </Card.Content>
-              </Card>
-            )
-        })}
-      </Card.Group>
-    </div>
-
-    </div>)
+    )
   }
 }
 

@@ -16,6 +16,8 @@ const addMonster = (monster) => {
   });
 };
 
+
+
 // const extendMonsterId = (id) => {
 //   const monsters = store.getState().monsters;
 //   const duplicateMonsters = Object.keys(monsters).filter(m => m._id === id);
