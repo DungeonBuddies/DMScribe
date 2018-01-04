@@ -8,7 +8,8 @@ const reducer = combineReducers({
   monsters: monstersReducer,
   players: playersReducer,
   monsterUrls: monsterUrlsReducer,
-  currentTab: currentTabReducer
+  currentTab: currentTabReducer,
+  turnOrder: turnOrderReducer
 });
 
 export default reducer;
