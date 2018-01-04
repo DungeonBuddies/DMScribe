@@ -8,7 +8,8 @@ import PlayerCard from './components/playerCard';
 import MonsterCard from './components/monsterCard';
 import playerSamples from '../../sampleData/playerSamples';
 import monsterSamples from '../../sampleData/monsterSamples';
-import actions from './actions/index';
+import { populateMonsterUrls } from './actions/index';
+import SearchBar from './containers/SearchBar';
 
 class App extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class App extends React.Component {
       .sort((a, b) => (b.init - a.init))
       
     });
-    actions.populateMonsterUrls();
+    populateMonsterUrls();
   }
 
   render () {
@@ -35,6 +36,8 @@ class App extends React.Component {
         <a className="item tab">Players</a>
         <a className="item tab">Monsters</a>
       </div>
+
+      <SearchBar />
 
       <div id='playerField'>
         <Card.Group>
