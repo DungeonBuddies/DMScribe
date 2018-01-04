@@ -7,6 +7,7 @@ import './style.scss';
 import Players from './containers/tabs/Players';
 import Arena from './containers/tabs/Arena';
 import Monsters from './containers/tabs/Monsters';
+import Menu from './containers/Menu';
 
 
 
