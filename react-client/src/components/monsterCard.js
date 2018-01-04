@@ -13,7 +13,6 @@ const MonsterCard = (props) => (
       </Card.Header>
       <Card.Meta>
         <span className='date'>
-          Class/Race
         </span>
       </Card.Meta>
       <Card.Description>

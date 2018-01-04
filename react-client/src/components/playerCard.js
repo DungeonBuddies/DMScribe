@@ -13,7 +13,7 @@ const PlayerCard = (props) => (
       </Card.Header>
       <Card.Meta>
         <span className='date'>
-          Class/Race
+          {`Class: ${player.class}`}
         </span>
       </Card.Meta>
       <Card.Description>

@@ -8,7 +8,7 @@ import PlayerCard from './components/playerCard';
 import MonsterCard from './components/monsterCard';
 import playerSamples from '../../sampleData/playerSamples';
 import monsterSamples from '../../sampleData/monsterSamples';
-import populateMonsterUrls from './actions/index';
+import actions from './actions/index';
 
 class App extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class App extends React.Component {
       .sort((a, b) => (b.init - a.init))
       
     });
-    populateMonsterUrls();
+    actions.populateMonsterUrls();
   }
 
   render () {
@@ -88,7 +88,6 @@ class App extends React.Component {
                   </Card.Header>
                   <Card.Meta>
                     <span className='date'>
-                      Class/Race
                     </span>
                   </Card.Meta>
                   <Card.Description>
@@ -120,10 +119,7 @@ class App extends React.Component {
 
         </Card.Group>
 
-        <img 
-          src="http://www.20cents-video.com/userdata/animated-gif/library/43817.gif"
-          onClick={this.populateMonsterUrls}
-        ></img>
+        <img src="http://www.20cents-video.com/userdata/animated-gif/library/43817.gif" />
 
       </div>
 
