@@ -29,6 +29,12 @@ h1 {
   margin: 10px !important;
 }
 
+.orderCards {
+  width: 12% !important;
+  float: left;
+  margin: 10px !important;
+}
+
 #playerField {
   display: block;
   background-color: black !important;
@@ -38,4 +44,16 @@ h1 {
 #monsterField {
   display: block;
   width: 100%;
+}
+
+.turn {
+  margin: 0px auto;
+  font-weight: bold;
+  text-align: center;
+  margin-left: 10px;
+}
+
+#orderField {
+  width: 80%;
+  margin: auto;
 }

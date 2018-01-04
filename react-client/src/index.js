@@ -38,9 +38,9 @@ class App extends React.Component {
 
       <div id='playerField'>
         <Card.Group>
-        {playerSamples.map((player) => {
+        {playerSamples.map((player, index) => {
           return (
-              <Card className='cards' key={player.name}>
+              <Card className='cards' key={`${player.name}${index}`}>
                   <Image />
                   <Card.Content>
                     <Card.Header>
@@ -78,9 +78,9 @@ class App extends React.Component {
 
       <div id='monsterField'>
         <Card.Group>
-        {monsterSamples.map((monster) => {
+        {monsterSamples.map((monster, index) => {
           return (
-              <Card key={monster.name} className='cards'>
+              <Card key={`${monster.name}${index}`} className='cards'>
                 <Image />
                 <Card.Content>
                   <Card.Header>
@@ -124,22 +124,22 @@ class App extends React.Component {
       <Card.Group>  
         {this.state.order.map((card, index) => {
           return (
-              <Card key={card.name}>
+              <Card className='orderCards' key={`${card.name}${index}`}>
                 <Image />
                 <Card.Content>
                   <Card.Header>
                     {card.name}
                   </Card.Header>
                   <Card.Meta>
-                    <span className='date'>
-                      {index + 1}
-                    </span>
                   </Card.Meta>
                 </Card.Content>
                 <Card.Content extra>
+                  <div className='date turn'>
+                    {index + 1}
+                  </div>
                   <a>
                     <Icon name='address card outline' />
-                    Drag Me!
+                    Drag Me! 
                   </a>
                 </Card.Content>
               </Card>
