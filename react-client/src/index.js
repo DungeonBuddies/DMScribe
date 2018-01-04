@@ -8,9 +8,7 @@ import PlayerCard from './components/playerCard';
 import MonsterCard from './components/monsterCard';
 import playerSamples from '../../sampleData/playerSamples';
 import monsterSamples from '../../sampleData/monsterSamples';
-
-import $ from 'jquery';
-
+import populateMonsterUrls from './actions/index';
 
 class App extends React.Component {
   constructor(props) {
@@ -25,20 +23,9 @@ class App extends React.Component {
       order: (playerSamples.concat(monsterSamples))
       .sort((a, b) => (b.init - a.init))
       
-    })
-  }
-
-  //////////////////////////////////////////
-  populateMonsterUrls(){
-    $.get('http://www.dnd5eapi.co/api/monsters', (res) => {
-      store.dispatch({
-        type: 'POPULATE_MONSTER_URLS',
-        payload: res.results
-      });
     });
+    populateMonsterUrls();
   }
-
-  //////////////////////////////////////////
 
   render () {
     return (
@@ -61,7 +48,7 @@ class App extends React.Component {
                     </Card.Header>
                     <Card.Meta>
                       <span className='date'>
-                        Class/Race
+                        {`Class: ${player.class}`}
                       </span>
                     </Card.Meta>
                     <Card.Description>
