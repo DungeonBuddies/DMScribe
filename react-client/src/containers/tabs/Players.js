@@ -21,6 +21,11 @@ class Players extends Component {
 	}
 
 	render () {
+
+		if (this.props.currentTab !== 'players') {
+      return null;
+    }
+
 		return (
 		<div>
 			<form id="player-form" onSubmit={this.onPlayerFormSubmit}>

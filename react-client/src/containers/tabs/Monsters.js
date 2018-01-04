@@ -7,7 +7,7 @@ import ClearMonsters from '../buttons/ClearMonsters';
 
 class Monsters extends Component {
   render () {
-    if (this.props.currentTab !== 'Arena') {
+    if (this.props.currentTab !== 'monsters') {
       return null;
     }
 
