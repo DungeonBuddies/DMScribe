@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
 import monstersReducer from './monstersReducer';
-import playersReducer from './playersReducer.js';
-import monsterUrlsReducer from './monsterUrlsReducer.js';
+import playersReducer from './playersReducer';
+import monsterUrlsReducer from './monsterUrlsReducer';
+import currentTabReducer from './currentTabReducer';
 
 const reducer = combineReducers({
   monsters: monstersReducer,
   players: playersReducer,
-  monsterUrls: monsterUrlsReducer
+  monsterUrls: monsterUrlsReducer,
+  currentTab: currentTabReducer
 });
 
 export default reducer;
