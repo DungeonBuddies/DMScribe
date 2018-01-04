@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './style.scss';
+// import './style.scss';
+import $ from 'jquery';
 import { Card, Icon, Image } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -14,32 +15,34 @@ class Players extends Component {
 
 	onPlayerFormSubmit (event) {
 		event.preventDefault();
-		
+		$("player-form").submit(function(event) {
+			console.log($(this).serializeArray());
+		})
 	}
 
 	render () {
 		return (
-			<form onSubmit={this.onPlayerFormSubmit}>
-				Name:<br>
-				<input type="text" name="name"><br>
-				Class:<br>
-				<input type="text" name="class"><br>
-				AC:<br>
-				<input type="text" name="armor-class"><br>
-				HP:<br>
-				<input type="text" name="hit-points"><br>
-				Initiative:<br>
-				<input type="text" name="initiative"><br>
-				PP:<br>
-				<input type="text" name="perception"><br>
-				Speed:<br>
-				<input type="text" name="speed"><br>
+		<div>
+			<form id="player-form" onSubmit={this.onPlayerFormSubmit}>
+				Name:<br/>
+				<input type="text" name="name"/><br/>
+				Class:<br/>
+				<input type="text" name="class"/><br/>
+				AC:<br/>
+				<input type="text" name="armor-class"/><br/>
+				HP:<br/>
+				<input type="text" name="hit-points"/><br/>
+				Initiative:<br/>
+				<input type="text" name="initiative"/><br/>
+				PP:<br/>
+				<input type="text" name="perception"/><br/>
+				Speed:<br/>
+				<input type="text" name="speed"/><br/>
 				<span><button type="submit">Submit</button></span>
 			</form>
 
-			<div>
 				<PlayersList />
-			</div>
+		</div>
 
 			)
 	}
@@ -51,6 +54,10 @@ function mapStateToProps (state) {
 		currentTab: state.currentTab
 	}
 }
+
+export default connect(mapStateToProps)(Players);
+
+
 
 
 
