@@ -28,16 +28,14 @@ const searchMonsterUrls = (query) => {
 
 const addMonster = (monster) => {
   $.get(monster.url, (res) => {
-    // console.log(res);
-    res.id = extendMonsterId(res._id);
     store.dispatch({type: 'ADD_MONSTER', payload: res});
   });
 };
 
-const extendMonsterId = (id) => {
-  const monsters = store.getState().monsters;
-  const duplicateMonsters = Object.keys(monsters).filter(m => m._id === id);
-  return `${id}-${duplicateMonsters.length}`;
-};
+// const extendMonsterId = (id) => {
+//   const monsters = store.getState().monsters;
+//   const duplicateMonsters = Object.keys(monsters).filter(m => m._id === id);
+//   return `${id}-${duplicateMonsters.length}`;
+// };
 
 export default { populateMonsterUrls, searchMonsterUrls };
