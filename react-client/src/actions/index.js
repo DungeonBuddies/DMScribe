@@ -7,6 +7,7 @@ const populateMonsterUrls = () => {
       type: 'POPULATE_MONSTER_URLS',
       payload: res.results
     });
+    console.log(searchMonsterUrls('bl'));
   });
 };
 
@@ -18,7 +19,7 @@ const searchMonsterUrls = (query) => {
     const name = m.toLowerCase().split(' ');
     for (let w of name) {
       if (w.slice(0, query.length) === query) {
-        results.push(m);
+        results.push({name: m, url: monsterUrls[m]});
         break;
       }
     }
@@ -26,9 +27,9 @@ const searchMonsterUrls = (query) => {
   return results;
 };
 
-// const 
-// get req a specific monster with url input
-// eg. input: '(monster url)'
+// get req a specific monster with only name input
+// eg. input: '(monster name/key)'
 //     output (on callback): store.dispatch({type: ADD_MONSTER, payload: (res)})
+// const addMonster = ()
 
 export default { populateMonsterUrls, searchMonsterUrls };
