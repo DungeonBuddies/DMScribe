@@ -12,8 +12,8 @@ export const populateMonsterUrls = () => {
   });
 };
 
-const addMonster = (monster) => {
-  $.get(monster.url, (res) => {
+export const addMonster = (url) => {
+  $.get(url, (res) => {
     store.dispatch({type: 'ADD_MONSTER', payload: res});
   });
 };
@@ -24,9 +24,3 @@ export const selectTab = (tab) => {
     payload: tab
   }
 }
-
-// const extendMonsterId = (id) => {
-//   const monsters = store.getState().monsters;
-//   const duplicateMonsters = Object.keys(monsters).filter(m => m._id === id);
-//   return `${id}-${duplicateMonsters.length}`;
-// };
