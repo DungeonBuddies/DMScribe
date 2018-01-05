@@ -22,7 +22,7 @@ class Players extends Component {
 
 	render () {
 
-		if (this.props.currentTab !== 'players') {
+		if (this.props.currentTab !== 'Players') {
       return null;
     }
 
