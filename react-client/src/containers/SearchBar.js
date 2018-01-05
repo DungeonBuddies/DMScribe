@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {addMonster} from '../actions/index';
 import store from '../store';
 
 class SearchBar extends Component {
@@ -6,7 +7,7 @@ class SearchBar extends Component {
     super();
     this.state = {
       term: '',
-      results: []
+      results: {}
     }
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -22,19 +23,19 @@ class SearchBar extends Component {
     event.preventDefault();
     const results = this.searchMonsterUrls(this.state.term);
     this.setState(prevState => prevState.term.length > 0 ?
-      {term: '', results: results} : {results: []}
+      {term: '', results: results} : {results: {}}
     );
   }
 
   searchMonsterUrls (query) {
     const monsterUrls = store.getState().monsterUrls;
-    const results = [];
+    const results = {};
     // MVP linear search
-    for (let m in monsterUrls) {
-      const name = m.toLowerCase().split(' ');
+    for (let k in monsterUrls) {
+      const name = k.toLowerCase().split(' ');
       for (let w of name) {
         if (w.slice(0, query.length) === query) {
-          results.push({name: m, url: monsterUrls[m]});
+          results[k] = monsterUrls[k];
           break;
         }
       }
@@ -50,8 +51,22 @@ class SearchBar extends Component {
           value={this.state.term}
           onChange={this.onInputChange}/>
 
-          <span><button type='submit'>Submit</button></span>
-          <div>{this.state.results.map(monster => monster.name).join(', ')}</div>
+          <span>
+            <button type='submit'>Submit</button>
+          </span>
+
+          <div>
+            {
+              Object.keys(this.state.results).map(name => {
+                return (
+                  <span
+                    key={name}
+                    onClick={() => addMonster(this.state.results[name])} 
+                  >{`${name}, `}</span>
+                )
+              })
+            }
+          </div>
         </form>
       )
   }
