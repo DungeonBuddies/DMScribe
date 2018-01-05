@@ -4,10 +4,11 @@ import { bindActionCreators } from 'redux';
 import AddMonster from '../buttons/AddMonster';
 import SearchBar from '../SearchBar';
 import ClearMonsters from '../buttons/ClearMonsters';
+import MonstersList from '../MonstersList';
 
 class Monsters extends Component {
   render () {
-    if (this.props.currentTab !== 'monsters') {
+    if (this.props.currentTab !== 'Monsters') {
       return null;
     }
 

@@ -1,6 +1,8 @@
 import store from '../store';
 import $ from 'jquery';
 
+export const CHANGE_TAB = 'CHANGE_TAB';
+
 export const populateMonsterUrls = () => {
   $.get('http://www.dnd5eapi.co/api/monsters', (res) => {
     store.dispatch({
@@ -16,7 +18,12 @@ const addMonster = (monster) => {
   });
 };
 
-
+export const selectTab = (tab) => {
+  return {
+    type: CHANGE_TAB,
+    payload: tab
+  }
+}
 
 // const extendMonsterId = (id) => {
 //   const monsters = store.getState().monsters;
