@@ -9,10 +9,12 @@ class SearchBar extends Component {
     super();
     this.state = {
       term: '',
-      results: {}
+      results: {},
+      checked: false
     }
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
+    this.changeChecked = this.changeChecked.bind(this);
   }
 
   onInputChange (event) {
@@ -45,6 +47,12 @@ class SearchBar extends Component {
     return results;
   };
 
+  changeChecked () {
+    this.setState({
+      checked: !this.state.checked
+    })
+  }
+
   render () {
     return (
       <div>
@@ -60,7 +68,14 @@ class SearchBar extends Component {
           <span>
             <Button className='customButton' type='submit' content='Submit'/>
           </span>
-
+          <div className="ui checkbox">
+            <input 
+            type="checkbox" 
+            readOnly="" 
+            tabIndex="0"
+            onClick={this.changeChecked} />
+            <label>Auto-roll init for monsters</label>
+          </div>
         </form>
         <div>
           {
@@ -69,7 +84,7 @@ class SearchBar extends Component {
                 <span
                   className='monsterSpan'
                   key={name}
-                  onClick={() => addMonster(this.state.results[name])} 
+                  onClick={() => addMonster(this.state.results[name], this.state.checked)} 
                 >{`${name}`}<Icon name='plus' /></span>
               )
             })

@@ -27,7 +27,7 @@ class MonstersList extends Component {
                               <p className='stats'>
                                 <span className='stat'>AC: {monster.armor_class}</span>
                                 <span className='stat'>HP: {monster.hit_points}</span>
-                                <span className='stat'>INIT: {monster.init}</span>
+                                <span className='stat'>INIT: {monster.init ? monster.init : <input placeholder='?' className='initInput stat'/>}</span>
                               </p>
                               <p className='stats'>
                                 <span className='stat'>STR: {monster.perception}</span>
