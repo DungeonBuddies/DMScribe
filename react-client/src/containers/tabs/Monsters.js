@@ -14,8 +14,8 @@ class Monsters extends Component {
 
     return (
         <div>
-          <MonstersList />
           <SearchBar />
+          <MonstersList />
           <AddMonster />
           <ClearMonsters />
         </div>

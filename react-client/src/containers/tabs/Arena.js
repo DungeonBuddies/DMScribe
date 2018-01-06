@@ -17,14 +17,12 @@ class Arena extends Component {
 
     return (
         <div>
+          <SearchBar />
           <PlayersList />
           <MonstersList />
           <OrderButton />
-          <SearchBar />
           <AddMonster />
           <ClearMonsters />
-          <p>order function here</p>
-
         </div>
       )
   }
