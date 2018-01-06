@@ -12,13 +12,17 @@ export const populateMonsterUrls = () => {
   });
 };
 
-export const addMonster = (url) => {
+export const addMonster = (url, checked) => {
   $.get(url)
   .then((data) => {
     var monster = data;
-    monster.init = Math.floor((monster.dexterity - 10) / 2) + (Math.floor(Math.random() * Math.floor(20)));
     //get request for image here
-    store.dispatch({type: 'ADD_MONSTER', payload: monster});
+    if (checked) {
+      monster.init = Math.floor((monster.dexterity - 10) / 2) + (Math.floor(Math.random() * Math.floor(20)));
+      store.dispatch({type: 'ADD_MONSTER', payload: monster});
+    } else {
+      store.dispatch({type: 'ADD_MONSTER', payload: monster});
+    }
   })
 
 
