@@ -45,7 +45,8 @@ class SearchBar extends Component {
 
   render () {
     return (
-        <form onSubmit={this.onFormSubmit}>
+      <div>
+        <form className='searchBar' onSubmit={this.onFormSubmit}>
           <input 
           placeholder='Search for a monster'
           value={this.state.term}
@@ -55,19 +56,20 @@ class SearchBar extends Component {
             <button type='submit'>Submit</button>
           </span>
 
-          <div>
-            {
-              Object.keys(this.state.results).map(name => {
-                return (
-                  <span
-                    key={name}
-                    onClick={() => addMonster(this.state.results[name])} 
-                  >{`${name}, `}</span>
-                )
-              })
-            }
-          </div>
         </form>
+        <div>
+          {
+            Object.keys(this.state.results).map(name => {
+              return (
+                <span
+                  key={name}
+                  onClick={() => addMonster(this.state.results[name])} 
+                >{`${name}, `}</span>
+              )
+            })
+          }
+        </div>
+      </div>
       )
   }
 }
