@@ -2,6 +2,8 @@ import store from '../store';
 import $ from 'jquery';
 
 export const CHANGE_TAB = 'CHANGE_TAB';
+export const ADD_MONSTER = 'ADD_MONSTER';
+export const DELETE_MONSTER = 'DELETE_MONSTER';
 
 export const populateMonsterUrls = () => {
   $.get('http://www.dnd5eapi.co/api/monsters', (res) => {
@@ -26,6 +28,14 @@ export const addMonster = (url, checked) => {
           }
         });
     });
+}
+
+
+export const removeMonster = (monster) => {
+  return {
+    type: DELETE_MONSTER,
+    payload: monster
+  }
 }
 
 export const selectTab = (tab) => {
