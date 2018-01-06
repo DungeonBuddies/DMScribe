@@ -30,6 +30,7 @@ export const addMonster = (url, checked) => {
     });
 }
 
+
 export const removeMonster = (monster) => {
   return {
     type: DELETE_MONSTER,
