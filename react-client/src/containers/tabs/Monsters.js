@@ -5,8 +5,26 @@ import AddMonster from '../buttons/AddMonster';
 import SearchBar from '../SearchBar';
 import ClearMonsters from '../buttons/ClearMonsters';
 import MonstersList from '../MonstersList';
+////////////////////////////////////////////////////////////////////////////////////////
+import $ from 'jquery';
+////////////////////////////////////////////////////////////////////////////////////////
 
 class Monsters extends Component {
+  
+
+
+  ////////////////////////////////////////////////////////////////////////////////////////
+  componentDidMount () {
+    this.getMonsterImg('ancient-gold-dragon');
+  }
+
+  getMonsterImg (monsterName) {
+    $.get('http://localhost:3000/monsterimg', {monsterName: monsterName}, res => {
+      console.log(res);
+    });
+  };
+  ////////////////////////////////////////////////////////////////////////////////////////
+
   render () {
     if (this.props.currentTab !== 'Monsters') {
       return null;
