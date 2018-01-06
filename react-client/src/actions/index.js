@@ -13,9 +13,18 @@ export const populateMonsterUrls = () => {
 };
 
 export const addMonster = (url) => {
-  $.get(url, (res) => {
-    store.dispatch({type: 'ADD_MONSTER', payload: res});
-  });
+  $.get(url)
+  .then((data) => {
+    var monster = data;
+    //get request for image here
+    monster.init = Math.floor((monster.dexterity - 10) / 2);
+    console.log(monster);
+    console.log(monster.dexterity)
+    console.log(monster.init);
+    store.dispatch({type: 'ADD_MONSTER', payload: monster});
+  })
+
+
 };
 
 export const selectTab = (tab) => {
