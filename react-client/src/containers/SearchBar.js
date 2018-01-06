@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Icon } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 import {addMonster} from '../actions/index';
 import store from '../store';
 
@@ -48,13 +49,16 @@ class SearchBar extends Component {
     return (
       <div>
         <form className='searchBar' onSubmit={this.onFormSubmit}>
-          <input 
-          placeholder='Search for a monster'
-          value={this.state.term}
-          onChange={this.onInputChange}/>
-
+          <span class="ui input">
+            <input 
+            type="text" 
+            placeholder='Search for a monster'
+            value={this.state.term}
+            onChange={this.onInputChange}
+            />
+          </span>
           <span>
-            <button type='submit'>Submit</button>
+            <Button type='submit' className='customButton' content='Submit'/>
           </span>
 
         </form>
