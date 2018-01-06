@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { removeMonster } from '../actions/index';
+
 
 class MonstersList extends Component {
+ 
   render () {
     if (this.props.monsters.length === 0) {
       return null;
@@ -45,7 +49,11 @@ class MonstersList extends Component {
                             <Icon name='address card outline' />
                             More monster info
                           </a>
-                          <Icon className='deleteMonsterIcon' color='red' name='remove'/>
+                          <Icon
+                          onClick={() => {this.props.removeMonster(index)}} 
+                          className='deleteMonsterIcon' 
+                          color='red' 
+                          name='remove'/>
                         </Card.Content>
                       </Card>
                     )
@@ -62,4 +70,12 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps)(MonstersList);
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators({ removeMonster }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MonstersList);
+
+
+
+
