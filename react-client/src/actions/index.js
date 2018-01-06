@@ -16,18 +16,20 @@ export const populateMonsterUrls = () => {
 
 export const addMonster = (url, checked) => {
   $.get(url)
-  .then((data) => {
-    var monster = data;
-    //get request for image here
-    monster.image = 'https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/13/1000/1000/636238871029832086.jpeg'
-    if (checked) {
-      monster.init = Math.floor((monster.dexterity - 10) / 2) + (Math.floor(Math.random() * Math.floor(20)));
-      store.dispatch({type: ADD_MONSTER, payload: monster});
-    } else {
-      store.dispatch({type: ADD_MONSTER, payload: monster});
-    }
-  })
-};
+    .then(monster => {
+      $.get('http://localhost:3000/monsterimg', {monsterName: monster.name})
+        .then(res => {
+          monster.image = res;
+          if (checked) {
+            monster.init = Math.floor((monster.dexterity - 10) / 2) + (Math.floor(Math.random() * Math.floor(20)));
+            store.dispatch({type: 'ADD_MONSTER', payload: monster});
+          } else {
+            store.dispatch({type: 'ADD_MONSTER', payload: monster});
+          }
+        });
+    });
+}
+
 
 export const removeMonster = (monster) => {
   return {
