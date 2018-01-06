@@ -49,7 +49,7 @@ class SearchBar extends Component {
     return (
       <div>
         <form className='searchBar' onSubmit={this.onFormSubmit}>
-          <span class="ui input">
+          <span className="ui input">
             <input 
             type="text" 
             placeholder='Search for a monster'
@@ -58,7 +58,7 @@ class SearchBar extends Component {
             />
           </span>
           <span>
-            <Button type='submit' className='customButton' content='Submit'/>
+            <Button className='customButton' type='submit' content='Submit'/>
           </span>
 
         </form>
