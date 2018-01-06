@@ -2,6 +2,8 @@ import store from '../store';
 import $ from 'jquery';
 
 export const CHANGE_TAB = 'CHANGE_TAB';
+export const ADD_MONSTER = 'ADD_MONSTER';
+export const DELETE_MONSTER = 'DELETE_MONSTER';
 
 export const populateMonsterUrls = () => {
   $.get('http://www.dnd5eapi.co/api/monsters', (res) => {
@@ -20,14 +22,21 @@ export const addMonster = (url, checked) => {
     monster.image = 'https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/13/1000/1000/636238871029832086.jpeg'
     if (checked) {
       monster.init = Math.floor((monster.dexterity - 10) / 2) + (Math.floor(Math.random() * Math.floor(20)));
-      store.dispatch({type: 'ADD_MONSTER', payload: monster});
+      store.dispatch({type: ADD_MONSTER, payload: monster});
     } else {
-      store.dispatch({type: 'ADD_MONSTER', payload: monster});
+      store.dispatch({type: ADD_MONSTER, payload: monster});
     }
   })
-
-
 };
+
+export const removeMonster = (index) => {
+  var copy = store.getState();
+  copy.monsters.splice(index, 1);
+  return {
+    type: DELETE_MONSTER,
+    payload: copy.monsters
+  }
+}
 
 export const selectTab = (tab) => {
   return {
