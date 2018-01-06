@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Icon } from 'semantic-ui-react'
 import {addMonster} from '../actions/index';
 import store from '../store';
 
@@ -62,9 +63,10 @@ class SearchBar extends Component {
             Object.keys(this.state.results).map(name => {
               return (
                 <span
+                  className='monsterSpan'
                   key={name}
                   onClick={() => addMonster(this.state.results[name])} 
-                >{`${name}, `}</span>
+                >{`${name}`}<Icon name='plus' /></span>
               )
             })
           }
