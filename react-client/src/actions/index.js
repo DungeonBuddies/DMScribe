@@ -29,12 +29,10 @@ export const addMonster = (url, checked) => {
   })
 };
 
-export const removeMonster = (index) => {
-  var copy = store.getState();
-  copy.monsters.splice(index, 1);
+export const removeMonster = (monster) => {
   return {
     type: DELETE_MONSTER,
-    payload: copy.monsters
+    payload: monster
   }
 }
 
