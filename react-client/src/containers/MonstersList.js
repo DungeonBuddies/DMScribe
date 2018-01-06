@@ -14,10 +14,10 @@ class MonstersList extends Component {
       		{this.props.monsters.map((monster, index) => {
                   return (
                       <Card key={index} className='cards'>
-                        <Image />
+                        <Image src={monster.image}/>
                         <Card.Content>
                           <Card.Header>
-                            {monster.name}
+                            {monster.name} 
                           </Card.Header>
                           <Card.Meta>
                             <span className='date'>
@@ -45,6 +45,7 @@ class MonstersList extends Component {
                             <Icon name='address card outline' />
                             More monster info
                           </a>
+                          <Icon className='deleteMonsterIcon' color='red' name='remove'/>
                         </Card.Content>
                       </Card>
                     )
