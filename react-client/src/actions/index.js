@@ -38,6 +38,12 @@ export const removeMonster = (monster) => {
   }
 }
 
+export const generateTurnOrder = () => {
+  return {
+    type: 'ORDER'
+  }
+}
+
 export const selectTab = (tab) => {
   return {
     type: CHANGE_TAB,
