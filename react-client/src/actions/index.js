@@ -1,37 +1,61 @@
 import store from '../store';
-import $ from 'jquery';
+import axios from 'axios';
 
 export const CHANGE_TAB = 'CHANGE_TAB';
 export const ADD_MONSTER = 'ADD_MONSTER';
 export const DELETE_MONSTER = 'DELETE_MONSTER';
+export const ADD_MONSTER_IMG = 'ADD_MONSTER_IMG';
 
 export const populateMonsterUrls = () => {
-  $.get('http://www.dnd5eapi.co/api/monsters', (res) => {
+  axios('http://www.dnd5eapi.co/api/monsters')
+  .then(res => {
     store.dispatch({
       type: 'POPULATE_MONSTER_URLS',
-      payload: res.results
+      payload: res.data.results
     });
   });
 };
 
 export const addMonster = (url, checked) => {
-  $.get(url)
-    .then(monster => {
-      $.get('http://localhost:3000/monsterimg', {monsterName: monster.name})
-        .then(res => {
-          monster.image = res;
-          if (checked) {
-            monster.init = Math.floor((monster.dexterity - 10) / 2) + (Math.floor(Math.random() * Math.floor(20)));
-            store.dispatch({type: 'ADD_MONSTER', payload: monster});
-          } else {
-            store.dispatch({type: 'ADD_MONSTER', payload: monster});
-          }
-        });
+  let monsterId;
+  axios.get(url)
+  .then(res => {
+    const monster = res.data;
+    monsterId = monster._id;
+    if (checked) {
+      monster.init = Math.floor((monster.dexterity - 10) / 2) + (Math.floor(Math.random() * Math.floor(20)));
+      store.dispatch({type: ADD_MONSTER, payload: monster});
+    } else {
+      store.dispatch({type: ADD_MONSTER, payload: monster});
+    }
+
+    fetchMonsterImg(monster.name)
+    .then(url => {
+        addMonsterImg(url, monsterId);
     });
+  });
 }
 
+const fetchMonsterImg = monsterName => {
+  return axios.get('http://localhost:3000/monsterimg', {
+    params: {
+      monsterName: monsterName
+    }
+  })
+  .then(res => res.data);
+};
 
-export const removeMonster = (monster) => {
+const addMonsterImg = (url, monsterId) => {
+  store.dispatch({
+    type: ADD_MONSTER_IMG,
+    payload: {
+      url: url,
+      id: monsterId
+    }
+  });
+};
+
+export const removeMonster = monster => {
   return {
     type: DELETE_MONSTER,
     payload: monster
@@ -44,7 +68,7 @@ export const generateTurnOrder = () => {
   }
 }
 
-export const selectTab = (tab) => {
+export const selectTab = tab => {
   return {
     type: CHANGE_TAB,
     payload: tab
