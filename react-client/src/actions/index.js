@@ -4,6 +4,7 @@ import axios from 'axios';
 export const CHANGE_TAB = 'CHANGE_TAB';
 export const ADD_MONSTER = 'ADD_MONSTER';
 export const DELETE_MONSTER = 'DELETE_MONSTER';
+export const ADD_MONSTER_IMG = 'ADD_MONSTER_IMG';
 
 export const populateMonsterUrls = () => {
   axios('http://www.dnd5eapi.co/api/monsters')
@@ -16,21 +17,22 @@ export const populateMonsterUrls = () => {
 };
 
 export const addMonster = (url, checked) => {
+  let monsterId;
   axios.get(url)
   .then(res => {
     const monster = res.data;
+    monsterId = monster._id;
     if (checked) {
       monster.init = Math.floor((monster.dexterity - 10) / 2) + (Math.floor(Math.random() * Math.floor(20)));
-      store.dispatch({type: 'ADD_MONSTER', payload: monster});
+      store.dispatch({type: ADD_MONSTER, payload: monster});
     } else {
-      store.dispatch({type: 'ADD_MONSTER', payload: monster});
+      store.dispatch({type: ADD_MONSTER, payload: monster});
     }
 
     fetchMonsterImg(monster.name)
     .then(url => {
-      console.log(url);
+        addMonsterImg(url, monsterId);
     });
-
   });
 }
 
@@ -43,9 +45,15 @@ const fetchMonsterImg = monsterName => {
   .then(res => res.data);
 };
 
-// export const addMonsterImg = url => {
-
-// };
+const addMonsterImg = (url, monsterId) => {
+  store.dispatch({
+    type: ADD_MONSTER_IMG,
+    payload: {
+      url: url,
+      id: monsterId
+    }
+  });
+};
 
 export const removeMonster = monster => {
   return {
