@@ -1,5 +1,4 @@
 import store from '../store';
-import $ from 'jquery';
 import axios from 'axios';
 
 export const CHANGE_TAB = 'CHANGE_TAB';
@@ -7,10 +6,11 @@ export const ADD_MONSTER = 'ADD_MONSTER';
 export const DELETE_MONSTER = 'DELETE_MONSTER';
 
 export const populateMonsterUrls = () => {
-  $.get('http://www.dnd5eapi.co/api/monsters', (res) => {
+  axios('http://www.dnd5eapi.co/api/monsters')
+  .then(res => {
     store.dispatch({
       type: 'POPULATE_MONSTER_URLS',
-      payload: res.results
+      payload: res.data.results
     });
   });
 };
