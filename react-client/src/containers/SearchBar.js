@@ -3,6 +3,26 @@ import { Icon } from 'semantic-ui-react'
 import { Button } from 'semantic-ui-react'
 import {addMonster} from '../actions/index';
 import store from '../store';
+import { Dropdown } from 'semantic-ui-react';
+
+var numberOptions = [
+  {
+    text: '1',
+    value: 1,
+  }, {
+    text: '2',
+    value: 2,
+  }, {
+    text: '3',
+    value: 3,
+  }, {
+    text: '4',
+    value: 4,
+  }, {
+    text: '5',
+    value: 5,
+  },
+]
 
 class SearchBar extends Component {
   constructor () {
@@ -15,6 +35,7 @@ class SearchBar extends Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.changeChecked = this.changeChecked.bind(this);
+    this.clearMonsterDiv = this.clearMonsterDiv.bind(this);
   }
 
   onInputChange (event) {
@@ -53,6 +74,13 @@ class SearchBar extends Component {
     })
   }
 
+  clearMonsterDiv () {
+    this.setState({
+      results: {},
+      checked: false
+    })
+  }
+
   render () {
     return (
       <div>
@@ -64,6 +92,9 @@ class SearchBar extends Component {
             value={this.state.term}
             onChange={this.onInputChange}
             />
+          </span>
+          <span>
+            <Dropdown className='numberDropdown' placeholder='1' fluid selection options={numberOptions} />
           </span>
           <span>
             <Button className='customButton' type='submit' content='Submit'/>
@@ -84,7 +115,10 @@ class SearchBar extends Component {
                 <span
                   className='monsterSpan'
                   key={name}
-                  onClick={() => addMonster(this.state.results[name], this.state.checked)} 
+                  onClick={() => {
+                    addMonster(this.state.results[name], this.state.checked);
+                    this.clearMonsterDiv();
+                  }} 
                 >{`${name}`}<Icon name='plus' /></span>
               )
             })
