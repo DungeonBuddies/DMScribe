@@ -35,7 +35,6 @@
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-promise": "^0.5.3",
-    "request": "^2.83.0",
     "semantic-ui-react": "^0.77.1"
   }
 }

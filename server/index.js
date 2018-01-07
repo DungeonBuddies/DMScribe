@@ -1,10 +1,10 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var db = require('../database-mongo');
-var axios = require('axios');
-var cheerio = require('cheerio');
+const express = require('express');
+const bodyParser = require('body-parser');
+const db = require('../database-mongo');
+const axios = require('axios');
+const cheerio = require('cheerio');
 
-var app = express();
+const app = express();
 
 app.use(express.static(__dirname + '/../react-client/dist'));
 
@@ -20,7 +20,6 @@ app.get('/monsterimg', (req, res1) => {
     const html = res2.data;
     const $ = cheerio.load(html);
     const imgSrc = $('.monster-image').attr('src');
-    console.log(imgSrc);
     res1.send(imgSrc);
   });
 });
