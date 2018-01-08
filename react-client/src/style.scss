@@ -27,6 +27,10 @@ h1 {
 .cards {
   float: left;
   margin: 10px !important;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .orderCards {
@@ -89,18 +93,30 @@ h1 {
 .deleteMonsterIcon {
   position: relative;
   bottom: 360px;
-  right: 140px;
+  right: 160px;
 }
 
 .orderDiv {
-  width: 15%;
-  margin-left: 70px;
-  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  /*width: 15%;*/
+  /*margin-left: 70px;
+  margin-top: 20px;*/
 }
 
-.imgContainer {
+.monsterImgContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 290px;
   height: 224px !important;
+}
+
+.monsterImg {
+  max-width: 290px;
+  max-height: 224px;
 }
 
 .numberDropdown {
@@ -115,9 +131,6 @@ h1 {
 //   font-size: 12px !important; 
 //   margin-left: 20px !important; 
 // }
-
-
-
 
 
 
