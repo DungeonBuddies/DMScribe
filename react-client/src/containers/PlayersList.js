@@ -15,11 +15,11 @@ class PlayersList extends Component {
   	}
 
   	return(
-  		<div>
+  		<div id='playerField'>
   			<Card.Group>
   				{this.props.players.map((player, index) => {
   					return (
-  						<Card>
+  						<Card key={`${player.name}${index}`}>
 						    <Image />
 						    <Card.Content>
 						      <Card.Header>

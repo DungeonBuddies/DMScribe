@@ -4,6 +4,7 @@ import axios from 'axios';
 export const CHANGE_TAB = 'CHANGE_TAB';
 export const ADD_MONSTER = 'ADD_MONSTER';
 export const DELETE_MONSTER = 'DELETE_MONSTER';
+export const CLEAR_MONSTERS = 'CLEAR_MONSTERS';
 export const ADD_MONSTER_IMG = 'ADD_MONSTER_IMG';
 export const ADD_PLAYER = 'ADD_PLAYER';
 
@@ -60,6 +61,13 @@ const addMonsterImg = (url, id) => {
     }
   });
 };
+
+export const clearMonstersField = () => {
+  store.dispatch({
+    type: CLEAR_MONSTERS,
+    payload: []
+  });
+}
 
 export const removeMonster = id => {
   return {

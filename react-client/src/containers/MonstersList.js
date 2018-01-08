@@ -13,7 +13,7 @@ class MonstersList extends Component {
     }
 
   	return(
-      <div>
+      <div id='monsterField'>
         <Card.Group>
       		{this.props.monsters.map((monster, index) => {
                   return (
