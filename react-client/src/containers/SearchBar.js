@@ -3,6 +3,7 @@ import { Icon } from 'semantic-ui-react'
 import { Button } from 'semantic-ui-react'
 import {addMonster} from '../actions/index';
 import store from '../store';
+import $ from 'jquery';
 import NumberDropDown from '../components/numberDropDown';
 
 class SearchBar extends Component {
@@ -98,6 +99,7 @@ class SearchBar extends Component {
                   onClick={() => {
                     addMonster(this.state.results[name], this.state.checked);
                     this.clearMonsterDiv();
+                    //$('.numberDropdown').text()[0]
                   }} 
                 >{`${name}`}<Icon name='plus' /></span>
               )
