@@ -5,8 +5,12 @@ import { bindActionCreators } from 'redux';
 import { removeMonster } from '../actions/index';
 
 class PlayersList extends Component {
+  constructor(props) {
+  	super(props);
+  }
+
   render () {
-  	if (this.props.players.length) {
+  	if (this.props.players.length === 0) {
   		return null;
   	}
 

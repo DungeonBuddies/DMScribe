@@ -5,17 +5,27 @@ import { Card, Icon, Image } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PlayersList from "../PlayersList"
+import { addPlayer } from '../../actions/index';
 
 
 class Players extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {}
+		this.state = {
+			players: []
+		};
+		this.onPlayerFormSubmit = this.onPlayerFormSubmit.bind(this);
 	}
 
 	onPlayerFormSubmit (event) {
 		event.preventDefault();
-		console.log('Form submitted!')
+		var playerArr = $(event.target).serializeArray();
+		console.log('Player object: ', playerArr)
+		var resultsObj = {};
+		for (var i = 0; i < playerArr.length; i++) {
+		  resultsObj[playerArr[i].name] = playerArr[i].value;
+		}
+		addPlayer(resultsObj);
 	}
 
 	render () {

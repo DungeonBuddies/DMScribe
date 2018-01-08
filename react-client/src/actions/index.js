@@ -5,6 +5,7 @@ export const CHANGE_TAB = 'CHANGE_TAB';
 export const ADD_MONSTER = 'ADD_MONSTER';
 export const DELETE_MONSTER = 'DELETE_MONSTER';
 export const ADD_MONSTER_IMG = 'ADD_MONSTER_IMG';
+export const ADD_PLAYER = 'ADD_PLAYER';
 
 export const populateMonsterUrls = () => {
   axios('http://www.dnd5eapi.co/api/monsters')
@@ -67,6 +68,13 @@ export const removeMonster = id => {
       id: id
     }
   }
+}
+
+export const addPlayer = (player) => {
+  store.dispatch({
+    type: ADD_PLAYER,
+    payload: player
+  })
 }
 
 export const generateTurnOrder = () => {
