@@ -30,6 +30,10 @@ const playersReducer = (state = sample, action) => {
   if (action.type === 'ADD_PLAYER') {
     return [...state, action.payload];
   }
+  else if (action.type === 'DELETE_PLAYER') {
+  	const index = state.findIndex(player => player.name === action.payload.name);
+    return [...state.slice(0, index), ...state.slice(index + 1)];
+  }
   return state;
 };
 

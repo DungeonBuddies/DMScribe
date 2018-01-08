@@ -11,7 +11,7 @@ class ClearMonsters extends Component {
     }
 
   	return(
-  		<div className='orderDiv'>
+  		<div>
         <Button
         onClick={() => {
           clearMonstersField();
