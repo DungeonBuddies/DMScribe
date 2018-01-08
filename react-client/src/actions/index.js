@@ -71,6 +71,13 @@ export const clearMonstersField = () => {
   });
 }
 
+export const clearOrderField = () => {
+  store.dispatch({
+    type: 'CLEAR_ORDER',
+    payload: []
+  })
+}
+
 export const removeMonster = id => {
   return {
     type: DELETE_MONSTER,

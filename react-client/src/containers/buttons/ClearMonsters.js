@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {clearMonstersField} from '../../actions/index';
+import {clearMonstersField, clearOrderField} from '../../actions/index';
 
 class ClearMonsters extends Component {
   render () {
@@ -15,6 +15,7 @@ class ClearMonsters extends Component {
         <Button
         onClick={() => {
           clearMonstersField();
+          clearOrderField();
         }} 
         className='clearMonsters' 
         content='Clear monsters'/>
@@ -30,7 +31,7 @@ function mapStateToProps (state) {
 }
 
 function mapDispatchToProps (dispatch) {
-  return bindActionCreators({ clearMonstersField }, dispatch);
+  return bindActionCreators({ clearMonstersField, clearOrderField }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClearMonsters);

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PlayersList from '../PlayersList';
 import MonstersList from '../MonstersList';
+import OrderList from '../orderList';
 import OrderButton from '../buttons/OrderButton';
 import AddMonster from '../buttons/AddMonster';
 import ClearMonsters from '../buttons/ClearMonsters';
@@ -25,6 +26,7 @@ class Arena extends Component {
             <OrderButton />
             <ClearMonsters />
           </div>
+          <OrderList />
         </div>
       )
   }

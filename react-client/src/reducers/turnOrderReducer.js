@@ -9,7 +9,9 @@ const turnOrderReducer = (state = [], action) => {
     var sorted = monsters.sort((a, b) => {b.order - a.order});
     console.log('SORTED: ', sorted);
     return sorted;
-  } 
+  } else if (action.type === 'CLEAR_ORDER') {
+    return action.payload
+  }
   return state;
 };
 
