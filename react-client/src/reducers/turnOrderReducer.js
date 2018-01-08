@@ -1,13 +1,9 @@
 import store from '../store';
 const turnOrderReducer = (state = [], action) => {
   if (action.type === 'ORDER') {
-    //NONE OF THIS BULLSHIT WORKS FOR WHATEVER REASON
-    var players = store.getState().players;
-    var monsters = store.getState().monsters;
-    console.log('PLAYERS: ', players);
-    console.log('MONSTERS: ', monsters);
-    var sorted = monsters.sort((a, b) => {b.order - a.order});
-    console.log('SORTED: ', sorted);
+    const players = store.getState().players;
+    const monsters = store.getState().monsters;
+    const sorted = monsters.concat(players).sort((a, b) => b.order > a.order);
     return sorted;
   } else if (action.type === 'CLEAR_ORDER') {
     return action.payload

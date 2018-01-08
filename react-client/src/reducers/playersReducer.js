@@ -6,7 +6,8 @@ const sample = [
    hit_points: 60,
    init: 1,
    perception: 10,
-   speed: 30
+   speed: 30,
+   order: 0
   }, {
    name: 'Brooks',
    class: 'Bard',
@@ -14,7 +15,8 @@ const sample = [
    hit_points: 55,
    init: 1,
    perception: 15,
-   speed: 30
+   speed: 30, 
+   order: 2
   }, {
    name: 'Spencer',
    class: 'Wizard',
@@ -22,7 +24,8 @@ const sample = [
    hit_points: 50,
    init: 2,
    perception: 15,
-   speed: 25
+   speed: 25,
+   order: 999
   }
 ]
 
