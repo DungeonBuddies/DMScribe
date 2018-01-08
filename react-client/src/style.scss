@@ -140,6 +140,19 @@ h1 {
   height: 20% !important;
 }
 
+.classImgContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 290px;
+  height: 224px !important;
+}
+
+.classImg {
+  max-width: 290px;
+  max-height: 224px;
+}
+
 
 
 

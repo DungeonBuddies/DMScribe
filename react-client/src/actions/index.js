@@ -8,6 +8,7 @@ export const CLEAR_MONSTERS = 'CLEAR_MONSTERS';
 export const ADD_MONSTER_IMG = 'ADD_MONSTER_IMG';
 export const ADD_PLAYER = 'ADD_PLAYER';
 export const DELETE_PLAYER = 'DELETE_PLAYER';
+export const ADD_CLASS_IMG = 'ADD_CLASS_IMG';
 
 export const populateMonsterUrls = () => {
   axios('http://www.dnd5eapi.co/api/monsters')
@@ -91,11 +92,33 @@ export const addPlayer = (player) => {
   store.dispatch({
     type: ADD_PLAYER,
     payload: player
+  });
+  fetchClassImg(player.class)
+  .then(url => {
+    addClassImg(url, player.id);
+  })
+}
+
+const fetchClassImg = className => {
+  return axios.get('http://localhost:3000/classimg', {
+    params: {
+      className: className
+    }
+  })
+  .then(res => res.data);
+}
+
+const addClassImg = (url, id) => {
+  store.dispatch({
+    type: ADD_CLASS_IMG,
+    payload: {
+      url: url,
+      id: id
+    }
   })
 }
 
 export const removePlayer = name => {
-  console.log('Removing the player!')
   return {
     type: DELETE_PLAYER,
     payload: {
