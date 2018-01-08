@@ -17,11 +17,9 @@ export const populateMonsterUrls = () => {
 };
 
 export const addMonster = (url, checked) => {
-  let monsterId;
   axios.get(url)
   .then(res => {
     const monster = res.data;
-    monsterId = monster._id;
     if (checked) {
       monster.init = Math.floor((monster.dexterity - 10) / 2) + (Math.floor(Math.random() * Math.floor(20)));
       store.dispatch({type: ADD_MONSTER, payload: monster});
@@ -31,7 +29,7 @@ export const addMonster = (url, checked) => {
 
     fetchMonsterImg(monster.name)
     .then(url => {
-        addMonsterImg(url, monsterId);
+        addMonsterImg(url, monster.id);
     });
   });
 }
@@ -45,20 +43,22 @@ const fetchMonsterImg = monsterName => {
   .then(res => res.data);
 };
 
-const addMonsterImg = (url, monsterId) => {
+const addMonsterImg = (url, id) => {
   store.dispatch({
     type: ADD_MONSTER_IMG,
     payload: {
       url: url,
-      id: monsterId
+      id: id
     }
   });
 };
 
-export const removeMonster = monster => {
+export const removeMonster = id => {
   return {
     type: DELETE_MONSTER,
-    payload: monster
+    payload: {
+      id: id
+    }
   }
 }
 
