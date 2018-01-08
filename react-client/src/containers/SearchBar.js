@@ -3,26 +3,7 @@ import { Icon } from 'semantic-ui-react'
 import { Button } from 'semantic-ui-react'
 import {addMonster} from '../actions/index';
 import store from '../store';
-import { Dropdown } from 'semantic-ui-react';
-
-var numberOptions = [
-  {
-    text: '1',
-    value: 1,
-  }, {
-    text: '2',
-    value: 2,
-  }, {
-    text: '3',
-    value: 3,
-  }, {
-    text: '4',
-    value: 4,
-  }, {
-    text: '5',
-    value: 5,
-  },
-]
+import NumberDropDown from '../components/numberDropDown';
 
 class SearchBar extends Component {
   constructor () {
@@ -77,7 +58,6 @@ class SearchBar extends Component {
   clearMonsterDiv () {
     this.setState({
       results: {},
-      checked: false
     })
   }
 
@@ -94,7 +74,7 @@ class SearchBar extends Component {
             />
           </span>
           <span>
-            <Dropdown className='numberDropdown' placeholder='1' fluid selection options={numberOptions} />
+            <NumberDropDown />
           </span>
           <span>
             <Button className='customButton' type='submit' content='Submit'/>
