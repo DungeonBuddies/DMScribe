@@ -18,8 +18,8 @@ class MonstersList extends Component {
       		{this.props.monsters.map((monster, index) => {
                   return (
                       <Card key={index} className='cards'>
-                        <div>
-                          <Image className='imgContainer' src={monster.image}/>
+                        <div className='monsterImgContainer'>
+                          <Image className='monsterImg' src={monster.image}/>
                         </div>
                         <Card.Content>
                           <Card.Header>

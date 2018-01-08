@@ -98,9 +98,17 @@ h1 {
   margin-top: 20px;
 }
 
-.imgContainer {
+.monsterImgContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 290px;
   height: 224px !important;
+}
+
+.monsterImg {
+  max-width: 290px;
+  max-height: 224px;
 }
 
 .numberDropdown {
@@ -108,7 +116,6 @@ h1 {
   display: inline-block;
   float: left;
 }
-
 
 
 
