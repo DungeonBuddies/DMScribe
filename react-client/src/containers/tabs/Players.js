@@ -15,9 +15,7 @@ class Players extends Component {
 
 	onPlayerFormSubmit (event) {
 		event.preventDefault();
-		$("player-form").submit(function(event) {
-			console.log($(this).serializeArray());
-		})
+		console.log('Form submitted!')
 	}
 
 	render () {
