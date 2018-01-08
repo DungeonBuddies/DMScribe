@@ -36,7 +36,7 @@ class MonstersList extends Component {
                                 <span className='stat'>INIT: {monster.init ? monster.init : <input placeholder='?' className='initInput stat'/>}</span>
                               </p>
                               <p className='stats'>
-                                <span className='stat'>STR: {monster.perception}</span>
+                                <span className='stat'>STR: {monster.strength}</span>
                                 <span className='stat'>DEX: {monster.dexterity}</span>
                                 <span className='stat'>CON: {monster.constitution}</span>
                               </p>
