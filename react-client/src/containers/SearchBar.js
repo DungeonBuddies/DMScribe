@@ -12,7 +12,7 @@ class SearchBar extends Component {
     this.state = {
       term: '',
       results: {},
-      checked: false
+      checked: true
     }
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -83,6 +83,7 @@ class SearchBar extends Component {
           <div className="ui checkbox">
             <input 
             type="checkbox" 
+            defaultChecked={true}
             readOnly="" 
             tabIndex="0"
             onClick={this.changeChecked} />
