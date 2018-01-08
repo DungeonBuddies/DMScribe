@@ -7,7 +7,8 @@ const sample = [
    init: 1,
    perception: 10,
    speed: 30,
-   image: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/6/359/420/618/636272697874197438.png"
+   image: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/6/359/420/618/636272697874197438.png",
+   order: 0
   }, {
    name: 'Brooks',
    class: 'Bard',
@@ -16,6 +17,7 @@ const sample = [
    init: 1,
    perception: 15,
    speed: 30,
+   order: 2,
    image: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/6/369/420/618/636272705936709430.png"
   }, {
    name: 'Spencer',
@@ -25,6 +27,7 @@ const sample = [
    init: 2,
    perception: 15,
    speed: 25,
+   order: 999,
    image: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/6/357/420/618/636272696881281556.png"
   }
 ]
