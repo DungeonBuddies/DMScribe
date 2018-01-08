@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../style.scss';
 import $ from 'jquery';
-import { Card, Icon, Image, Form, Button } from 'semantic-ui-react';
+import { Card, Icon, Image, Form, Button, Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PlayersList from "../PlayersList"
@@ -27,6 +27,8 @@ class Players extends Component {
 		addPlayer(resultsObj);
 	}
 
+
+
 	render () {
 		if (this.props.currentTab !== 'Players') {
       return null;
@@ -41,7 +43,21 @@ class Players extends Component {
 				</div>
 				<div className="field">
 					<label>Class:</label>
-					<input type="text" name="class"/>
+					<select className="ui fluid dropdown" name="class"> 
+						<option value="">Class</option>
+						<option value="Barbarian">Barbarian</option>
+						<option value="Bard">Bard</option>
+						<option value="Cleric">Cleric</option>
+						<option value="Druid">Druid</option>
+						<option value="Fighter">Fighter</option>
+						<option value="Monk">Monk</option>
+						<option value="Paladin">Paladin</option>
+						<option value="Ranger">Ranger</option>
+						<option value="Rogue">Rogue</option>
+						<option value="Sorcerer">Sorcerer</option>
+						<option value="Warlock">Warlock</option>
+						<option value="Wizard">Wizard</option>
+					</select>
 				</div>
 				<div className="field">
 					<label>AC:</label>
