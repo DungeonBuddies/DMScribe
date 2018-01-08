@@ -20,7 +20,9 @@ class PlayersList extends Component {
   				{this.props.players.map((player, index) => {
   					return (
   						<Card key={`${player.name}${index}`}>
-						    <Image />
+						    <div className='classImgContainer'>
+                   <Image className='classImg' src={player.image}/>
+                </div>
 						    <Card.Content>
 						      <Card.Header>
 						        {player.name}

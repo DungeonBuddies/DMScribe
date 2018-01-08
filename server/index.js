@@ -23,3 +23,17 @@ app.get('/monsterimg', (req, res1) => {
     res1.send(imgSrc);
   });
 });
+
+app.get('/classimg', (req, res1) => {
+  console.log('req.query: ', req.query)
+  const classPath = req.query.className.split(' ').join('-');
+  console.log('classPath: ', classPath)
+  axios.get(`https://www.dndbeyond.com/characters/classes/${classPath}`)
+  .then(res2 => {
+    const html = res2.data;
+    const $ = cheerio.load(html);
+    const imgSrc = $('.image').attr('src');
+    res1.send(imgSrc);
+  });
+});
+
