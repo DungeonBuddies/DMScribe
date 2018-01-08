@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removePlayer } from '../actions/index';
+import { removePlayer, generateTurnOrder } from '../actions/index';
 
 class PlayersList extends Component {
   constructor(props) {
@@ -26,7 +26,10 @@ class PlayersList extends Component {
 						        {player.name}
 						      </Card.Header>
 						      <Icon
-                    onClick={() => {this.props.removePlayer(player.name)}} 
+                    onClick={() => {
+                      this.props.removePlayer(player.name);
+                      this.props.generateTurnOrder();
+                    }} 
                     className='deletePlayerIcon' 
                     color='red' 
                     name='remove'/>
@@ -69,7 +72,7 @@ function mapStateToProps (state) {
 }
 
 function mapDispatchToProps (dispatch) {
-  return bindActionCreators({ removePlayer }, dispatch);
+  return bindActionCreators({ removePlayer, generateTurnOrder }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayersList);
