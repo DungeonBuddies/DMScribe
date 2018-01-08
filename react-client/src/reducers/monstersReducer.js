@@ -7,8 +7,8 @@ const monstersReducer = (state = [], action) => {
     return [...state.slice(0, index), ...state.slice(index + 1)];
 
   } else if (action.type === 'ADD_MONSTER_IMG') {
-    const index = state.findIndex(monster => monster._id === action.payload.id);
-    return [...state.slice(0, index), ...state.slice(index + 1), {...state[index], image: action.payload.url}];
+    const index = state.findIndex(monster => monster.name === action.payload.name);
+    return [...state.slice(0, index), {...state[index], image: action.payload.url}, ...state.slice(index + 1)];
   }
   return state;
 };
