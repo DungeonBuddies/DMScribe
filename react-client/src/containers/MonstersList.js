@@ -52,7 +52,7 @@ class MonstersList extends Component {
                             More monster info
                           </a>
                           <Icon
-                          onClick={() => {this.props.removeMonster(monster)}} 
+                          onClick={() => {this.props.removeMonster(monster.id)}} 
                           className='deleteMonsterIcon' 
                           color='red' 
                           name='remove'/>

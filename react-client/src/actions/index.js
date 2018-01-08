@@ -29,7 +29,7 @@ export const addMonster = (url, checked) => {
 
     fetchMonsterImg(monster.name)
     .then(url => {
-        addMonsterImg(url, monster.name);
+        addMonsterImg(url, monster.id);
     });
   });
 }
@@ -43,20 +43,22 @@ const fetchMonsterImg = monsterName => {
   .then(res => res.data);
 };
 
-const addMonsterImg = (url, monsterName) => {
+const addMonsterImg = (url, id) => {
   store.dispatch({
     type: ADD_MONSTER_IMG,
     payload: {
       url: url,
-      name: monsterName
+      id: id
     }
   });
 };
 
-export const removeMonster = monster => {
+export const removeMonster = id => {
   return {
     type: DELETE_MONSTER,
-    payload: monster
+    payload: {
+      id: id
+    }
   }
 }
 
