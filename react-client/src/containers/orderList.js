@@ -11,27 +11,32 @@ class OrderList extends Component {
     }
 
     return(
-      <Card.Group>
-        <Card className='cards'>
-          <Image />
-          <Card.Content>
-            <Card.Header>
-              {this.props.turnOrder.name}
-            </Card.Header>
-            <Card.Meta>
-              <span className='date'>
-                Turn number
-              </span>
-            </Card.Meta>
-          </Card.Content>
-          <Card.Content extra>
-            <a>
-              <Icon name='address card outline' />
-              Drag Me!
-            </a>
-          </Card.Content>
-        </Card>
-      </Card.Group>
+      <div>
+        <Card.Group>
+          {this.props.turnOrder.map((card, index) => {
+                  return (
+                      <Card key={index} className='cards'>
+                        <Card.Content>
+                          <Card.Header>
+                            {card.name} 
+                          </Card.Header>
+                          <Card.Meta>
+                            <span className='date'>
+                            Turn number {index + 1}
+                            </span>
+                          </Card.Meta>
+                        </Card.Content>
+                        <Card.Content extra>
+                          <a>
+                            <Icon name='mouse pointer' />
+                            Drag me!
+                          </a>
+                        </Card.Content>
+                      </Card>
+                    )
+                })}
+        </Card.Group>
+      </div>
       )
   }
 }
