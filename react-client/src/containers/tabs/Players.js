@@ -42,11 +42,11 @@ class Players extends Component {
 				Class:<br/>
 				<input type="text" name="class"/><br/>
 				AC:<br/>
-				<input type="text" name="armor-class"/><br/>
+				<input type="text" name="armor_class"/><br/>
 				HP:<br/>
-				<input type="text" name="hit-points"/><br/>
+				<input type="text" name="hit_points"/><br/>
 				Initiative:<br/>
-				<input type="text" name="initiative"/><br/>
+				<input type="text" name="init"/><br/>
 				PP:<br/>
 				<input type="text" name="perception"/><br/>
 				Speed:<br/>
