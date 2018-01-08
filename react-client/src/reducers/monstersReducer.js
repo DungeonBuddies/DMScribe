@@ -1,5 +1,10 @@
 const monstersReducer = (state = [], action) => {
   if (action.type === 'ADD_MONSTER') {
+    // var updated = action.payload.map((monster, index) => {
+    //   monster._id.concat(index);
+    //   return monster; 
+    // })
+    // console.log(updated)
     action.payload.id = action.payload._id.concat(state.length);
     return [...state, action.payload];
 

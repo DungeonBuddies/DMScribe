@@ -20,8 +20,15 @@ export const addMonster = (url, checked) => {
   axios.get(url)
   .then(res => {
     const monster = res.data;
+    // var monsters = [];
+    // for (var i = 0; i < number; i++) {
+    //   monsters.push(monster);
+    // };
     if (checked) {
-      monster.init = Math.floor((monster.dexterity - 10) / 2) + (Math.floor(Math.random() * Math.floor(20)));
+      monster.init = Math.floor((monster.dexterity - 10) / 2) + (Math.floor(Math.random() * Math.floor(20)))
+      // monsters.map((monster) => {
+      //   return monster.init = Math.floor((monster.dexterity - 10) / 2) + (Math.floor(Math.random() * Math.floor(20)));
+      // });
       store.dispatch({type: ADD_MONSTER, payload: monster});
     } else {
       store.dispatch({type: ADD_MONSTER, payload: monster});
