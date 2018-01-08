@@ -7,6 +7,7 @@ export const DELETE_MONSTER = 'DELETE_MONSTER';
 export const CLEAR_MONSTERS = 'CLEAR_MONSTERS';
 export const ADD_MONSTER_IMG = 'ADD_MONSTER_IMG';
 export const ADD_PLAYER = 'ADD_PLAYER';
+export const DELETE_PLAYER = 'DELETE_PLAYER';
 
 export const populateMonsterUrls = () => {
   axios('http://www.dnd5eapi.co/api/monsters')
@@ -83,6 +84,16 @@ export const addPlayer = (player) => {
     type: ADD_PLAYER,
     payload: player
   })
+}
+
+export const removePlayer = name => {
+  console.log('Removing the player!')
+  return {
+    type: DELETE_PLAYER,
+    payload: {
+      name: name
+    }
+  }
 }
 
 export const generateTurnOrder = () => {

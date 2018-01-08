@@ -20,9 +20,11 @@ class Arena extends Component {
           <SearchBar />
           <PlayersList />
           <MonstersList />
-          <OrderButton />
           <AddMonster />
-          <ClearMonsters />
+          <div className="buttonsWrapper">
+            <OrderButton />
+            <ClearMonsters />
+          </div>
         </div>
       )
   }
