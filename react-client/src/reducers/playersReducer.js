@@ -48,10 +48,6 @@ const playersReducer = (state = sample, action) => {
 
   } else if (action.type === 'ASSIGN_TURN_VALUE') {
     const index = state.findIndex(player => player.name === action.payload.name);
-    console.log('name: ', action.payload.name);
-    console.log('value: ', action.payload.value);
-    console.log('index: ', index);
-    console.log('state at index: ', {...state[index]});
     return [...state.slice(0, index), {...state[index], order: parseInt(action.payload.value)}, ...state.slice(index + 1)];
   }
   return state;

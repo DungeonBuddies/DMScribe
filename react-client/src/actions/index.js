@@ -152,4 +152,6 @@ export const assignTurnValue = (name, value) => {
       value: value
     }
   });
+
+  store.dispatch(generateTurnOrder());
 };
