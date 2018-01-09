@@ -52,12 +52,12 @@ class PlayersList extends Component {
 						        </span>
 						      </Card.Meta>
 						      <Card.Description>
-						          <div className='stats'>
+						          <p className='stats'>
 						            <span className='stat'>AC: {player.armor_class}</span>
 						            <span className='stat'>HP: {player.hit_points}</span>
 						            <span className='stat'>INIT: {player.init}</span>
-						          </div>
-						          <div className='stats'>
+						          </p>
+						          <p className='stats'>
 						            <span className='stat'>PP: {player.perception}</span>
 						            <span className='stat'>SPD: {player.speed}</span>
                         <span
@@ -66,14 +66,14 @@ class PlayersList extends Component {
                           Turn:  
                           <input
                             id={player.name}
-                            className='orderInput'
+                            className='initInput'
                             type='number'
                             placeholder='?'
                             onBlur={this.handleOnBlur}
                             onKeyUp={this.handleKeyUp}
                           />
                         </span>
-						          </div>
+						          </p>
 						      </Card.Description>
 						    </Card.Content>
 						    <Card.Content extra>
