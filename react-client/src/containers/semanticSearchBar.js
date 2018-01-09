@@ -9,7 +9,7 @@ class DropdownExampleSearchSelection extends Component {
     super();
     this.state = {
       value: '',
-      checked: true
+      checked: true,
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -24,6 +24,7 @@ class DropdownExampleSearchSelection extends Component {
   }
 
   handleKeyPress (event) {
+
     if(event.key == 'Enter'){
       // addMonster(this.state.value, this.state.checked);
       this.setState({value: ''})
@@ -36,11 +37,14 @@ class DropdownExampleSearchSelection extends Component {
     })
   }
 
-  onClose () {
+  onClose (e) {
     if (this.state.value === '') {
       return;
     } else {
       addMonster(this.state.value, this.state.checked);
+      this.setState({
+        value: ''
+      })
     }
   }
 
@@ -60,6 +64,7 @@ class DropdownExampleSearchSelection extends Component {
     return (
       <div>
         <Dropdown
+        onSubmit={this.handleKeyPress}
         className='monsterDropdown'
         onClose={this.onClose}
         onBlur = {this.onBlur}
