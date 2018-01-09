@@ -16,6 +16,7 @@ class DropdownExampleSearchSelection extends Component {
     this.changeChecked = this.changeChecked.bind(this);
     this.onFocus = this.onFocus.bind(this);
     this.onClose = this.onClose.bind(this);
+    this.onBlur = this.onBlur.bind(this);
   }
 
   handleChange (e, { value }) {
@@ -24,7 +25,7 @@ class DropdownExampleSearchSelection extends Component {
 
   handleKeyPress (event) {
     if(event.key == 'Enter'){
-      addMonster(this.state.value, this.state.checked);
+      // addMonster(this.state.value, this.state.checked);
       this.setState({value: ''})
     }
   } 
@@ -36,7 +37,17 @@ class DropdownExampleSearchSelection extends Component {
   }
 
   onClose () {
-    addMonster(this.state.value, this.state.checked);
+    if (this.state.value === '') {
+      return;
+    } else {
+      addMonster(this.state.value, this.state.checked);
+    }
+  }
+
+  onBlur () {
+    this.setState({
+      value: ''
+    })
   }
 
   changeChecked () {
@@ -51,6 +62,7 @@ class DropdownExampleSearchSelection extends Component {
         <Dropdown
         className='monsterDropdown'
         onClose={this.onClose}
+        onBlur = {this.onBlur}
         onFocus={this.onFocus}
         onChange={this.handleChange}
         onKeyPress={this.handleKeyPress}
