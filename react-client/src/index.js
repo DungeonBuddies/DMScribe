@@ -4,10 +4,6 @@ import store from './store.js';
 import { Provider } from 'react-redux';
 import './style.scss';
 import { Card, Icon, Image } from 'semantic-ui-react'
-import PlayerCard from './components/playerCard';
-import MonsterCard from './components/monsterCard';
-import playerSamples from '../../sampleData/playerSamples';
-import monsterSamples from '../../sampleData/monsterSamples';
 import {populateMonsterUrls} from './actions/index';
 import Players from './containers/tabs/Players';
 import Arena from './containers/tabs/Arena';

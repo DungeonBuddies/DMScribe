@@ -14,6 +14,8 @@ class DropdownExampleSearchSelection extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.changeChecked = this.changeChecked.bind(this);
+    this.onFocus = this.onFocus.bind(this);
+    this.onClose = this.onClose.bind(this);
   }
 
   handleChange (e, { value }) {
@@ -27,6 +29,16 @@ class DropdownExampleSearchSelection extends Component {
     }
   } 
 
+  onFocus () {
+    this.setState({
+      value: ''
+    })
+  }
+
+  onClose () {
+    addMonster(this.state.value, this.state.checked);
+  }
+
   changeChecked () {
     this.setState({
       checked: !this.state.checked
@@ -38,9 +50,12 @@ class DropdownExampleSearchSelection extends Component {
       <div>
         <Dropdown
         className='monsterDropdown'
+        onClose={this.onClose}
+        onFocus={this.onFocus}
         onChange={this.handleChange}
         onKeyPress={this.handleKeyPress}
-        value={this.state.value} 
+        value={this.state.value}
+        defaultSearchQuery=''
         placeholder='Select Monster' 
         fluid search selection options={this.props.monsterUrls} 
         />
