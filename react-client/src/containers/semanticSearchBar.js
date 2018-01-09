@@ -22,7 +22,7 @@ class DropdownExampleSearchSelection extends Component {
 
   handleKeyPress (event) {
     if(event.key == 'Enter'){
-      addMonster(this.state.value, true);
+      addMonster(this.state.value, this.state.checked);
       this.setState({value: ''})
     }
   } 
