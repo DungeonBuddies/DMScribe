@@ -154,6 +154,7 @@ h1 {
   max-height: 224px;
 }
 
+<<<<<<< HEAD
 .monsterDropdown {
   float: left;
   width: 50% !important;
@@ -167,8 +168,12 @@ h1 {
   margin-bottom: 10px !important;
 }
 
+=======
 .orderInput {
   width: 35px;
 }
+>>>>>>> Input turn values directly to change store order
+
+
 
 
