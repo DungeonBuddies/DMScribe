@@ -86,7 +86,7 @@ class DropdownExampleSearchSelection extends Component {
           readOnly="" 
           tabIndex="0"
           onClick={this.changeChecked} />
-          <label>Auto-roll init for monsters</label>
+          <label>Auto-roll turn order for monsters</label>
         </div>
       </div>
       )
