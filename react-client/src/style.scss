@@ -133,6 +133,7 @@ h1 {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 15px !important;
 }
 
 .field {
@@ -153,6 +154,18 @@ h1 {
   max-height: 224px;
 }
 
+.monsterDropdown {
+  float: left;
+  width: 50% !important;
+}
+
+.ourCheckbox {
+  float: right !important;
+}
+
+.monsterFormButton {
+  margin-bottom: 10px !important;
+}
 
 
 

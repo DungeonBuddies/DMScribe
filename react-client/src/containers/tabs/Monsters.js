@@ -7,6 +7,7 @@ import SearchBar from '../SearchBar';
 import ClearMonsters from '../buttons/ClearMonsters';
 import MonstersList from '../MonstersList';
 import { addCustomMonster } from '../../actions/index';
+import DropdownExampleSearchSelection from '../semanticSearchBar';
 
 class Monsters extends Component {
   constructor(props) {
@@ -34,8 +35,13 @@ class Monsters extends Component {
 
     return (
         <div>
-          <SearchBar />
-          <form className="ui form" onSubmit={this.onMonsterFormSubmit}>
+          <DropdownExampleSearchSelection />
+          <MonstersList />
+          <AddMonster />
+          <div className="buttonsWrapper">
+            <ClearMonsters />
+          </div>
+          <form className="ui form monsterFormButton" onSubmit={this.onMonsterFormSubmit}>
             <div className="field">
               <label>Name:</label>
               <input type="text" name="name"/>
@@ -78,9 +84,6 @@ class Monsters extends Component {
             </div>
             <span><button className="ui button" type="submit">Submit</button></span>
           </form>
-          <MonstersList />
-          <AddMonster />
-          <ClearMonsters />
         </div>
       )
   }
