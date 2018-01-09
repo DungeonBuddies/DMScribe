@@ -37,7 +37,7 @@ class Monsters extends Component {
           <DropdownExampleSearchSelection />
           <MonstersList />
           <div className="buttonsWrapper">
-            <ClearMonsters />
+            <ClearMonsters className="buttonsWrapper"/>
           </div>
           <form className="ui form monsterFormButton" onSubmit={this.onMonsterFormSubmit}>
             <div className="field">

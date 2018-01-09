@@ -22,7 +22,7 @@ class Arena extends Component {
           <PlayersList />
           <MonstersList />
           <div className="buttonsWrapper">
-            <OrderButton />
+            {/* <OrderButton /> */}
             <ClearMonsters />
           </div>
           <OrderList />
