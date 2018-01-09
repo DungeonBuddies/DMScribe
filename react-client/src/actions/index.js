@@ -9,6 +9,8 @@ export const ADD_MONSTER_IMG = 'ADD_MONSTER_IMG';
 export const ADD_PLAYER = 'ADD_PLAYER';
 export const DELETE_PLAYER = 'DELETE_PLAYER';
 export const ADD_CLASS_IMG = 'ADD_CLASS_IMG';
+export const ADD_CUSTOM_MONSTER = 'ADD_CUSTOM_MONSTER';
+
 
 export const populateMonsterUrls = () => {
   axios('http://www.dnd5eapi.co/api/monsters')
@@ -64,6 +66,13 @@ const addMonsterImg = (url, id) => {
     }
   });
 };
+
+export const addCustomMonster = (monster) => {
+  store.dispatch({
+    type: ADD_CUSTOM_MONSTER,
+    payload: monster
+  })
+}
 
 export const clearMonstersField = () => {
   store.dispatch({

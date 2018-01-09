@@ -54,6 +54,9 @@ const monstersReducer = (state = sample, action) => {
       return [...state.slice(0, index), {...state[index], image: action.payload.url}, ...state.slice(index + 1)];
   } else if (action.type === 'CLEAR_MONSTERS') {
       return action.payload;
+  } else if (action.type === 'ADD_CUSTOM_MONSTER') {
+    action.payload.id = state.length;
+    return [...state, action.payload];
   }
   return state;
 };
