@@ -27,13 +27,11 @@ class Players extends Component {
 		addPlayer(resultsObj);
 	}
 
-
-
 	render () {
 		if (this.props.currentTab !== 'Players') {
       return null;
     }
-
+    
 		return (
 		<div>
 
