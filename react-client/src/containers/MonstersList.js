@@ -65,7 +65,7 @@ class MonstersList extends Component {
                 })}
         </Card.Group>
       </div>
-  		)
+  	);
   }
 }
 

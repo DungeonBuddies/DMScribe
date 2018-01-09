@@ -1,54 +1,57 @@
 import React, {Component} from 'react';
-import { Icon } from 'semantic-ui-react'
-import { Button } from 'semantic-ui-react'
+import { Dropdown } from 'semantic-ui-react';
 import {addMonster} from '../actions/index';
-import store from '../store';
-import $ from 'jquery';
+import { connect } from 'react-redux';
 import NumberDropDown from '../components/numberDropDown';
 
-class SearchBar extends Component {
+class DropdownExampleSearchSelection extends Component {
   constructor () {
     super();
     this.state = {
-      term: '',
-      results: {},
-      checked: true
+      value: '',
+      checked: true,
     }
-    this.onInputChange = this.onInputChange.bind(this);
-    this.onFormSubmit = this.onFormSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
     this.changeChecked = this.changeChecked.bind(this);
-    this.clearMonsterDiv = this.clearMonsterDiv.bind(this);
+    this.onFocus = this.onFocus.bind(this);
+    this.onClose = this.onClose.bind(this);
   }
 
-  onInputChange (event) {
-    this.setState({
-      term: event.target.value
-    });
+  handleChange (e, { value }) {
+    this.setState({ value })
   }
 
-  onFormSubmit (event) {
-    event.preventDefault();
-    const results = this.searchMonsterUrls(this.state.term);
-    this.setState(prevState => prevState.term.length > 0 ?
-      {term: '', results: results} : {results: {}}
-    );
-  }
+  handleKeyPress (event) {
 
-  searchMonsterUrls (query) {
-    const monsterUrls = store.getState().monsterUrls;
-    const results = {};
-    // MVP linear search
-    for (let k in monsterUrls) {
-      const name = k.toLowerCase().split(' ');
-      for (let w of name) {
-        if (w.slice(0, query.length) === query) {
-          results[k] = monsterUrls[k];
-          break;
-        }
-      }
+    if(event.key == 'Enter'){
+      addMonster(this.state.value, this.state.checked);
+      this.setState({value: ''})
     }
-    return results;
-  };
+  } 
+
+  onFocus () {
+    this.setState({
+      value: ''
+    })
+  }
+
+  onClose (e) {
+    if (this.state.value === '') {
+      return;
+    } else {
+      addMonster(this.state.value, this.state.checked);
+      this.setState({
+        value: ''
+      })
+    }
+  }
+
+  onBlur () {
+    this.setState({
+      value: ''
+    })
+  }
 
   changeChecked () {
     this.setState({
@@ -56,60 +59,44 @@ class SearchBar extends Component {
     })
   }
 
-  clearMonsterDiv () {
-    this.setState({
-      results: {},
-    })
-  }
-
   render () {
     return (
       <div>
-        <form className='searchBar' onSubmit={this.onFormSubmit}>
-          <span className="ui input">
-            <input 
-            type="text" 
-            placeholder='Search for a monster'
-            value={this.state.term}
-            onChange={this.onInputChange}
-            />
-          </span>
-          <span>
-            <NumberDropDown />
-          </span>
-          <span>
-            <Button className='customButton' type='submit' content='Submit'/>
-          </span>
-          <div className="ui checkbox">
-            <input 
-            type="checkbox" 
-            defaultChecked={true}
-            readOnly="" 
-            tabIndex="0"
-            onClick={this.changeChecked} />
-            <label>Auto-roll init for monsters</label>
-          </div>
-        </form>
-        <div>
-          {
-            Object.keys(this.state.results).map(name => {
-              return (
-                <span
-                  className='monsterSpan'
-                  key={name}
-                  onClick={() => {
-                    addMonster(this.state.results[name], this.state.checked);
-                    this.clearMonsterDiv();
-                    //$('.numberDropdown').text()[0]
-                  }} 
-                >{`${name}`}<Icon name='plus' /></span>
-              )
-            })
-          }
+        <Dropdown
+        onSubmit={this.handleKeyPress}
+        className='monsterDropdown'
+        onClose={this.onClose}
+        onFocus={this.onFocus}
+        onChange={this.handleChange}
+        onKeyPress={this.handleKeyPress}
+        value={this.state.value}
+        defaultSearchQuery=''
+        placeholder='Select Monster' 
+        fluid search selection options={this.props.monsterUrls} 
+        />
+        {
+        /*<span>
+          <NumberDropDown />
+        </span>*/
+        }
+        <div className="ui checkbox ourCheckbox">
+          <input 
+          type="checkbox" 
+          defaultChecked={true}
+          readOnly="" 
+          tabIndex="0"
+          onClick={this.changeChecked} />
+          <label>Auto-roll turn order for monsters</label>
         </div>
       </div>
       )
   }
 }
 
-export default SearchBar;
+function mapStateToProps (state) {
+  return {
+    monsterUrls: state.monsterUrls
+  }
+}
+
+export default connect(mapStateToProps)(DropdownExampleSearchSelection);

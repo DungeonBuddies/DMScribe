@@ -3,11 +3,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PlayersList from '../PlayersList';
 import MonstersList from '../MonstersList';
-import OrderList from '../orderList';
+import OrderList from '../OrderList';
 import OrderButton from '../buttons/OrderButton';
 import ClearMonsters from '../buttons/ClearMonsters';
-import SearchBar from '../SearchBar';
-import DropdownExampleSearchSelection from '../semanticSearchBar';
+import DropdownExampleSearchSelection from '../SearchBar';
 
 
 class Arena extends Component {
@@ -17,17 +16,17 @@ class Arena extends Component {
     }
 
     return (
-        <div>
-          <DropdownExampleSearchSelection />
-          <PlayersList />
-          <MonstersList />
-          <div className="buttonsWrapper">
-            {/* <OrderButton /> */}
-            <ClearMonsters />
-          </div>
-          <OrderList />
+      <div>
+        <DropdownExampleSearchSelection />
+        <PlayersList />
+        <MonstersList />
+        <div className="buttonsWrapper">
+          {/* <OrderButton /> */}
+          <ClearMonsters />
         </div>
-      )
+        <OrderList />
+      </div>
+    );
   }
 }
 
@@ -40,9 +39,7 @@ function mapStateToProps (state) {
 }
 
 function mapDispatchToProps (dispatch) {
-  return bindActionCreators({
-    //whatever functions we need here
-  }, dispatch);
+  return bindActionCreators({}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Arena);

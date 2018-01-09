@@ -1,18 +1,6 @@
 import store from '../store';
 import axios from 'axios';
 
-export const CHANGE_TAB = 'CHANGE_TAB';
-export const ADD_MONSTER = 'ADD_MONSTER';
-export const DELETE_MONSTER = 'DELETE_MONSTER';
-export const CLEAR_MONSTERS = 'CLEAR_MONSTERS';
-export const ADD_MONSTER_IMG = 'ADD_MONSTER_IMG';
-export const ADD_PLAYER = 'ADD_PLAYER';
-export const DELETE_PLAYER = 'DELETE_PLAYER';
-export const ADD_CLASS_IMG = 'ADD_CLASS_IMG';
-export const ADD_CUSTOM_MONSTER = 'ADD_CUSTOM_MONSTER';
-export const ASSIGN_TURN_VALUE = 'ASSIGN_TURN_VALUE';
-export const CLEAR_PLAYERS = 'CLEAR_PLAYERS';
-
 export const populateMonsterUrls = () => {
   axios('http://www.dnd5eapi.co/api/monsters')
   .then(res => {
@@ -30,9 +18,9 @@ export const addMonster = (url, checked) => {
     monster.init = Math.floor((monster.dexterity - 10) / 2);
     if (checked) {
       monster.order = monster.init + (Math.floor(Math.random() * Math.floor(20)));
-      store.dispatch({type: ADD_MONSTER, payload: monster});
+      store.dispatch({type: 'ADD_MONSTER', payload: monster});
     } else {
-      store.dispatch({type: ADD_MONSTER, payload: monster});
+      store.dispatch({type: 'ADD_MONSTER', payload: monster});
     }
 
     store.dispatch(generateTurnOrder());
@@ -55,7 +43,7 @@ const fetchMonsterImg = monsterName => {
 
 const addMonsterImg = (url, id) => {
   store.dispatch({
-    type: ADD_MONSTER_IMG,
+    type: 'ADD_MONSTER_IMG',
     payload: {
       url: url,
       id: id
@@ -65,14 +53,14 @@ const addMonsterImg = (url, id) => {
 
 export const addCustomMonster = (monster) => {
   store.dispatch({
-    type: ADD_CUSTOM_MONSTER,
+    type: 'ADD_CUSTOM_MONSTER',
     payload: monster
   })
 }
 
 export const clearMonstersField = () => {
   store.dispatch({
-    type: CLEAR_MONSTERS,
+    type: 'CLEAR_MONSTERS',
     payload: []
   });
 }
@@ -86,7 +74,7 @@ export const clearOrderField = () => {
 
 export const removeMonster = id => {
   return {
-    type: DELETE_MONSTER,
+    type: 'DELETE_MONSTER',
     payload: {
       id: id
     }
@@ -95,7 +83,7 @@ export const removeMonster = id => {
 
 export const addPlayer = (player) => {
   store.dispatch({
-    type: ADD_PLAYER,
+    type: 'ADD_PLAYER',
     payload: player
   });
   fetchClassImg(player.class)
@@ -115,7 +103,7 @@ const fetchClassImg = className => {
 
 const addClassImg = (url, id) => {
   store.dispatch({
-    type: ADD_CLASS_IMG,
+    type: 'ADD_CLASS_IMG',
     payload: {
       url: url,
       id: id
@@ -125,7 +113,7 @@ const addClassImg = (url, id) => {
 
 export const removePlayer = name => {
   return {
-    type: DELETE_PLAYER,
+    type: 'DELETE_PLAYER',
     payload: {
       name: name
     }
@@ -134,7 +122,7 @@ export const removePlayer = name => {
 
 export const clearPlayersField = () => {
   store.dispatch({
-    type: CLEAR_PLAYERS,
+    type: 'CLEAR_PLAYERS',
     payload: []
   });
 }
@@ -147,14 +135,14 @@ export const generateTurnOrder = () => {
 
 export const selectTab = tab => {
   return {
-    type: CHANGE_TAB,
+    type: 'CHANGE_TAB',
     payload: tab
   }
 }
 
 export const assignTurnValue = (name, value) => {
   store.dispatch({
-    type: ASSIGN_TURN_VALUE,
+    type: 'ASSIGN_TURN_VALUE',
     payload: {
       name: name,
       value: value

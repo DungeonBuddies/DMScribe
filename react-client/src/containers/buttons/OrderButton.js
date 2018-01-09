@@ -14,7 +14,7 @@ class OrderButton extends Component {
   		<div>
         <Button onClick={this.props.generateTurnOrder} content='Generate turn order' />  
       </div>
-  		)
+  	);
   }
 }
 

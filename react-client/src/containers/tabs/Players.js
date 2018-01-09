@@ -34,63 +34,58 @@ class Players extends Component {
     }
     
 		return (
-		<div>
-
-			<PlayersList />
-
-			<div className="buttonsWrapper">
-				<ClearPlayers className="buttonsWrapper"/>
+			<div>
+				<PlayersList />
+				<div className="buttonsWrapper">
+					<ClearPlayers className="buttonsWrapper"/>
+				</div>
+				<form className="ui form" onSubmit={this.onPlayerFormSubmit}>
+					<div className="field">
+						<label>Name:</label>
+						<input type="text" name="name"/>
+					</div>
+					<div className="field">
+						<label>Class:</label>
+						<select className="ui fluid dropdown" name="class"> 
+							<option value="">Class</option>
+							<option value="Barbarian">Barbarian</option>
+							<option value="Bard">Bard</option>
+							<option value="Cleric">Cleric</option>
+							<option value="Druid">Druid</option>
+							<option value="Fighter">Fighter</option>
+							<option value="Monk">Monk</option>
+							<option value="Paladin">Paladin</option>
+							<option value="Ranger">Ranger</option>
+							<option value="Rogue">Rogue</option>
+							<option value="Sorcerer">Sorcerer</option>
+							<option value="Warlock">Warlock</option>
+							<option value="Wizard">Wizard</option>
+						</select>
+					</div>
+					<div className="field">
+						<label>AC:</label>
+						<input type="text" name="armor_class"/>
+					</div>
+					<div className="field">
+						<label>HP:</label>
+						<input type="text" name="hit_points"/>
+					</div>
+					<div className="field">
+						<label>Initiative</label>
+						<input type="text" name="init"/>
+					</div>
+					<div className="field">
+						<label>PP:</label>
+						<input type="text" name="perception"/>
+					</div>
+					<div className="field">
+						<label>Speed</label>
+						<input type="text" name="speed"/>
+					</div>
+					<span><button className="ui button" type="submit">Submit</button></span>
+				</form>
 			</div>
-
-			<form className="ui form" onSubmit={this.onPlayerFormSubmit}>
-				<div className="field">
-					<label>Name:</label>
-					<input type="text" name="name"/>
-				</div>
-				<div className="field">
-					<label>Class:</label>
-					<select className="ui fluid dropdown" name="class"> 
-						<option value="">Class</option>
-						<option value="Barbarian">Barbarian</option>
-						<option value="Bard">Bard</option>
-						<option value="Cleric">Cleric</option>
-						<option value="Druid">Druid</option>
-						<option value="Fighter">Fighter</option>
-						<option value="Monk">Monk</option>
-						<option value="Paladin">Paladin</option>
-						<option value="Ranger">Ranger</option>
-						<option value="Rogue">Rogue</option>
-						<option value="Sorcerer">Sorcerer</option>
-						<option value="Warlock">Warlock</option>
-						<option value="Wizard">Wizard</option>
-					</select>
-				</div>
-				<div className="field">
-					<label>AC:</label>
-					<input type="text" name="armor_class"/>
-				</div>
-				<div className="field">
-					<label>HP:</label>
-					<input type="text" name="hit_points"/>
-				</div>
-				<div className="field">
-					<label>Initiative</label>
-					<input type="text" name="init"/>
-				</div>
-				<div className="field">
-					<label>PP:</label>
-					<input type="text" name="perception"/>
-				</div>
-				<div className="field">
-					<label>Speed</label>
-					<input type="text" name="speed"/>
-				</div>
-				<span><button className="ui button" type="submit">Submit</button></span>
-			</form>
-
-		</div>
-
-			)
+		);
 	}
 }
 
