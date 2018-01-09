@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PlayersList from "../PlayersList"
 import { addPlayer } from '../../actions/index';
+import ClearPlayers from '../buttons/ClearPlayers';
 
 
 class Players extends Component {
@@ -37,6 +38,9 @@ class Players extends Component {
 
 			<PlayersList />
 
+			<div className="buttonsWrapper">
+				<ClearPlayers className="buttonsWrapper"/>
+			</div>
 
 			<form className="ui form" onSubmit={this.onPlayerFormSubmit}>
 				<div className="field">

@@ -11,6 +11,7 @@ export const DELETE_PLAYER = 'DELETE_PLAYER';
 export const ADD_CLASS_IMG = 'ADD_CLASS_IMG';
 export const ADD_CUSTOM_MONSTER = 'ADD_CUSTOM_MONSTER';
 export const ASSIGN_TURN_VALUE = 'ASSIGN_TURN_VALUE';
+export const CLEAR_PLAYERS = 'CLEAR_PLAYERS';
 
 export const populateMonsterUrls = () => {
   axios('http://www.dnd5eapi.co/api/monsters')
@@ -129,6 +130,13 @@ export const removePlayer = name => {
       name: name
     }
   }
+}
+
+export const clearPlayersField = () => {
+  store.dispatch({
+    type: CLEAR_PLAYERS,
+    payload: []
+  });
 }
 
 export const generateTurnOrder = () => {
