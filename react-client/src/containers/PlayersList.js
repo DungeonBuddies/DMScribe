@@ -2,11 +2,22 @@ import React, { Component } from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removePlayer, generateTurnOrder } from '../actions/index';
+import { removePlayer, generateTurnOrder, assignTurnValue } from '../actions/index';
 
 class PlayersList extends Component {
   constructor(props) {
   	super(props);
+  }
+
+  handleOnBlur(e) {
+    assignTurnValue(e.target.id, e.target.value);
+    // set store value to relevant player
+  }
+
+  handleKeyUp(e) {
+    if (e.keyCode === 13) {
+      assignTurnValue(e.target.id, e.target.value);
+    }
   }
 
   render () {
@@ -41,15 +52,28 @@ class PlayersList extends Component {
 						        </span>
 						      </Card.Meta>
 						      <Card.Description>
-						          <p className='stats'>
+						          <div className='stats'>
 						            <span className='stat'>AC: {player.armor_class}</span>
 						            <span className='stat'>HP: {player.hit_points}</span>
 						            <span className='stat'>INIT: {player.init}</span>
-						          </p>
-						          <p className='stats'>
+						          </div>
+						          <div className='stats'>
 						            <span className='stat'>PP: {player.perception}</span>
 						            <span className='stat'>SPD: {player.speed}</span>
-						          </p>
+                        <span
+                          className='stat'
+                        >
+                          Turn:  
+                          <input
+                            id={player.name}
+                            className='orderInput'
+                            type='number'
+                            placeholder='?'
+                            onBlur={this.handleOnBlur}
+                            onKeyUp={this.handleKeyUp}
+                          />
+                        </span>
+						          </div>
 						      </Card.Description>
 						    </Card.Content>
 						    <Card.Content extra>

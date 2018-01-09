@@ -9,7 +9,8 @@ const sample = [
     constitution: 11,
     wisdom: 10,
     charisma: 4,
-    image: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/16/538/1000/1000/636376332197953299.jpeg"
+    image: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/16/538/1000/1000/636376332197953299.jpeg",
+    order: 21
   }, {
     name: 'Bat',
     armor_class: 12,
@@ -20,7 +21,8 @@ const sample = [
     constitution: 8,
     wisdom: 12,
     charisma: 4,
-    image: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/18/305/1000/1000/636379812593010967.jpeg"
+    image: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/18/305/1000/1000/636379812593010967.jpeg",
+    order: 12
   }, {
     name: 'Bugbear',
     armor_class: 16,
@@ -31,7 +33,8 @@ const sample = [
     constitution: 13,
     wisdom: 11,
     charisma: 9,
-    image: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/221/315/315/636252765234633232.jpeg"
+    image: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/221/315/315/636252765234633232.jpeg",
+    order: 5
   }
 ]
 

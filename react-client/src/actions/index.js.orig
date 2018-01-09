@@ -9,8 +9,12 @@ export const ADD_MONSTER_IMG = 'ADD_MONSTER_IMG';
 export const ADD_PLAYER = 'ADD_PLAYER';
 export const DELETE_PLAYER = 'DELETE_PLAYER';
 export const ADD_CLASS_IMG = 'ADD_CLASS_IMG';
+<<<<<<< HEAD
 export const ADD_CUSTOM_MONSTER = 'ADD_CUSTOM_MONSTER';
+
+=======
 export const ASSIGN_TURN_VALUE = 'ASSIGN_TURN_VALUE';
+>>>>>>> Input turn values directly to change store order
 
 export const populateMonsterUrls = () => {
   axios('http://www.dnd5eapi.co/api/monsters')
@@ -152,6 +156,4 @@ export const assignTurnValue = (name, value) => {
       value: value
     }
   });
-
-  store.dispatch(generateTurnOrder());
 };

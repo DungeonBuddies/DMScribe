@@ -5,7 +5,6 @@ import PlayersList from '../PlayersList';
 import MonstersList from '../MonstersList';
 import OrderList from '../orderList';
 import OrderButton from '../buttons/OrderButton';
-import AddMonster from '../buttons/AddMonster';
 import ClearMonsters from '../buttons/ClearMonsters';
 import SearchBar from '../SearchBar';
 import DropdownExampleSearchSelection from '../semanticSearchBar';
@@ -22,7 +21,6 @@ class Arena extends Component {
           <DropdownExampleSearchSelection />
           <PlayersList />
           <MonstersList />
-          <AddMonster />
           <div className="buttonsWrapper">
             <OrderButton />
             <ClearMonsters />

@@ -36,15 +36,19 @@ const playersReducer = (state = sample, action) => {
   if (action.type === 'ADD_PLAYER') {
   	action.payload.id = state.length;
     return [...state, action.payload];
-  }
-  else if (action.type === 'ADD_CLASS_IMG') {
+
+  } else if (action.type === 'ADD_CLASS_IMG') {
   	const index = state.findIndex(player => player.id === action.payload.id);
   	console.log('Add player URL: ', action.payload.url);
     return [...state.slice(0, index), {...state[index], image: action.payload.url}, ...state.slice(index + 1)];
-  }
-  else if (action.type === 'DELETE_PLAYER') {
+
+  } else if (action.type === 'DELETE_PLAYER') {
   	const index = state.findIndex(player => player.name === action.payload.name);
     return [...state.slice(0, index), ...state.slice(index + 1)];
+
+  } else if (action.type === 'ASSIGN_TURN_VALUE') {
+    const index = state.findIndex(player => player.name === action.payload.name);
+    return [...state.slice(0, index), {...state[index], order: parseInt(action.payload.value)}, ...state.slice(index + 1)];
   }
   return state;
 };
