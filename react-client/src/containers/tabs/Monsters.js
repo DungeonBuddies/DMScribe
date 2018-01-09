@@ -7,6 +7,7 @@ import SearchBar from '../SearchBar';
 import ClearMonsters from '../buttons/ClearMonsters';
 import MonstersList from '../MonstersList';
 import { addCustomMonster } from '../../actions/index';
+import DropdownExampleSearchSelection from '../semanticSearchBar';
 
 class Monsters extends Component {
   constructor(props) {
@@ -34,53 +35,12 @@ class Monsters extends Component {
 
     return (
         <div>
-          <SearchBar />
-          <form className="ui form" onSubmit={this.onMonsterFormSubmit}>
-            <div className="field">
-              <label>Name:</label>
-              <input type="text" name="name"/>
-            </div>
-            <div className="field">
-              <label>AC:</label>
-              <input type="text" name="armor_class"/>
-            </div>
-            <div className="field">
-              <label>HP:</label>
-              <input type="text" name="hit_points"/>
-            </div>
-            <div className="field">
-              <label>INIT:</label>
-              <input type="text" name="init"/>
-            </div>
-            <div className="field">
-              <label>Strength:</label>
-              <input type="text" name="strength"/>
-            </div>
-            <div className="field">
-              <label>Dexterity:</label>
-              <input type="text" name="dexterity"/>
-            </div>
-            <div className="field">
-              <label>Constitution:</label>
-              <input type="text" name="constitution"/>
-            </div>
-            <div className="field">
-              <label>Wisdom:</label>
-              <input type="text" name="wisdom"/>
-            </div>
-            <div className="field">
-              <label>Charisma:</label>
-              <input type="text" name="charisma"/>
-            </div>
-            <div className="field">
-              <label>Image:</label>
-              <input type="text" name="image"/>
-            </div>
-            <span><button className="ui button" type="submit">Submit</button></span>
-          </form>
+          <DropdownExampleSearchSelection />
           <MonstersList />
           <AddMonster />
-          <ClearMonsters />
+          <div className="buttonsWrapper">
+            <ClearMonsters />
+          </div>
         </div>
       )
   }

@@ -8,6 +8,7 @@ import OrderButton from '../buttons/OrderButton';
 import AddMonster from '../buttons/AddMonster';
 import ClearMonsters from '../buttons/ClearMonsters';
 import SearchBar from '../SearchBar';
+import DropdownExampleSearchSelection from '../semanticSearchBar';
 
 
 class Arena extends Component {
@@ -18,7 +19,7 @@ class Arena extends Component {
 
     return (
         <div>
-          <SearchBar />
+          <DropdownExampleSearchSelection />
           <PlayersList />
           <MonstersList />
           <AddMonster />
