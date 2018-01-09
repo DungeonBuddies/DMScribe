@@ -35,7 +35,13 @@ class Monsters extends Component {
 
     return (
         <div>
-          <form className="ui form" onSubmit={this.onMonsterFormSubmit}>
+          <DropdownExampleSearchSelection />
+          <MonstersList />
+          <AddMonster />
+          <div className="buttonsWrapper">
+            <ClearMonsters />
+          </div>
+          <form className="ui form monsterFormButton" onSubmit={this.onMonsterFormSubmit}>
             <div className="field">
               <label>Name:</label>
               <input type="text" name="name"/>
@@ -78,12 +84,6 @@ class Monsters extends Component {
             </div>
             <span><button className="ui button" type="submit">Submit</button></span>
           </form>
-          <DropdownExampleSearchSelection />
-          <MonstersList />
-          <AddMonster />
-          <div className="buttonsWrapper">
-            <ClearMonsters />
-          </div>
         </div>
       )
   }
