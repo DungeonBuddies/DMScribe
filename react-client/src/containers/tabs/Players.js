@@ -36,6 +36,10 @@ class Players extends Component {
 
 		return (
 		<div>
+
+			<PlayersList />
+
+
 			<form className="ui form" onSubmit={this.onPlayerFormSubmit}>
 				<div className="field">
 					<label>Name:</label>
@@ -82,7 +86,6 @@ class Players extends Component {
 				<span><button className="ui button" type="submit">Submit</button></span>
 			</form>
 
-				<PlayersList />
 		</div>
 
 			)
