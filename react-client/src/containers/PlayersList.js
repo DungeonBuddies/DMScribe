@@ -11,7 +11,6 @@ class PlayersList extends Component {
 
   handleOnBlur(e) {
     assignTurnValue(e.target.id, e.target.value);
-    // set store value to relevant player
   }
 
   handleKeyUp(e) {
@@ -87,7 +86,7 @@ class PlayersList extends Component {
   				})}
   			</Card.Group>
   		</div>
-  		)
+  	);
   }
 }
 

@@ -37,7 +37,7 @@ class OrderList extends Component {
                 })}
         </Card.Group>
       </div>
-      )
+    );
   }
 }
 

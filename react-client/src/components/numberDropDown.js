@@ -1,7 +1,6 @@
-import React from 'react'
-import { Dropdown } from 'semantic-ui-react'
+import React from 'react';
+import { Dropdown } from 'semantic-ui-react';
 
-// import { friendOptions } from '../common'
 const numberOptions = [
   {
     text: '1',
@@ -23,11 +22,10 @@ const numberOptions = [
     text: '5',
     value: '5'
   },
-]
-
+];
 
 const NumberDropdown = () => (
   <Dropdown className='numberDropdown' placeholder='1' fluid selection options={numberOptions} />
-)
+);
 
 export default NumberDropdown;

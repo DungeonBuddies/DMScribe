@@ -8,21 +8,19 @@ var tabs = ['Arena', 'Players', 'Monsters'];
 class Menu extends Component {
   render () {
   	return(
-        <div className="ui menu">
-          {tabs.map((tab) => {
-            return (
-                <a
-                  key={tab} 
-                  onClick={() => {this.props.selectTab(tab)}}
-                  className="item tab" 
-                  value={tab}>
-                  {tab}
-                </a>
-
-              )
-          })}
-        </div>  
-  		)
+      <div className="ui menu">
+        {tabs.map((tab) => {
+          return (
+            <a
+              key={tab} 
+              onClick={() => {this.props.selectTab(tab)}}
+              className="item tab" 
+              value={tab}
+            >{tab}</a>
+          );
+        })}
+      </div>  
+		);
   }
 }
 
