@@ -24,11 +24,15 @@ app.get('/monsterimg', (req, response) => {
       const html = res.data;
       const $ = cheerio.load(html);
       const imgSrc = $('.monster-image').attr('src');
-      return imgSrc === !undefined ? resolve(imgSrc) : reject(imgSrc);
+      return imgSrc !== undefined ? resolve(imgSrc) : reject(imgSrc);
     });
   })
   .then(imgSrc => {
-    response.send(imgSrc);
+    if (imgSrc.substring(0, 6) === 'https:') {
+      response.send(imgSrc);
+    } else {
+      response.send(`https:${imgSrc}`);
+    }
   })
   .catch(imgSrc => {
     axios.get(`https://www.aidedd.org/dnd/monstres.php?vo=${monsterPath}`)
