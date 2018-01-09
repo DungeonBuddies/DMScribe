@@ -49,7 +49,7 @@ class MonstersList extends Component {
                         <Card.Content extra>
                           <a>
                             <Icon name='address card outline' />
-                            More monster info
+                            More Monster Info
                           </a>
                           <Icon
                           onClick={() => {
