@@ -1,4 +1,5 @@
 import store from '../store';
+
 const turnOrderReducer = (state = [], action) => {
   if (action.type === 'ORDER') {
     const players = store.getState().players;
