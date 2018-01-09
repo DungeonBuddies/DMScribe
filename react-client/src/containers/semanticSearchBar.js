@@ -16,7 +16,6 @@ class DropdownExampleSearchSelection extends Component {
     this.changeChecked = this.changeChecked.bind(this);
     this.onFocus = this.onFocus.bind(this);
     this.onClose = this.onClose.bind(this);
-    this.onBlur = this.onBlur.bind(this);
   }
 
   handleChange (e, { value }) {
@@ -26,7 +25,7 @@ class DropdownExampleSearchSelection extends Component {
   handleKeyPress (event) {
 
     if(event.key == 'Enter'){
-      // addMonster(this.state.value, this.state.checked);
+      addMonster(this.state.value, this.state.checked);
       this.setState({value: ''})
     }
   } 
@@ -67,7 +66,6 @@ class DropdownExampleSearchSelection extends Component {
         onSubmit={this.handleKeyPress}
         className='monsterDropdown'
         onClose={this.onClose}
-        onBlur = {this.onBlur}
         onFocus={this.onFocus}
         onChange={this.handleChange}
         onKeyPress={this.handleKeyPress}
@@ -76,9 +74,11 @@ class DropdownExampleSearchSelection extends Component {
         placeholder='Select Monster' 
         fluid search selection options={this.props.monsterUrls} 
         />
-        <span>
+        {
+        /*<span>
           <NumberDropDown />
-        </span>
+        </span>*/
+        }
         <div className="ui checkbox ourCheckbox">
           <input 
           type="checkbox" 
