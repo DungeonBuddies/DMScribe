@@ -11,6 +11,8 @@
   "author": "Jake Lee",
   "license": "ISC",
   "devDependencies": {
+  },
+  "dependencies": {
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -22,9 +24,7 @@
     "redux-logger": "^3.0.6",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
-    "webpack": "^2.2.1"
-  },
-  "dependencies": {
+    "webpack": "^2.2.1",
     "axios": "^0.17.1",
     "body-parser": "^1.17.2",
     "cheerio": "^1.0.0-rc.2",
