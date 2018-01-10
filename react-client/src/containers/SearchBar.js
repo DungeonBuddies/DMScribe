@@ -79,9 +79,9 @@ class DropdownExampleSearchSelection extends Component {
         value={this.state.value}
         defaultSearchQuery=''
         placeholder='Select Monster' 
-        {/*this hooks up the dropdown select options to our monster urls*/}
         fluid search selection options={this.props.monsterUrls} 
         />
+        {/*this hooks up the dropdown select options to our monster urls*/}
         {
         /*<span>
           <NumberDropDown />
