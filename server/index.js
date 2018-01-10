@@ -15,6 +15,13 @@ app.listen(port, function() {
   console.log(`listening on port ${port}!`);
 });
 
+app.get('/monsterlist', (req, response) => {
+  axios('http://www.dnd5eapi.co/api/monsters')
+  .then(res => {
+    response.send(res.data);
+  })
+});
+
 app.get('/monsterimg', (req, response) => {
   const monsterName = req.query.monsterName;
   const monsterPath = monsterName.split(' ').join('-');
