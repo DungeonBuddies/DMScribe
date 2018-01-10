@@ -40,7 +40,7 @@ export const addMonster = (url, checked) => {
 
 //this function fetches the monsters image from a separate API 
 const fetchMonsterImg = monsterName => {
-  return axios.get('http://localhost:3000/monsterimg', {
+  return axios.get('/monsterimg', {
     params: {
       monsterName: monsterName
     }
