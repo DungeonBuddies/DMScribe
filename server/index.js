@@ -22,6 +22,14 @@ app.get('/monsterlist', (req, response) => {
   })
 });
 
+app.get('/monster', (req, response) => {
+  const url = req.query.url;
+  axios(url)
+  .then(res => {
+    response.send(res.data);
+  });
+});
+
 app.get('/monsterimg', (req, response) => {
   const monsterName = req.query.monsterName;
   const monsterPath = monsterName.split(' ').join('-');
