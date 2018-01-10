@@ -2,7 +2,7 @@
   > A tool for DMs to help streamline the game by automatically keeping track of turn order during combat encounters.
 
 ## Summary ##
-  > Our product allows a DM to add visually appealing player and monster cards to the webpage that display the most important stats for combat and automatically generates the turn order. The initiative roll can be manually inputted or automatically rolled for both players and monsters depending on the players and DMs preference.
+  > Our product allows a DM to add visually appealing player and monster cards to the webpage that display the most important stats for combat and automatically generating turn order. The initiative roll can be manually inputted or automatically rolled for both players and monsters depending on the players and DMs preference.
 
 ## Problem ##
   > Typically keeping track of turn order in a combat encounter with many players and monsters can be burdensome, often involving whiteboards or many pieces of scratch paper that can get disorganized and confusing.
