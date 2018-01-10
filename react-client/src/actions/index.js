@@ -17,7 +17,11 @@ export const populateMonsterUrls = () => {
 //be added to the stores monsters array. Before doing so it checks the checked boolean
 //to see if it needs to auto-roll the monsters turn order for the user
 export const addMonster = (url, checked) => {
-  axios(url)
+  axios('/monster', {
+    params: {
+      url: url
+    }
+  })
   .then(res => {
     const monster = res.data;
     console.log('MONSTER: ', monster)
