@@ -85,7 +85,8 @@ class MonstersList extends Component {
                           <a 
                             onClick={() => {
                               this.props.selectMonster(monster);
-                              this.props.selectTab('Monsters')
+                              this.props.selectTab('Monsters');
+                              window.scrollTo(0,0);
                             }}
                           >
                             <Icon 
