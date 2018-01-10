@@ -181,6 +181,13 @@ export const selectMonster = (monster) => {
   }
 }
 
+export const clearSelectedMonster = () => {
+  return {
+    type: 'REMOVE_SELECTED',
+    payload: []
+  }
+}
+
 
 
 
