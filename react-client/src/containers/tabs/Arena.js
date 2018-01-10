@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PlayersList from '../PlayersList';
 import MonstersList from '../MonstersList';
-import OrderList from '../OrderList';
+import OrderList from '../orderList';
 import OrderButton from '../buttons/OrderButton';
 import ClearMonsters from '../buttons/ClearMonsters';
 import DropdownExampleSearchSelection from '../SearchBar';
