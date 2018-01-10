@@ -20,6 +20,7 @@ export const addMonster = (url, checked) => {
   axios.get(url)
   .then(res => {
     const monster = res.data;
+    console.log('MONSTER: ', monster)
     monster.init = Math.floor((monster.dexterity - 10) / 2);
     if (checked) {
       monster.order = monster.init + (Math.floor(Math.random() * Math.floor(20)));
@@ -157,5 +158,28 @@ export const assignTurnValue = (name, value) => {
     }
   });
 
+
   store.dispatch(generateTurnOrder());
 };
+
+export const assignMonTurnValue = (id, value) => {
+  store.dispatch({
+    type: 'ASSIGN_MON_TURN_VALUE',
+    payload: {
+      id: id,
+      value: value
+    } 
+  });
+  
+  store.dispatch(generateTurnOrder());
+};
+
+
+
+
+
+
+
+
+
+

@@ -2,11 +2,24 @@ import React, { Component } from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removeMonster, generateTurnOrder } from '../actions/index';
+import { removeMonster, generateTurnOrder, assignMonTurnValue } from '../actions/index';
 
 
 class MonstersList extends Component {
- 
+  constructor(props) {
+    super(props);
+  }
+
+  handleOnBlur(e) {
+    assignMonTurnValue(e.target.id, e.target.value);
+  }
+
+  handleKeyUp(e) {
+    if (e.keyCode === 13) {
+      assignMonTurnValue(e.target.id, e.target.value);
+    }
+  }
+
   render () {
     //if the redux store monster array is zero this will return null and nothing will appear on the page.
     if (this.props.monsters.length === 0) {
@@ -49,6 +62,20 @@ class MonstersList extends Component {
                               <p className='stats'>
                                 <span className='stat'>WIS: {monster.wisdom}</span>
                                 <span className='stat'>CHA: {monster.charisma}</span>
+                                <span className='stat'> Turn: 
+                                  {monster.order 
+                                    ? monster.order
+                                    : 
+                                      <input
+                                        id={monster.id}
+                                        className='initInput'
+                                        type='number'
+                                        placeholder='?'
+                                        onBlur={this.handleOnBlur}
+                                        onKeyUp={this.handleKeyUp}
+                                      />
+                                  }
+                                </span>
                               </p>
                           </Card.Description>
                         </Card.Content>
