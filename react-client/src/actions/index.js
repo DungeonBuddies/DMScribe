@@ -106,7 +106,7 @@ export const addPlayer = (player) => {
 }
 
 const fetchClassImg = className => {
-  return axios.get('http://localhost:3000/classimg', {
+  return axios.get('/classimg', {
     params: {
       className: className
     }
