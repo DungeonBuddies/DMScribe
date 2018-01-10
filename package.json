@@ -10,8 +10,6 @@
   },
   "author": "Jake Lee",
   "license": "ISC",
-  // "devDependencies": {
-  // },
   "dependencies": {
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
