@@ -18,24 +18,28 @@ class DropdownExampleSearchSelection extends Component {
     this.onClose = this.onClose.bind(this);
   }
 
+  //This sets up the controlled searchbar. Whenever a person types it updates the set
+  //and then sets the value of the searchbar based of this new state value
   handleChange (e, { value }) {
     this.setState({ value })
   }
 
+  //This handles when the user presses Enter and submits the search to our data
   handleKeyPress (event) {
-
     if(event.key == 'Enter'){
       addMonster(this.state.value, this.state.checked);
       this.setState({value: ''})
     }
   } 
 
+  //When focusing in (clicking the searchbar) this clears the search bar **MAYBE NOT NEEDED
   onFocus () {
     this.setState({
       value: ''
     })
   }
 
+  //This allows the users to select a monster from the dropdown with a click and add it to the field
   onClose (e) {
     if (this.state.value === '') {
       return;
@@ -47,12 +51,15 @@ class DropdownExampleSearchSelection extends Component {
     }
   }
 
+  //When clicking away from the searchbar this clears the input
   onBlur () {
     this.setState({
       value: ''
     })
   }
 
+  //This toggles the checked state VALUE of the checkbox, which is used to pass into the
+  //addMonster Action function to decide whether to auto-roll for turn order of the monsters
   changeChecked () {
     this.setState({
       checked: !this.state.checked
@@ -72,6 +79,7 @@ class DropdownExampleSearchSelection extends Component {
         value={this.state.value}
         defaultSearchQuery=''
         placeholder='Select Monster' 
+        {/*this hooks up the dropdown select options to our monster urls*/}
         fluid search selection options={this.props.monsterUrls} 
         />
         {
