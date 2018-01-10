@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removeMonster, generateTurnOrder, assignMonTurnValue } from '../actions/index';
+import { removeMonster, generateTurnOrder, assignMonTurnValue, selectMonster, selectTab } from '../actions/index';
 
 
 class MonstersList extends Component {
@@ -83,7 +83,12 @@ class MonstersList extends Component {
                         </Card.Content>
                         <Card.Content extra>
                           <a>
-                            <Icon name='address card outline' />
+                            <Icon 
+                            onClick={() => {
+                              this.props.selectMonster(monster);
+                              this.props.selectTab('Monsters')
+                            }}
+                            name='address card outline' />
                             More Monster Info
                           </a>
                           {/*This icon is the red X in the corner and triggers the redux Action that
@@ -116,7 +121,7 @@ function mapStateToProps (state) {
 
 //This maps the specified redux Action onto the props objects for use in this container
 function mapDispatchToProps (dispatch) {
-  return bindActionCreators({ removeMonster, generateTurnOrder }, dispatch);
+  return bindActionCreators({ removeMonster, generateTurnOrder, selectMonster, selectTab }, dispatch);
 }
 
 //This exports and converts this component as a container that is connected to both react and redux

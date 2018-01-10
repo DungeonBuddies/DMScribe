@@ -174,6 +174,13 @@ export const assignMonTurnValue = (id, value) => {
   store.dispatch(generateTurnOrder());
 };
 
+export const selectMonster = (monster) => {
+  return {
+    type: 'SELECT_MONSTER',
+    payload: monster
+  }
+}
+
 
 
 

@@ -175,4 +175,21 @@ h1 {
   margin-left: 5px;
 }
 
+#selectedMonster {
+  width: 33% !important
+}
+
+.selectedStats {
+  text-align: left;
+}
+
+.selectedStat {
+  border-radius: 5px;
+  border-style: solid;
+  border-width: thin;
+  width: 65px !important;
+  padding: 2px 4px;
+  margin: 0px 7px;
+}
+
 
