@@ -62,9 +62,11 @@ class MonstersList extends Component {
                               <p className='stats'>
                                 <span className='stat'>WIS: {monster.wisdom}</span>
                                 <span className='stat'>CHA: {monster.charisma}</span>
-                                <span className='stat'> Turn: 
+                                <span className='stat'> Turn:  
                                   {monster.order 
-                                    ? monster.order
+                                    ?  <span className='monsterOrderStat'>
+                                      {monster.order}
+                                      </span>
                                     : 
                                       <input
                                         id={monster.id}
