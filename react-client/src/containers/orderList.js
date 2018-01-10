@@ -15,22 +15,21 @@ class OrderList extends Component {
         <Card.Group>
           {this.props.turnOrder.map((card, index) => {
                   return (
-                      <Card key={index} className='cards'>
+                      <Card key={index} className='turnCards'>
+                        <div className='cardMonsterImgContainer'>
+                          <Image className='cardMonsterImg' src={card.image}/>
+                        </div>
                         <Card.Content>
                           <Card.Header>
                             {card.name} 
                           </Card.Header>
                           <Card.Meta>
                             <span className='date'>
-                            Turn number {index + 1}
                             </span>
                           </Card.Meta>
                         </Card.Content>
                         <Card.Content extra>
-                          <a>
-                            <Icon name='mouse pointer' />
-                            Drag me!
-                          </a>
+                          Turn number {index + 1}
                         </Card.Content>
                       </Card>
                     )
