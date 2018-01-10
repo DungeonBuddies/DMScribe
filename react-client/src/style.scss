@@ -215,11 +215,11 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 190px;
+  width: 100%;
   height: 124px !important;
 }
 
 .cardMonsterImg {
-  max-width: 190px;
-  max-height: 124px;
+  max-width: 100% !important;
+  max-height: 124px !important;
 }
