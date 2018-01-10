@@ -4,9 +4,9 @@ import { bindActionCreators } from 'redux';
 import $ from 'jquery';
 import ClearMonsters from '../buttons/ClearMonsters';
 import MonstersList from '../MonstersList';
-import { addCustomMonster } from '../../actions/index';
+import { addCustomMonster, clearSelectedMonster } from '../../actions/index';
 import DropdownExampleSearchSelection from '../SearchBar';
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image, Button } from 'semantic-ui-react'
 
 class Monsters extends Component {
   constructor(props) {
@@ -47,6 +47,14 @@ class Monsters extends Component {
                       <Card.Content>
                         <Card.Header>
                           {monster.name} 
+                          <span id='clearSelectedMonster'>
+                            <Button
+                            onClick={() => {
+                              this.props.clearSelectedMonster();
+                            }}
+                            className='removeMonsterSelected' 
+                            content='Done'/>
+                        </span>
                         </Card.Header>
                         <Card.Meta>
                           <div className='date'>
@@ -141,7 +149,7 @@ function mapStateToProps (state) {
 }
 
 function mapDispatchToProps (dispatch) {
-  return bindActionCreators({}, dispatch);
+  return bindActionCreators({clearSelectedMonster}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Monsters);
