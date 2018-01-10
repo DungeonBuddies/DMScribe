@@ -82,12 +82,13 @@ class MonstersList extends Component {
                           </Card.Description>
                         </Card.Content>
                         <Card.Content extra>
-                          <a>
-                            <Icon 
+                          <a 
                             onClick={() => {
                               this.props.selectMonster(monster);
                               this.props.selectTab('Monsters')
                             }}
+                          >
+                            <Icon 
                             name='address card outline' />
                             More Monster Info
                           </a>
