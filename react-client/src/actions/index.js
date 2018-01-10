@@ -1,6 +1,8 @@
 import store from '../store';
 import axios from 'axios';
 
+//This function queries the API for a list of all available monsters
+//which is then sent to reducer to be formatted appropriately to be used by our dropdown
 export const populateMonsterUrls = () => {
   axios('http://www.dnd5eapi.co/api/monsters')
   .then(res => {
@@ -11,6 +13,9 @@ export const populateMonsterUrls = () => {
   });
 };
 
+//This function adds a monster to the field by sending it to the reducer to
+//be added to the stores monsters array. Before doing so it checks the checked boolean
+//to see if it needs to auto-roll the monsters turn order for the user
 export const addMonster = (url, checked) => {
   axios.get(url)
   .then(res => {
@@ -32,6 +37,7 @@ export const addMonster = (url, checked) => {
   });
 }
 
+//this function fetches the monsters image from a separate API 
 const fetchMonsterImg = monsterName => {
   return axios.get('http://localhost:3000/monsterimg', {
     params: {
@@ -41,6 +47,7 @@ const fetchMonsterImg = monsterName => {
   .then(res => res.data);
 };
 
+//this function loads image onto the monster card asynchronously so the user doesn't have to wait for the image
 const addMonsterImg = (url, id) => {
   store.dispatch({
     type: 'ADD_MONSTER_IMG',
@@ -81,6 +88,7 @@ export const removeMonster = id => {
   }
 }
 
+//similar as above addMonster
 export const addPlayer = (player) => {
   store.dispatch({
     type: 'ADD_PLAYER',
