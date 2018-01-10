@@ -1,7 +1,13 @@
 
 const monsterUrlsReducer = (state = [], action) => {
   if (action.type === 'POPULATE_MONSTER_URLS') {
-    const newPayload = [];
+    const newPayload = [
+      {
+        key: 'Select Monster',
+        value: '',
+        text: 'Select Monster'
+      }
+    ];
     action.payload.forEach(monster => {
       var monsterObj = {};
       monsterObj.key = monster.name;
