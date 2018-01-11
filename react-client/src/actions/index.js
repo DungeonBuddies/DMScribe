@@ -24,7 +24,6 @@ export const addMonster = (url, checked) => {
   })
   .then(res => {
     const monster = res.data;
-    console.log('MONSTER: ', monster)
     monster.init = Math.floor((monster.dexterity - 10) / 2);
     if (checked) {
       monster.order = monster.init + (Math.floor(Math.random() * Math.floor(20)));
@@ -84,7 +83,8 @@ export const clearOrderField = () => {
   })
 }
 
-export const removeMonster = id => {
+export const removeMonster = (id, number) => {
+  console.log('NUMBER OF MONSTERS BEFORE REMOVAL: ', number)
   return {
     type: 'DELETE_MONSTER',
     payload: {
