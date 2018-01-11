@@ -48,12 +48,22 @@ class Monsters extends Component {
                         <Card.Header>
                           {monster.name} 
                           <span id='clearSelectedMonster'>
-                            <Button
-                            onClick={() => {
-                              this.props.clearSelectedMonster();
-                            }}
-                            className='removeMonsterSelected' 
-                            content='Done'/>
+                            {monster.actions 
+                              ?
+                                <Button
+                                onClick={() => {
+                                  this.props.clearSelectedMonster();
+                                }}
+                                className='removeMonsterSelected' 
+                                content='Done'/>
+                              :
+                                <Button
+                                onClick={() => {
+                                  this.props.clearSelectedMonster();
+                                }}
+                                className='removeMonsterSelectedNoActions' 
+                                content='Done'/>
+                            }
                         </span>
                         </Card.Header>
                         <Card.Meta>
@@ -65,6 +75,21 @@ class Monsters extends Component {
                           </div>
                         </Card.Meta>
                         <Card.Description>
+                            {monster.actions 
+                              ?
+                                <div className='actionsDiv'> Actions: <br/>
+                                  {monster.actions.map((action) => {
+                                    return <div className='actionSkill' key={action.name}>
+                                              <p>Name: {action.name}</p> 
+                                              {action.attack_bonus ? <p>Attack bonus: {action.attack_bonus}</p> : null}
+                                              {action.damage_bonus ? <p>Damage bonus: {action.damage_bonus}</p> : null}
+                                              {action.damage_dice ? <p>Damage dice: {action.damage_dice}</p> : null}
+                                              <p> Description: {action.desc}</p>
+                                           </div>
+                                  })}
+                                </div>
+                              : null
+                            }
                             <p className='selectedStats'>
                               <span className='selectedStat'><strong>AC:</strong> {monster.armor_class}</span>
                               <span className='selectedStat'><strong>HP:</strong> {monster.hit_points}</span>
