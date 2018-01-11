@@ -83,24 +83,6 @@ class LandingPage extends Component {
             </Container>
           </Menu>
 
-    			<Container>
-            <Header
-              as='h1'
-              content='DM-Scribe'
-              inverted
-              style={{ fontSize: '4em', fontWeight: 'normal', color:'#1b1c1d', marginBottom: 0, marginTop: '3em' }}
-            />
-            <Header
-              as='h2'
-              content='The handy tool for the unorganized DM'
-              inverted
-              style={{ fontSize: '1.7em', color:'#1b1c1d', fontWeight: 'normal' }}
-            />
-            <Button primary size='huge' onClick={this.props.clickToArena}>
-              Roll for Initiative!
-              <Icon name='right arrow'/>
-            </Button>
-          </Container>
         </div>
   		) 
     } else if (this.state.page === 'signup') {
@@ -135,7 +117,7 @@ class LandingPage extends Component {
               </div>
               <div className="field">
                 <label>Password:</label>
-                <input type="text" name="password"/>
+                <input type="password" name="password"/>
               </div>
               <span><button className="ui button" type="submit">Sign up!</button></span>
             </form>
@@ -173,7 +155,7 @@ class LandingPage extends Component {
                 </div>
                 <div className="field">
                   <label>Password:</label>
-                  <input type="text" name="password"/>
+                  <input type="password" name="password"/>
                 </div>
                 <span><button className="ui button" type="submit">Login!</button></span>
               </form>
