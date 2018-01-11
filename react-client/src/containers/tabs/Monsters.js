@@ -77,14 +77,14 @@ class Monsters extends Component {
                         <Card.Description>
                             {monster.actions 
                               ?
-                                <div className='actionsDiv'> Actions: <br/>
+                                <div className='actionsDiv'> <strong>Actions: </strong><br/>
                                   {monster.actions.map((action) => {
                                     return <div className='actionSkill' key={action.name}>
-                                              <p>Name: {action.name}</p> 
-                                              {action.attack_bonus ? <p>Attack bonus: {action.attack_bonus}</p> : null}
-                                              {action.damage_bonus ? <p>Damage bonus: {action.damage_bonus}</p> : null}
-                                              {action.damage_dice ? <p>Damage dice: {action.damage_dice}</p> : null}
-                                              <p> Description: {action.desc}</p>
+                                              <p><strong>Name: </strong>{action.name}</p> 
+                                              {action.attack_bonus ? <p><strong>Attack bonus: </strong>{action.attack_bonus}</p> : null}
+                                              {action.damage_bonus ? <p><strong>Damage bonus: </strong>{action.damage_bonus}</p> : null}
+                                              {action.damage_dice ? <p><strong>Damage dice: </strong>{action.damage_dice}</p> : null}
+                                              <p> <strong>Description: </strong>{action.desc}</p>
                                            </div>
                                   })}
                                 </div>
