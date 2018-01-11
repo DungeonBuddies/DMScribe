@@ -3,6 +3,7 @@ import { Dropdown } from 'semantic-ui-react';
 import {addMonster} from '../actions/index';
 import { connect } from 'react-redux';
 import NumberDropDown from '../components/numberDropDown';
+import ClearMonsters from './buttons/ClearMonsters';
 
 class DropdownExampleSearchSelection extends Component {
   constructor () {
@@ -87,6 +88,7 @@ class DropdownExampleSearchSelection extends Component {
           <NumberDropDown />
         </span>*/
         }
+        <ClearMonsters />
         <div className="ui checkbox ourCheckbox">
           <input 
           type="checkbox" 

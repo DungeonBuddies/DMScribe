@@ -16,9 +16,6 @@ class OrderList extends Component {
           {this.props.turnOrder.map((card, index) => {
                   return (
                       <Card key={index} className='turnCards'>
-                        <div className='cardMonsterImgContainer'>
-                          <Image className='cardMonsterImg' src={card.image}/>
-                        </div>
                         <Card.Content>
                           <Card.Header>
                             {card.name} 
@@ -29,7 +26,7 @@ class OrderList extends Component {
                           </Card.Meta>
                         </Card.Content>
                         <Card.Content extra>
-                          Turn number {index + 1}
+                          Turn order {index + 1}
                         </Card.Content>
                       </Card>
                     )
