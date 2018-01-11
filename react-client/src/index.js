@@ -9,27 +9,45 @@ import Players from './containers/tabs/Players';
 import Arena from './containers/tabs/Arena';
 import Monsters from './containers/tabs/Monsters';
 import Menu from './containers/Menu';
-
+import LandingPage from './containers/LandingPage';
 
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      clicked: false
+    };
+    this.clickToArena = this.clickToArena.bind(this);
   }
 
   componentDidMount () {
       populateMonsterUrls();
     }
 
+  clickToArena() {
+    if (this.state.clicked === false) {
+      this.setState({
+        clicked: true
+      })
+    }
+  }
+
   render () {
-    return (
-      <div>
-        <Menu />
-        <Arena />
-        <Players />
-        <Monsters />
-      </div>
-    )
+    if (this.state.clicked === true) {
+      return (
+        <div>
+          <Menu />
+          <Arena />
+          <Players />
+          <Monsters />
+        </div>
+      )
+    } else {
+      return (
+        <LandingPage clickToArena={this.clickToArena}/>
+      )
+    }
   }
 }
 
