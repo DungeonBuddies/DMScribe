@@ -72,7 +72,7 @@ class LandingPage extends Component {
             Roll for Initiative!
             <Icon name='right arrow'/>
           </Button>
-          <img id="landing-image" className="ui medium right floated image" src="https://png.icons8.com/ultraviolet/540/icosahedron.png"/>
+          <img id="landing-image" className="ui large right floated image" src="https://png.icons8.com/ultraviolet/540/icosahedron.png"/>
         </Container>
       </div>
 		)
