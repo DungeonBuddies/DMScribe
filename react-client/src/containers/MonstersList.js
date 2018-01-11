@@ -63,19 +63,21 @@ class MonstersList extends Component {
                                 <span className='stat'>WIS: {monster.wisdom}</span>
                                 <span className='stat'>CHA: {monster.charisma}</span>
                                 <span className='stat'> Turn:  
-                                  {monster.order 
+                                  {monster.order
                                     ?  <span className='monsterOrderStat'>
                                       {monster.order}
                                       </span>
-                                    : 
-                                      <input
-                                        id={monster.id}
-                                        className='initInput'
-                                        type='number'
-                                        placeholder='?'
-                                        onBlur={this.handleOnBlur}
-                                        onKeyUp={this.handleKeyUp}
-                                      />
+                                    : monster.order === 0 
+                                      ? monster.order
+                                      :
+                                        <input
+                                          id={monster.id}
+                                          className='initInput'
+                                          type='number'
+                                          placeholder='?'
+                                          onBlur={this.handleOnBlur}
+                                          onKeyUp={this.handleKeyUp}
+                                        />
                                   }
                                 </span>
                               </p>
