@@ -117,7 +117,7 @@ class LandingPage extends Component {
               </div>
               <div className="field">
                 <label>Password:</label>
-                <input type="text" name="password"/>
+                <input type="password" name="password"/>
               </div>
               <span><button className="ui button" type="submit">Sign up!</button></span>
             </form>
@@ -155,7 +155,7 @@ class LandingPage extends Component {
                 </div>
                 <div className="field">
                   <label>Password:</label>
-                  <input type="text" name="password"/>
+                  <input type="password" name="password"/>
                 </div>
                 <span><button className="ui button" type="submit">Login!</button></span>
               </form>
