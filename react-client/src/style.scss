@@ -204,6 +204,12 @@ h1 {
 .removeMonsterSelected {
   position: relative;
   bottom: 230px;
+  left: 15px;
+}
+
+.removeMonsterSelectedNoActions {
+  position: relative;
+  bottom: 230px;
   left: 55px;
 }
 
@@ -231,4 +237,16 @@ h1 {
 .cardMonsterImg {
   max-width: 100% !important;
   max-height: 124px !important;
+}
+
+.actionsDiv {
+  margin-bottom: 5px;
+}
+
+.actionSkill {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom-style: solid;
+  border-bottom-width: thin;
 }
