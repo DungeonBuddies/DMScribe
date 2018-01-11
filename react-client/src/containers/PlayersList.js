@@ -47,8 +47,12 @@ class PlayersList extends Component {
                   store player array and regenerates the turn order*/}
 						      <Icon
                     onClick={() => {
+                      if (this.props.monsters.length) {
                       this.props.removePlayer(player.name);
-                      this.props.generateTurnOrder();
+                      this.props.generateTurnOrder();                      
+                      } else {
+                        this.props.removePlayer(player.name);
+                      }
                     }} 
                     className='deletePlayerIcon' 
                     color='red' 
@@ -101,7 +105,8 @@ class PlayersList extends Component {
 //Maps the specified redux store property to be available here on the props object
 function mapStateToProps (state) {
   return {
-    players: state.players
+    players: state.players,
+    monsters: state.monsters
   }
 }
 
