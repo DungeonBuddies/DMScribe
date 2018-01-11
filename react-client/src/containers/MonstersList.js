@@ -51,8 +51,12 @@ class MonstersList extends Component {
                           <Card.Description>
                               <p className='stats'>
                                 <span className='stat'>AC: {monster.armor_class}</span>
-                                <span className='stat'>HP: {monster.hit_points}</span>
-                                <span className='stat'>INIT: {monster.init}</span>
+                                <span className='stat'>HP: <input
+                                          className='hpInput'
+                                          type='number'
+                                          placeholder={monster.hit_points}
+                                        /></span>
+                                <span className='stat'>INIT MOD: {monster.init}</span>
                               </p>
                               <p className='stats'>
                                 <span className='stat'>STR: {monster.strength}</span>
@@ -62,7 +66,7 @@ class MonstersList extends Component {
                               <p className='stats'>
                                 <span className='stat'>WIS: {monster.wisdom}</span>
                                 <span className='stat'>CHA: {monster.charisma}</span>
-                                <span className='stat'> Turn:  
+                                <span className='stat'> INIT:  
                                   {monster.order
                                     ?  <span className='monsterOrderStat'>
                                       {monster.order}

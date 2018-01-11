@@ -18,13 +18,13 @@ class Arena extends Component {
     return (
       <div>
         <DropdownExampleSearchSelection />
+        <OrderList />
         <PlayersList />
         <MonstersList />
         <div className="buttonsWrapper">
           {/* <OrderButton /> */}
           <ClearMonsters />
         </div>
-        <OrderList />
       </div>
     );
   }
