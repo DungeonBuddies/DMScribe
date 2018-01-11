@@ -30,16 +30,18 @@ const FixedMenu = () => (
   </Menu>
 )
 
+const remote = 'https://png.icons8.com/ultraviolet/540/icosahedron.png';
+
 class LandingPage extends Component {
 	constructor(props) {
 		super(props);
 	}
 
-
-
 	render() {
-		return (
-      <div>
+    const resizeMode = 'center';
+    return (
+
+      <div className="ui grid">
         <Menu fixed='top' size='large'>
           <Container>
             <Menu.Menu position='right'>
@@ -58,18 +60,19 @@ class LandingPage extends Component {
             as='h1'
             content='DM-Scribe'
             inverted
-            style={{ fontSize: '4em', fontWeight: 'normal', color:'#1b1c1d', marginBottom: 0, marginTop: '3em' }}
+            style={{ backgroundColor: 'transparent', fontSize: '4em', fontWeight: 'normal', color:'#1b1c1d', marginBottom: 0, marginTop: '3em' }}
           />
           <Header
             as='h2'
             content='The handy tool for the unorganized DM'
             inverted
-            style={{ fontSize: '1.7em', color:'#1b1c1d', fontWeight: 'normal' }}
+            style={{ backgroundColor: 'transparent', fontSize: '1.7em', color:'#1b1c1d', fontWeight: 'normal' }}
           />
           <Button primary size='huge' onClick={this.props.clickToArena}>
             Roll for Initiative!
             <Icon name='right arrow'/>
           </Button>
+          <img id="landing-image" className="ui medium right floated image" src="https://png.icons8.com/ultraviolet/540/icosahedron.png"/>
         </Container>
       </div>
 		)
