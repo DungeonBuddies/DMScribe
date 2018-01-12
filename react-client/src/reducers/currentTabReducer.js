@@ -1,5 +1,5 @@
 
-const currentTabReducer = (state = 'Arena', action) => {
+const currentTabReducer = (state = 'Landing', action) => {
   if (action.type === 'CHANGE_TAB') {
     return action.payload;
   }
