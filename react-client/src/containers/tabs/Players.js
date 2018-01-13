@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 import PlayersList from "../PlayersList"
 import { addPlayer } from '../../actions/index';
 import ClearPlayers from '../buttons/ClearPlayers';
+import GroupSelect from '../groupSelect';
 
 
 class Players extends Component {
@@ -16,6 +17,7 @@ class Players extends Component {
 			players: []
 		};
 		this.onPlayerFormSubmit = this.onPlayerFormSubmit.bind(this);
+		this.onPlayerSave = this.onPlayerSave.bind(this);
 	}
 
 	onPlayerFormSubmit (event) {
@@ -28,6 +30,19 @@ class Players extends Component {
 		addPlayer(resultsObj);
 	}
 
+	onPlayerSave (event) {
+		event.preventDefault();
+		var playerArr = $(event.target).serializeArray();
+		var resultsObj = {};
+		for (var i = 0; i < playerArr.length; i++) {
+		  resultsObj[playerArr[i].name] = playerArr[i].value;
+		}
+		resultsObj.dm = this.props.user;
+		console.log(resultsObj);
+		addPlayer(resultsObj);
+		$.post('/savePlayer', resultsObj)
+	}
+
 	render () {
 		if (this.props.currentTab !== 'Players') {
       return null;
@@ -35,11 +50,12 @@ class Players extends Component {
     
 		return (
 			<div>
+				<GroupSelect />
 				<PlayersList />
 				<div className="buttonsWrapper">
 					<ClearPlayers className="buttonsWrapper"/>
 				</div>
-				<form className="ui form" onSubmit={this.onPlayerFormSubmit}>
+				<form className="ui form" onSubmit={this.props.user ? this.onPlayerSave : this.onPlayerFormSubmit}>
 					<div className="field">
 						<label>Name:</label>
 						<input type="text" name="name"/>
@@ -82,7 +98,21 @@ class Players extends Component {
 						<label>Speed</label>
 						<input type="text" name="speed"/>
 					</div>
-					<span><button className="ui button" type="submit">Submit</button></span>
+					{this.props.user 
+						?
+							<div className="field">
+								<label>Group Name</label>
+								<input type="text" name="group"/>
+							</div>
+						: null
+
+					}
+					{this.props.user 
+						?
+							<span><button className="ui button" type="submit">Save and Submit</button></span>
+						:
+							<span><button className="ui button" type="submit">Submit</button></span>
+					}
 				</form>
 			</div>
 		);
@@ -92,7 +122,8 @@ class Players extends Component {
 function mapStateToProps (state) {
 	return {
 		players: state.players,
-		currentTab: state.currentTab
+		currentTab: state.currentTab,
+		user: state.user
 	}
 }
 
