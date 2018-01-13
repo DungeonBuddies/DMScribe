@@ -56,8 +56,43 @@ var getUsers = function (name, callback) {
   })
 }
 
+var savePlayer = (player, callback) => {
+  var playerEntry = new Player({
+    name: player.name,
+    class: player.class,
+    armor_class: player.armor_class,
+    hit_points: player.hit_points,
+    initMod: player.init,
+    perception: player.perception,
+    speed: player.speed,
+    image: player.image,
+    dm: player.dm,
+    group: player.group
+  });
+  playerEntry.save((error, model) => {
+    if (error) {
+      callback(error, null)
+    } else {
+      console.log(`You have saved the player ${player.name} to the player database`);
+      callback(null, 'success');
+    }
+  })
+}
+
+var getGroups = (dm, callback) => {
+  Player.find({group: dm.dm}, (err, groups) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, groups)
+    }
+  })
+}
+
 exports.signUpUser = signUpUser;
 exports.getUsers = getUsers;
+exports.savePlayer = savePlayer;
+exports.getGroups = getGroups;
 
 
 

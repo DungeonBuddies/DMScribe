@@ -97,9 +97,26 @@ app.post('/login', (req, res) => {
   })
 })
 
+app.post('/savePlayer', (req, res) => {
+  console.log(req.body);
+  db.savePlayer(req.body, (err, success) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.sendStatus(201);
+    }
+  })
+})
 
-
-
+app.post('/getGroups', (req, res) => {
+  db.getGroups(req.body, (err, groups) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.status(200).send(groups);
+    }
+  })
+})
 
 
 
