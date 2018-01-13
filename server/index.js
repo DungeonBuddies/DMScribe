@@ -95,16 +95,19 @@ app.post('/login', (req, res) => {
     if (err) {
       console.log(err)
     } else {
-      bcrypt.compare(req.body.password, user[0].password)
-      .then(result => {
-        if (result) {
-          res.sendStatus(201);
-        } else {
-          // add user notification of "wrong password"
-          console.log('Wrong password!')
-        }
-      });
-      
+      if (user.length === 0) {
+        res.sendStatus(400);
+      } else {
+        bcrypt.compare(req.body.password, user[0].password)
+        .then(result => {
+          if (result) {
+            res.sendStatus(201);
+          } else {
+            // add user notification of "wrong password"
+            res.sendStatus(400);
+          }
+        });
+      }
     }
   })
 })
