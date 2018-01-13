@@ -41,6 +41,9 @@ class Login extends Component {
       this.props.selectTab('Arena');
       this.props.fetchGroups(userObj.username);
     })
+    .catch(() => {
+      console.log('Wrong username and password');
+    })
 
   }
 
