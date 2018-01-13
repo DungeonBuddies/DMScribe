@@ -108,12 +108,23 @@ app.post('/savePlayer', (req, res) => {
   })
 })
 
-app.post('/getGroups', (req, res) => {
-  db.getGroups(req.body, (err, groups) => {
+app.get('/getGroups', (req, res) => {
+  db.getGroups(req.query, (err, groups) => {
     if (err) {
       console.log(err)
     } else {
       res.status(200).send(groups);
+    }
+  })
+})
+
+app.get('/specificGroup', (req, res) => {
+  db.specificGroup(req.query, (err, players) => {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(players);
+      res.status(200).send(players);
     }
   })
 })

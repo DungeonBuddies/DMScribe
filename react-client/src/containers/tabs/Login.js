@@ -15,7 +15,7 @@ import {
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {selectTab, setUser} from '../../actions/index';
+import {selectTab, setUser, fetchGroups} from '../../actions/index';
 
 const remote = 'https://png.icons8.com/ultraviolet/540/icosahedron.png';
 
@@ -39,6 +39,7 @@ class Login extends Component {
       console.log(userObj.username);
       this.props.setUser(userObj.username);
       this.props.selectTab('Arena');
+      this.props.fetchGroups(userObj.username);
     })
 
   }
@@ -98,7 +99,8 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
     selectTab: selectTab,
-    setUser: setUser
+    setUser: setUser,
+    fetchGroups: fetchGroups
   }, dispatch);
 }
 

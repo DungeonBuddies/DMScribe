@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import $ from 'jquery';
 import { Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import {selectGroup} from '../actions/index';
 
 class GroupSelect extends Component {
   constructor () {
@@ -31,6 +32,7 @@ class GroupSelect extends Component {
   //This handles when the user presses Enter and submits the search to our data
   handleKeyPress (event) {
     if(event.key == 'Enter'){
+      selectGroup(this.props.user, this.state.value);
       this.setState({value: ''})
     }
   } 
@@ -47,6 +49,7 @@ class GroupSelect extends Component {
     if (this.state.value === '') {
       return;
     } else {
+      selectGroup(this.props.user, this.state.value);
       this.setState({
         value: ''
       })
@@ -76,7 +79,7 @@ class GroupSelect extends Component {
         value={this.state.value}
         defaultSearchQuery=''
         placeholder='Gather Your Party!' 
-        fluid search selection options={[{key: 'Fridays', value: 'Fridays'}]} 
+        fluid search selection options={this.props.groups} 
         />
         {/*this hooks up the dropdown select options to our monster urls*/}
         {
@@ -91,7 +94,8 @@ class GroupSelect extends Component {
 
 function mapStateToProps (state) {
   return {
-    user: state.user
+    user: state.user,
+    groups: state.groups
   }
 }
 

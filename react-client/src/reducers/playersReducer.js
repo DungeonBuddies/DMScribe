@@ -51,6 +51,8 @@ const playersReducer = (state = sample, action) => {
     return [...state.slice(0, index), {...state[index], order: parseInt(action.payload.value)}, ...state.slice(index + 1)];
   } else if (action.type === 'CLEAR_PLAYERS') {
     return action.payload;
+  } else if (action.type === 'SET_PLAYER_GROUP') {
+    return [...action.payload];
   }
   return state;
 };

@@ -80,7 +80,7 @@ var savePlayer = (player, callback) => {
 }
 
 var getGroups = (dm, callback) => {
-  Player.find({group: dm.dm}, (err, groups) => {
+  Player.find({dm: dm.dm}, (err, groups) => {
     if (err) {
       callback(err, null);
     } else {
@@ -89,10 +89,21 @@ var getGroups = (dm, callback) => {
   })
 }
 
+var specificGroup = (target, callback) => {
+  Player.find({dm: target.dm, group: target.group}, (err, players) => {
+    if (err) {
+      callback(err, null)
+    } else {
+      callback(null, players);
+    }
+  })
+}
+
 exports.signUpUser = signUpUser;
 exports.getUsers = getUsers;
 exports.savePlayer = savePlayer;
 exports.getGroups = getGroups;
+exports.specificGroup = specificGroup;
 
 
 
