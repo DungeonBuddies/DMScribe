@@ -58,6 +58,8 @@ const monstersReducer = (state = sample, action) => {
   } else if (action.type === 'ASSIGN_MON_TURN_VALUE') {
     const index = state.findIndex(monster => monster.id === action.payload.id);
     return [...state.slice(0, index), {...state[index], order: parseInt(action.payload.value)}, ...state.slice(index + 1)];
+  } else if (action.type === 'LOGOUT_RESET') {
+    return sample;
   }
   return state;
 };

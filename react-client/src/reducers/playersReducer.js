@@ -53,6 +53,8 @@ const playersReducer = (state = sample, action) => {
     return action.payload;
   } else if (action.type === 'SET_PLAYER_GROUP') {
     return [...action.payload];
+  } else if (action.type === 'LOGOUT_RESET') {
+    return sample;
   }
   return state;
 };

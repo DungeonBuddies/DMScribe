@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {selectTab, setUser} from '../actions/index';
+import {selectTab, setUser, logoutReset} from '../actions/index';
 
 var tabs = ['Arena', 'Players', 'Monsters'];
 
@@ -33,7 +33,11 @@ class Menu extends Component {
               {this.props.user}
               </a>
               <a
-                onClick={() => {this.props.setUser('')}}
+                onClick={() => {
+                  this.props.setUser('');
+                  this.props.logoutReset();
+                  this.props.selectTab('Landing');
+                }}
                 className="item tabSignUp"
               >Log out!</a>
             </div>  
@@ -75,7 +79,8 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
     selectTab: selectTab,
-    setUser: setUser
+    setUser: setUser,
+    logoutReset: logoutReset
   }, dispatch);
 }
 

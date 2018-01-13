@@ -5,7 +5,7 @@ import { Card, Icon, Image, Form, Button, Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PlayersList from "../PlayersList"
-import { addPlayer } from '../../actions/index';
+import { addPlayer, fetchClassImg } from '../../actions/index';
 import ClearPlayers from '../buttons/ClearPlayers';
 import GroupSelect from '../groupSelect';
 
@@ -40,7 +40,11 @@ class Players extends Component {
 		resultsObj.dm = this.props.user;
 		console.log(resultsObj);
 		addPlayer(resultsObj);
-		$.post('/savePlayer', resultsObj)
+		fetchClassImg(resultsObj.class)
+		.then((res) => {
+			resultsObj.image = res;
+			$.post('/savePlayer', resultsObj)
+		})
 	}
 
 	render () {
