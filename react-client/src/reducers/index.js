@@ -6,6 +6,7 @@ import currentTabReducer from './currentTabReducer';
 import turnOrderReducer from './turnOrderReducer';
 import selectedMonsterReducer from './selectedMonsterReducer';
 import userReducer from './userReducer';
+import groupsReducer from './groupsReducer';
 
 
 const reducer = combineReducers({
@@ -15,7 +16,8 @@ const reducer = combineReducers({
   currentTab: currentTabReducer,
   turnOrder: turnOrderReducer,
   selectedMonster: selectedMonsterReducer,
-  user: userReducer
+  user: userReducer,
+  groups: groupsReducer
 });
 
 export default reducer;

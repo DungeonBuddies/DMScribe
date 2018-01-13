@@ -1,5 +1,6 @@
 import store from '../store';
 import axios from 'axios';
+import $ from 'jquery';
 
 //This function queries the API for a list of all available monsters
 //which is then sent to reducer to be formatted appropriately to be used by our dropdown
@@ -197,6 +198,51 @@ export const setUser = (user) => {
     type: 'CHANGE_USER',
     payload: user
   }
+}
+
+export const fetchGroups = (name) => {
+  return axios('/getGroups', {
+    params: {
+      dm: name
+    }
+  })
+  .then(res => {
+    var object = {};
+    res.data.forEach((player) => {
+      if (!object[player.group]) {
+        object[player.group] = player.group;
+      }
+    })
+    var groupNames = Object.values(object);
+    const newPayload = [];
+    groupNames.forEach(group => {
+      var groupObj = {};
+      groupObj.key = group;
+      groupObj.value = group;
+      groupObj.text = group;
+      newPayload.push(groupObj);
+    })
+    store.dispatch({
+        type: 'SET_USER_GROUP',
+        payload: newPayload
+      });
+  });
+}
+
+export const selectGroup = (user, group) => {
+  return axios('/specificGroup', {
+    params: {
+      dm: user,
+      group: group
+    }
+  })
+  .then((party) => {
+    console.log('GROUP HERE: ', party.data);
+    store.dispatch({
+      type: 'SET_PLAYER_GROUP',
+      payload: party.data
+    })
+  })
 }
 
 
