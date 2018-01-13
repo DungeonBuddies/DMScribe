@@ -1,8 +1,7 @@
 var mongoose = require('mongoose');
 // mongoose.connect('mongodb://localhost/groups');
 // var uri = `mongodb://${cred.dbUsername}:${cred.dbPassword}@ds255787.mlab.com:55787/heroku_jhf97sfb`;
-
-var cred = require('./dbCredentials');
+// var cred = require('./dbCredentials');
 
 mongoose.connect(MONGOLAB_RED_URI);
 var db = mongoose.connection;
