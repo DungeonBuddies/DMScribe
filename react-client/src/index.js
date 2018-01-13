@@ -10,6 +10,8 @@ import Arena from './containers/tabs/Arena';
 import Monsters from './containers/tabs/Monsters';
 import Menu from './containers/Menu';
 import LandingPage from './containers/LandingPage';
+import Login from './containers/tabs/Login';
+import Signup from './containers/tabs/Signup';
 
 
 class App extends React.Component {
@@ -34,20 +36,17 @@ class App extends React.Component {
   }
 
   render () {
-    if (this.state.clicked === true) {
       return (
         <div>
+          <LandingPage />
+          <Login />
+          <Signup />
           <Menu />
           <Arena />
           <Players />
           <Monsters />
         </div>
       )
-    } else {
-      return (
-        <LandingPage clickToArena={this.clickToArena}/>
-      )
-    }
   }
 }
 

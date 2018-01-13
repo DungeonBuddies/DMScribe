@@ -192,6 +192,13 @@ export const clearSelectedMonster = () => {
   }
 }
 
+export const setUser = (user) => {
+  return {
+    type: 'CHANGE_USER',
+    payload: user
+  }
+}
+
 
 
 

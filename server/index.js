@@ -8,6 +8,8 @@ const app = express();
 
 const port = process.env.PORT || 3000
 
+app.use(bodyParser());
+
 app.use(express.static(__dirname + '/../react-client/dist'));
 
 
@@ -70,4 +72,47 @@ app.get('/classimg', (req, res1) => {
     res1.send(imgSrc);
   });
 });
+
+app.post('/signUp', (req, res) => {
+  db.signUpUser(req.body, (err, success) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.sendStatus(201);
+    }
+  })
+})
+
+app.post('/login', (req, res) => {
+  db.getUsers(req.body.username, (err, user) => {
+    if (err) {
+      console.log(err)
+    } else {
+      if (req.body.password === user[0].password) {
+        res.sendStatus(201);
+      } else {
+        console.log('Wrong password!')
+      }
+    }
+  })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

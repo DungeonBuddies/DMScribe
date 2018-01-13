@@ -1,42 +1,82 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {selectTab} from '../actions/index';
+import {selectTab, setUser} from '../actions/index';
 
 var tabs = ['Arena', 'Players', 'Monsters'];
 
 class Menu extends Component {
   render () {
-  	return(
-      <div className="ui menu">
-        {tabs.map((tab) => {
-          return (
-            <a
-              key={tab} 
-              onClick={() => {this.props.selectTab(tab)}}
-              className="item tab" 
-              value={tab}
-            >{tab}</a>
-          );
-        })}
-        <a 
-          onClick={() => {this.props.selectTab('Login')}}
-          className="item tabLog" 
-        >Login</a>
-        <a
-          onClick={() => {this.props.selectTab('Signup')}}
-          className="item tabSignUp"
+    if (this.props.currentTab === 'Landing' 
+      || this.props.currentTab === 'Login'
+      || this.props.currentTab === 'Signup') {
+      return null;
+    }
 
-        >Sign up</a>
-      </div>  
+  	return(
+      <div className='menuBar'>
+        {this.props.user 
+          ?
+            <div className="ui menu">
+              {tabs.map((tab) => {
+                return (
+                  <a
+                    key={tab} 
+                    onClick={() => {this.props.selectTab(tab)}}
+                    className="item tab" 
+                    value={tab}
+                  >{tab}</a>
+                );
+              })}
+              <a
+              className='item tabLog'>
+              {this.props.user}
+              </a>
+              <a
+                onClick={() => {this.props.setUser('')}}
+                className="item tabSignUp"
+              >Log out!</a>
+            </div>  
+          :
+            <div className="ui menu">
+              {tabs.map((tab) => {
+                return (
+                  <a
+                    key={tab} 
+                    onClick={() => {this.props.selectTab(tab)}}
+                    className="item tab" 
+                    value={tab}
+                  >{tab}</a>
+                );
+              })}
+              <a 
+                onClick={() => {this.props.selectTab('Login')}}
+                className="item tabLog" 
+              >Login</a>
+              <a
+                onClick={() => {this.props.selectTab('Signup')}}
+                className="item tabSignUp"
+
+              >Sign up</a>
+            </div>  
+        }
+      </div>
 		);
+  }
+}
+
+function mapStateToProps (state) {
+  return {
+    currentTab: state.currentTab,
+    user: state.user
   }
 }
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
-    selectTab: selectTab
+    selectTab: selectTab,
+    setUser: setUser
   }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(Menu);
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

@@ -13,38 +13,26 @@ import {
   Segment,
   Visibility,
 } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {selectTab} from '../actions/index';
 
 const remote = 'https://png.icons8.com/ultraviolet/540/icosahedron.png';
 
 class LandingPage extends Component {
 	constructor(props) {
 		super(props);
-    this.state = {
-      page: 'landing'
-    }
 	}
 
 	render() {
     const resizeMode = 'center';
+      if (this.props.currentTab !== 'Landing') {
+        return null;
+      }
 
-    if (this.state.page === 'landing') {
   		return (
-
         <div>
           <div className="ui grid">
-            <Menu fixed='top' size='large'>
-              <Container>
-                <Menu.Menu position='right'>
-                  <Menu.Item className='item'>
-                    <Button as='a'>Log in</Button>
-                  </Menu.Item>
-                  <Menu.Item>
-                    <Button as='a' primary>Sign Up</Button>
-                  </Menu.Item>
-                </Menu.Menu>
-              </Container>
-            </Menu>
-
             <Container>
               <Header
                 as='h1'
@@ -58,7 +46,9 @@ class LandingPage extends Component {
                 inverted
                 style={{ backgroundColor: 'transparent', fontSize: '1.7em', color:'#1b1c1d', fontWeight: 'normal' }}
               />
-              <Button primary size='huge' onClick={this.props.clickToArena}>
+              <Button 
+              onClick={() => {this.props.selectTab('Arena')}}
+              primary size='huge'>
                 Roll for Initiative!
                 <Icon name='right arrow'/>
               </Button>
@@ -70,14 +60,14 @@ class LandingPage extends Component {
               <Menu.Menu position='right'>
                 <Menu.Item className='item'>
                   <Button
-                  onClick={() => {this.setState({page: 'login'})}}
-                  as='a'>Log in</Button>
+                  onClick={() => {this.props.selectTab('Login')}}
+                  as='a'>Log in!</Button>
                 </Menu.Item>
                 <Menu.Item>
                   <Button 
+                  onClick={() => {this.props.selectTab('Signup')}}
                   as='a' 
-                  onClick={() => {this.setState({page: 'signup'})}}
-                  primary>Sign Up</Button>
+                  primary>Sign Up!</Button>
                 </Menu.Item>
               </Menu.Menu>
             </Container>
@@ -85,84 +75,19 @@ class LandingPage extends Component {
 
         </div>
   		) 
-    } else if (this.state.page === 'signup') {
-      return (
-          <div>
-            <Menu fixed='top' size='large'>
-              <Container>
-                <Menu.Menu position='right'>
-                  <Menu.Item className='item'>
-                    <Button
-                    onClick={() => {this.setState({page: 'landing'})}}
-                    as='a'>Back to landing page</Button>
-                  </Menu.Item>
-                  <Menu.Item className='item'>
-                    <Button 
-                    onClick={() => {this.setState({page: 'login'})}}
-                    as='a'>Log in</Button>
-                  </Menu.Item>
-                  <Menu.Item>
-                    <Button 
-                    as='a' 
-                    onClick={() => {this.setState({page: 'signup'})}}
-                    primary>Sign Up</Button>
-                  </Menu.Item>
-                </Menu.Menu>
-              </Container>
-            </Menu>
-            <form className="ui form signupForm">
-              <div className="field">
-                <label>Username:</label>
-                <input type="text" name="username"/>
-              </div>
-              <div className="field">
-                <label>Password:</label>
-                <input type="password" name="password"/>
-              </div>
-              <span><button className="ui button" type="submit">Sign up!</button></span>
-            </form>
-          </div>
-        )
-    } else if (this.state.page === 'login') {
-        return (
-            <div>
-              <Menu fixed='top' size='large'>
-                <Container>
-                  <Menu.Menu position='right'>
-                    <Menu.Item className='item'>
-                      <Button
-                      onClick={() => {this.setState({page: 'landing'})}}
-                      as='a'>Back to landing page</Button>
-                    </Menu.Item>
-                    <Menu.Item className='item'>
-                      <Button 
-                      onClick={() => {this.setState({page: 'login'})}}
-                      as='a'>Log in</Button>
-                    </Menu.Item>
-                    <Menu.Item>
-                      <Button 
-                      as='a' 
-                      onClick={() => {this.setState({page: 'signup'})}}
-                      primary>Sign Up</Button>
-                    </Menu.Item>
-                  </Menu.Menu>
-                </Container>
-              </Menu>
-              <form className="ui form signupForm">
-                <div className="field">
-                  <label>Username:</label>
-                  <input type="text" name="username"/>
-                </div>
-                <div className="field">
-                  <label>Password:</label>
-                  <input type="password" name="password"/>
-                </div>
-                <span><button className="ui button" type="submit">Login!</button></span>
-              </form>
-            </div>
-          )
-    }
 	}
 }
+function mapStateToProps (state) {
+  return {
+    currentTab: state.currentTab
+  }
+}
 
-export default LandingPage;
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators({
+    selectTab: selectTab
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);
+
