@@ -4,6 +4,9 @@ const db = require('../database-mongo');
 const axios = require('axios');
 const cheerio = require('cheerio');
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 const app = express();
 
 const port = process.env.PORT || 3000
@@ -74,13 +77,17 @@ app.get('/classimg', (req, res1) => {
 });
 
 app.post('/signUp', (req, res) => {
-  db.signUpUser(req.body, (err, success) => {
-    if (err) {
-      console.log(err)
-    } else {
-      res.sendStatus(201);
-    }
-  })
+  bcrypt.hash(req.body.password, saltRounds)
+  .then(hash => {
+    req.body.password = hash;
+    db.signUpUser(req.body, (err, success) => {
+      if (err) {
+        console.log(err)
+      } else {
+        res.sendStatus(201);
+      }
+    });
+  });
 })
 
 app.post('/login', (req, res) => {
@@ -88,17 +95,21 @@ app.post('/login', (req, res) => {
     if (err) {
       console.log(err)
     } else {
-      if (req.body.password === user[0].password) {
-        res.sendStatus(201);
-      } else {
-        console.log('Wrong password!')
-      }
+      bcrypt.compare(req.body.password, user[0].password)
+      .then(result => {
+        if (result) {
+          res.sendStatus(201);
+        } else {
+          // add user notification of "wrong password"
+          console.log('Wrong password!')
+        }
+      });
+      
     }
   })
 })
 
 app.post('/savePlayer', (req, res) => {
-  console.log(req.body);
   db.savePlayer(req.body, (err, success) => {
     if (err) {
       console.log(err)
