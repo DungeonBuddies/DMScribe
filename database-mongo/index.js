@@ -19,8 +19,8 @@ var users = mongoose.Schema({
 var players = mongoose.Schema({
   name: String,
   class: String,
-  armor_class: Number,
-  hit_points: Number,
+  armorClass: Number,
+  hitPoints: Number,
   initMod: Number,
   perception: Number,
   speed: Number,
