@@ -8,6 +8,8 @@ const turnOrderReducer = (state = [], action) => {
     return sorted;
   } else if (action.type === 'CLEAR_ORDER') {
     return action.payload
+  } else if (action.type === 'LOGOUT_RESET') {
+    return [];
   }
   return state;
 };

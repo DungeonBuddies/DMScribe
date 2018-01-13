@@ -106,7 +106,7 @@ export const addPlayer = (player) => {
   })
 }
 
-const fetchClassImg = className => {
+export const fetchClassImg = className => {
   return axios.get('/classimg', {
     params: {
       className: className
@@ -243,6 +243,15 @@ export const selectGroup = (user, group) => {
       payload: party.data
     })
   })
+  .then(() => {
+    store.dispatch(generateTurnOrder());
+  })
+}
+
+export const logoutReset = () => {
+  return {
+    type: 'LOGOUT_RESET'
+  }
 }
 
 

@@ -66,7 +66,7 @@ class PlayersList extends Component {
 						          <p className='stats'>
 						            <span className='stat'>AC: {player.armor_class}</span>
 						            <span className='stat'>HP: {player.hit_points}</span>
-						            <span className='stat'>INIT MOD: {player.init}</span>
+						            <span className='stat'>INIT MOD: {player.init ? player.init : player.initMod}</span>
 						          </p>
 						          <p className='stats'>
 						            <span className='stat'>PP: {player.perception}</span>
