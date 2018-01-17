@@ -76,17 +76,21 @@ class Signup extends Component {
               </Menu.Menu>
             </Container>
           </Menu>
-          <form className="ui form signupForm" onSubmit={(event) => {this.signUp(event)}}>
-            <div className="field">
-              <label>Username:</label>
-              <input type="text" name="username" id='signUpUsername'/>
-            </div>
-            <div className="field">
-              <label>Password:</label>
-              <input type="password" name="password" id='signUpPassword'/>
-            </div>
-            <span><button className="ui button" type="submit">Sign up!!</button></span>
-          </form>
+          <Grid centered columns={6}>
+            <Grid.Column>
+              <form className="ui form signupForm" onSubmit={(event) => {this.signUp(event)}}>
+                <div className="field">
+                  <label>Username:</label>
+                  <input type="text" name="username" id='signUpUsername'/>
+                </div>
+                <div className="field">
+                  <label>Password:</label>
+                  <input type="password" name="password" id='signUpPassword'/>
+                </div>
+                <span><button className="ui button" type="submit">Sign up!!</button></span>
+              </form>
+            </Grid.Column>
+          </Grid>
         </div>
       )
   }

@@ -145,7 +145,6 @@ h1 {
 }
 
 .clearMonsters {
-  display: inline-block;
   float: left;
   margin-left: 10px !important;
   padding-bottom: 13px !important; 
@@ -161,7 +160,6 @@ h1 {
 }
 
 .field {
-  width: 20% !important;
   height: 20% !important;
 }
 
@@ -180,11 +178,10 @@ h1 {
 
 .monsterDropdown {
   float: left;
-  width: 50% !important;
 }
 
 .ourCheckbox {
-  float: right !important;
+  align-items: center;
 }
 
 .monsterFormButton {
@@ -274,7 +271,6 @@ h1 {
 
 .signupForm {
   margin-top: 20% !important;
-  margin-left: 40% !important;
 }
 
 .wrong {

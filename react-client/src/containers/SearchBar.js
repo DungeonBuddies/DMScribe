@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import { Dropdown } from 'semantic-ui-react';
+import { Dropdown, Grid } from 'semantic-ui-react';
 import {addMonster} from '../actions/index';
 import { connect } from 'react-redux';
 import NumberDropDown from '../components/numberDropDown';
 import ClearMonsters from './buttons/ClearMonsters';
+import styles from 'styled-components';
 
 class DropdownExampleSearchSelection extends Component {
   constructor () {
@@ -69,36 +70,49 @@ class DropdownExampleSearchSelection extends Component {
 
   render () {
     return (
-      <div>
-        <Dropdown
-        onSubmit={this.handleKeyPress}
-        className='monsterDropdown'
-        onClose={this.onClose}
-        onFocus={this.onFocus}
-        onChange={this.handleChange}
-        onKeyPress={this.handleKeyPress}
-        value={this.state.value}
-        defaultSearchQuery=''
-        placeholder='Select Monster' 
-        fluid search selection options={this.props.monsterUrls} 
-        />
-        {/*this hooks up the dropdown select options to our monster urls*/}
-        {
-        /*<span>
-          <NumberDropDown />
-        </span>*/
-        }
-        <ClearMonsters />
-        <div className="ui checkbox ourCheckbox">
-          <input 
-          type="checkbox" 
-          defaultChecked={true}
-          readOnly="" 
-          tabIndex="0"
-          onClick={this.changeChecked} />
-          <label>Auto-roll turn order for monsters</label>
-        </div>
-      </div>
+      <Grid centered columns={2}>
+        <Grid.Column>
+          <div>
+            <Dropdown
+            onSubmit={this.handleKeyPress}
+            className='monsterDropdown'
+            onClose={this.onClose}
+            onFocus={this.onFocus}
+            onChange={this.handleChange}
+            onKeyPress={this.handleKeyPress}
+            value={this.state.value}
+            defaultSearchQuery=''
+            placeholder='Select Monster' 
+            fluid search selection options={this.props.monsterUrls} 
+            />
+            {/*this hooks up the dropdown select options to our monster urls*/}
+            {
+            /*<span>
+              <NumberDropDown />
+            </span>*/
+            }
+            
+          </div>
+        </Grid.Column>
+        <Grid.Row centered columns={5} textAlign='center'>
+          <Grid.Column textAlign='center'>
+            <div className="ui checkbox ourCheckbox">
+              <input 
+              type="checkbox" 
+              defaultChecked={true}
+              readOnly="" 
+              tabIndex="0"
+              onClick={this.changeChecked} />
+              <label>Auto-roll turn order for monsters</label>
+            </div>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row centered columns={7}>
+          <Grid.Column>
+            <ClearMonsters />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
       )
   }
 }

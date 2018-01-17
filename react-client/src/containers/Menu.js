@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {selectTab, setUser, logoutReset} from '../actions/index';
+import styles from 'styled-components';
+
+
+const Wrapper = styles.div`
+  margin: .7% 8%;
+`;
+
 
 var tabs = ['Arena', 'Players', 'Monsters'];
 
@@ -14,6 +21,7 @@ class Menu extends Component {
     }
 
   	return(
+      <Wrapper>
       <div className='menuBar'>
         {this.props.user 
           ?
@@ -65,6 +73,7 @@ class Menu extends Component {
             </div>  
         }
       </div>
+      </Wrapper>
 		);
   }
 }

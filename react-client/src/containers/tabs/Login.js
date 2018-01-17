@@ -77,17 +77,21 @@ class Login extends Component {
               </Menu.Menu>
             </Container>
           </Menu>
-          <form className="ui form signupForm" onSubmit={(event) => {this.login(event)}}>
-            <div className="field">
-              <label>Username:</label>
-              <input type="text" name="username" id='loginUsername'/>
-            </div>
-            <div className="field">
-              <label>Password:</label>
-              <input type="password" name="password" id='loginPassword'/>
-            </div>
-            <span><button className="ui button" type="submit">Login!</button></span>
-          </form>
+          <Grid centered columns={6}>
+            <Grid.Column>
+              <form className="ui form signupForm" onSubmit={(event) => {this.login(event)}}>
+                <div className="field">
+                  <label>Username:</label>
+                  <input type="text" name="username" id='loginUsername'/>
+                </div>
+                <div className="field">
+                  <label>Password:</label>
+                  <input type="password" name="password" id='loginPassword'/>
+                </div>
+                <span><button className="ui button" type="submit">Login!</button></span>
+              </form>
+            </Grid.Column>
+          </Grid>
         </div>
       )
   }

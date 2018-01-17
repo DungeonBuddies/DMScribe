@@ -6,7 +6,12 @@ import ClearMonsters from '../buttons/ClearMonsters';
 import MonstersList from '../MonstersList';
 import { addCustomMonster, clearSelectedMonster } from '../../actions/index';
 import DropdownExampleSearchSelection from '../SearchBar';
-import { Card, Icon, Image, Button } from 'semantic-ui-react'
+import { Card, Icon, Image, Button, Grid } from 'semantic-ui-react'
+import styles from 'styled-components';
+
+const Wrapper = styles.div`
+  margin: .7% 8%;
+`;
 
 class Monsters extends Component {
   constructor(props) {
@@ -33,6 +38,7 @@ class Monsters extends Component {
     }
 
     return (
+      <Wrapper>
       <div>
         <DropdownExampleSearchSelection />
         <Card.Group>
@@ -117,50 +123,55 @@ class Monsters extends Component {
         <div className="buttonsWrapper">
           <ClearMonsters className="buttonsWrapper"/>
         </div>
-        <form className="ui form monsterFormButton" onSubmit={this.onMonsterFormSubmit}>
-          <div className="field">
-            <label>Name:</label>
-            <input type="text" name="name"/>
-          </div>
-          <div className="field">
-            <label>AC:</label>
-            <input type="text" name="armor_class"/>
-          </div>
-          <div className="field">
-            <label>HP:</label>
-            <input type="text" name="hit_points"/>
-          </div>
-          <div className="field">
-            <label>INIT:</label>
-            <input type="text" name="init"/>
-          </div>
-          <div className="field">
-            <label>Strength:</label>
-            <input type="text" name="strength"/>
-          </div>
-          <div className="field">
-            <label>Dexterity:</label>
-            <input type="text" name="dexterity"/>
-          </div>
-          <div className="field">
-            <label>Constitution:</label>
-            <input type="text" name="constitution"/>
-          </div>
-          <div className="field">
-            <label>Wisdom:</label>
-            <input type="text" name="wisdom"/>
-          </div>
-          <div className="field">
-            <label>Charisma:</label>
-            <input type="text" name="charisma"/>
-          </div>
-          <div className="field">
-            <label>Image:</label>
-            <input type="text" name="image"/>
-          </div>
-          <span><button className="ui button" type="submit">Submit</button></span>
-        </form>
+        <Grid centered columns={2}>
+          <Grid.Column>
+            <form className="ui form monsterFormButton" onSubmit={this.onMonsterFormSubmit}>
+              <div className="field">
+                <label>Name:</label>
+                <input type="text" name="name"/>
+              </div>
+              <div className="field">
+                <label>AC:</label>
+                <input type="text" name="armor_class"/>
+              </div>
+              <div className="field">
+                <label>HP:</label>
+                <input type="text" name="hit_points"/>
+              </div>
+              <div className="field">
+                <label>INIT:</label>
+                <input type="text" name="init"/>
+              </div>
+              <div className="field">
+                <label>Strength:</label>
+                <input type="text" name="strength"/>
+              </div>
+              <div className="field">
+                <label>Dexterity:</label>
+                <input type="text" name="dexterity"/>
+              </div>
+              <div className="field">
+                <label>Constitution:</label>
+                <input type="text" name="constitution"/>
+              </div>
+              <div className="field">
+                <label>Wisdom:</label>
+                <input type="text" name="wisdom"/>
+              </div>
+              <div className="field">
+                <label>Charisma:</label>
+                <input type="text" name="charisma"/>
+              </div>
+              <div className="field">
+                <label>Image:</label>
+                <input type="text" name="image"/>
+              </div>
+              <span><button className="ui button" type="submit">Submit</button></span>
+            </form>
+          </Grid.Column>
+        </Grid>
       </div>
+      </Wrapper>
     );
   }
 }
