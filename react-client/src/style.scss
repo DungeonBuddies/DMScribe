@@ -9,6 +9,10 @@ h1 {
     font-style: italic;
 }
 
+label {
+  color: white !important;
+}
+
 .menuBar {
   margin-bottom: 10px;
 }
@@ -161,6 +165,7 @@ h1 {
 }
 
 .field {
+  color: white !important;
   height: 20% !important;
 }
 
