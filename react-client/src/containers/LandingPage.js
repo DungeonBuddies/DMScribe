@@ -38,13 +38,13 @@ class LandingPage extends Component {
                 as='h1'
                 content='DM-Scribe'
                 inverted
-                style={{ backgroundColor: 'transparent', fontSize: '4em', fontWeight: 'normal', color:'#1b1c1d', marginBottom: 0, marginTop: '3em' }}
+                style={{ backgroundColor: 'transparent', fontSize: '4em', fontWeight: 'normal', color:'white', marginBottom: 0, marginTop: '3em' }}
               />
               <Header
                 as='h2'
                 content='The handy tool for the unorganized DM'
                 inverted
-                style={{ backgroundColor: 'transparent', fontSize: '1.7em', color:'#1b1c1d', fontWeight: 'normal' }}
+                style={{ backgroundColor: 'transparent', fontSize: '1.7em', color:'white', fontWeight: 'normal' }}
               />
               <Button 
               onClick={() => {this.props.selectTab('Arena')}}
