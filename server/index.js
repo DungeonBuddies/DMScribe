@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const db = require('../database-mongo');
 const axios = require('axios');
 const cheerio = require('cheerio');
+const nodemailer = require('nodemailer');
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -112,9 +113,38 @@ app.post('/login', (req, res) => {
   })
 })
 
-app.get('/forgotPw', (req, res) => {
-  console.log(req.body.username, ' forgot his password')
+// ************ //
+
+app.get('/forgot', (req, res) => {
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'dungeonbuddiesdmscribe@gmail.com',
+    pass: 'hackreactoratx31'
+  }
+});
+
+var mailOptions = {
+  from: 'dungeonbuddiesdmscribe@gmail.com',
+  to: 'josephstrandmo@gmail.com',
+  subject: 'Sending Email using Node.js',
+  text: 'That was easy!'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
+
+  user = req.query.username;
+  // query db for user's email
 })
+
+// ************ //
 
 app.post('/savePlayer', (req, res) => {
   db.savePlayer(req.body, (err, success) => {

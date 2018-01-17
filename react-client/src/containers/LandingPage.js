@@ -69,6 +69,13 @@ class LandingPage extends Component {
                   as='a' 
                   primary>Sign Up!</Button>
                 </Menu.Item>
+                <Menu.Item>
+                  <Button 
+                    onClick={() => {this.props.selectTab('ForgotPW')}}
+                    as='a' 
+                    primary>Forgot password?
+                  </Button>
+                </Menu.Item>
               </Menu.Menu>
             </Container>
           </Menu>

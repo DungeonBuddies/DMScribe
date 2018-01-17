@@ -25,6 +25,7 @@
     "jquery": "^3.1.1",
     "mongoose": "^4.8.6",
     "node-sass": "^4.7.2",
+    "nodemailer": "^4.4.1",
     "nodemon": "^1.14.7",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",

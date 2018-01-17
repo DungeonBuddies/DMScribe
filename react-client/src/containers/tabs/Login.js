@@ -46,24 +46,6 @@ class Login extends Component {
     })
   }
 
-  forgotPw() { // added 
-    console.log('forgotPw')
-    return (
-      <div>TEST</div>
-    )
-
-
-
-    //console.log('user: ', user)
-    // var userObj = {
-    //   username: user[0].value
-    // }
-    // $('#loginUsername').val('');
-    // $.get('/forgotPw', userObj)
-    // .then(() => { console.log('Check your email') })
-    // .catch(() => { console.log('Wrong username') })
-  }
-
   render() {
     const resizeMode = 'center';
     if (this.props.currentTab !== 'Login') {
@@ -91,6 +73,12 @@ class Login extends Component {
                   as='a' 
                   primary>Sign Up</Button>
                 </Menu.Item>
+                <Menu.Item>
+                  <Button 
+                  onClick={() => {this.props.selectTab('ForgotPW')}}
+                  as='a' 
+                  primary>Forgot password?</Button>
+                </Menu.Item>
               </Menu.Menu>
             </Container>
           </Menu>
@@ -107,7 +95,6 @@ class Login extends Component {
                 </div>
                 <span><button className="ui button" type="submit">Login!</button></span>
               </form>
-              <button onClick={this.forgotPw}>Forgot password?</button>
             </Grid.Column>
           </Grid>
         </div>
@@ -130,8 +117,3 @@ function mapDispatchToProps (dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
-
-
-
-
-
