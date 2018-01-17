@@ -34,8 +34,8 @@ class ForgotPW extends Component {
     }
     $('#loginUsername').val('');
     $.get('/forgot', userObj)
-    .then(() => {
-      console.log('Check your email');
+    .then((data) => {
+      console.log('data ', data);
     })
     .catch(() => {
       console.log('Wrong username');

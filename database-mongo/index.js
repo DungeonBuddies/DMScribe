@@ -101,6 +101,26 @@ var specificGroup = (target, callback) => {
       callback(null, players);
     }
   })
+} 
+
+var getUserEmail = (username, callback) => {
+  User.find({username: username}, function (err, users) {
+    if (err) {
+      callback(err, null)
+    } else {
+      users[0].password = 1234;
+      callback(null, users);
+    }
+  })
+}
+
+var createNewPassword = (username, callback) => {
+  console.log(username)
+  User.findOne({ username: username }, function (err, doc){
+    console.log(err, doc)
+    doc.password = 'jasonbourne';
+    doc.save();
+  });
 }
 
 exports.signUpUser = signUpUser;
@@ -108,12 +128,5 @@ exports.getUsers = getUsers;
 exports.savePlayer = savePlayer;
 exports.getGroups = getGroups;
 exports.specificGroup = specificGroup;
-
-
-
-
-
-
-
-
-
+exports.getUserEmail = getUserEmail;
+exports.createNewPassword = createNewPassword;

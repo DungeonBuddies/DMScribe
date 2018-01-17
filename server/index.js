@@ -113,38 +113,46 @@ app.post('/login', (req, res) => {
   })
 })
 
-// ************ //
+// ** Password Recovery ** //
 
 app.get('/forgot', (req, res) => {
+  username = req.query.username;
 
-var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'dungeonbuddiesdmscribe@gmail.com',
-    pass: 'hackreactoratx31'
-  }
-});
+  db.createNewPassword(username, (err, user) => {
+    res.send(200)
+  })
 
-var mailOptions = {
-  from: 'dungeonbuddiesdmscribe@gmail.com',
-  to: 'josephstrandmo@gmail.com',
-  subject: 'Sending Email using Node.js',
-  text: 'That was easy!'
-};
+  // db.getUserEmail(username, (err, user) => {
+  //   email = user[0].email;
 
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
-});
+    // var transporter = nodemailer.createTransport({
+    //   service: 'gmail',
+    //   auth: {
+    //     user: 'dungeonbuddiesdmscribe@gmail.com',
+    //     pass: 'hackreactoratx31'
+    //   }
+    // });
 
-  user = req.query.username;
-  // query db for user's email
+    // var mailOptions = {
+    //   from: 'dungeonbuddiesdmscribe@gmail.com',
+    //   to: email, // query result
+    //   subject: 'Sending Email using Node.js',
+    //   text: 'your email was found in mongodb!'
+    // };
+
+    // transporter.sendMail(mailOptions, function(error, info){
+    //   if (error) {
+    //     console.log(error);
+    //   } else {
+    //     console.log('Email sent: ' + info.response);
+    //   }
+    // });
+
+  //   res.send(200);
+  // })
 })
 
-// ************ //
+// ** ** ** //
 
 app.post('/savePlayer', (req, res) => {
   db.savePlayer(req.body, (err, success) => {
