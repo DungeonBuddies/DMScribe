@@ -254,6 +254,29 @@ export const logoutReset = () => {
   }
 }
 
+// Action List:
+// populateMonsterUrls
+// addMonster
+// fetchMonsterImg
+// addCustomMonster
+// clearMonstersField
+// clearOrderField
+// removeMonster
+// addPlayer
+// fetchClassImg
+// addClassImg
+// removePlayer
+// clearPlayersField
+// generateTurnOrder * relevant to reordering turns - orderedTurnReducer
+// selectTab
+// assignTurnValue
+// assignMonTurnValue
+// selectMonster
+// clearSelectedMonster
+// setUser
+// fetchGroups * relevant to group drop down list- groupsReducer
+// selectGroup * relevant to group drop down list - groupsReducer
+// logoutReset
 
 
 

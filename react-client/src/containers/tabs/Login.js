@@ -44,7 +44,6 @@ class Login extends Component {
     .catch(() => {
       console.log('Wrong username and password');
     })
-
   }
 
   render() {
@@ -74,20 +73,30 @@ class Login extends Component {
                   as='a' 
                   primary>Sign Up</Button>
                 </Menu.Item>
+                <Menu.Item>
+                  <Button 
+                  onClick={() => {this.props.selectTab('ForgotPW')}}
+                  as='a' 
+                  primary>Forgot password?</Button>
+                </Menu.Item>
               </Menu.Menu>
             </Container>
           </Menu>
-          <form className="ui form signupForm" onSubmit={(event) => {this.login(event)}}>
-            <div className="field">
-              <label>Username:</label>
-              <input type="text" name="username" id='loginUsername'/>
-            </div>
-            <div className="field">
-              <label>Password:</label>
-              <input type="password" name="password" id='loginPassword'/>
-            </div>
-            <span><button className="ui button" type="submit">Login!</button></span>
-          </form>
+          <Grid centered columns={6}>
+            <Grid.Column>
+              <form className="ui form signupForm" onSubmit={(event) => {this.login(event)}}>
+                <div className="field">
+                  <label>Username:</label>
+                  <input type="text" name="username" id='loginUsername'/>
+                </div>
+                <div className="field">
+                  <label>Password:</label>
+                  <input type="password" name="password" id='loginPassword'/>
+                </div>
+                <span><button className="ui button" type="submit">Login!</button></span>
+              </form>
+            </Grid.Column>
+          </Grid>
         </div>
       )
   }
@@ -108,8 +117,3 @@ function mapDispatchToProps (dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
-
-
-
-
-

@@ -30,11 +30,14 @@ class Signup extends Component {
     var user = $(event.target).serializeArray();
     var userObj = {
       username: user[0].value,
-      password: user[1].value
+      password: user[1].value,
+      email: user[2].value // added 
     }
     $('#signUpUsername').val('');
     $('#signUpPassword').val('');
-    if (userObj.username === '' || userObj.password === '') {
+    $('#signUpEmail').val(''); // added
+    if (userObj.username === '' || userObj.password === '' || userObj.email === '') {
+      alert('signup failed'); // added
       return;
     } else {
       $.post('/signUp', userObj)
@@ -73,20 +76,34 @@ class Signup extends Component {
                   as='a' 
                   primary>Sign Up</Button>
                 </Menu.Item>
+                <Menu.Item>
+                  <Button 
+                  onClick={() => {this.props.selectTab('ForgotPW')}}
+                  as='a' 
+                  primary>Forgot password?</Button>
+                </Menu.Item>
               </Menu.Menu>
             </Container>
           </Menu>
-          <form className="ui form signupForm" onSubmit={(event) => {this.signUp(event)}}>
-            <div className="field">
-              <label>Username:</label>
-              <input type="text" name="username" id='signUpUsername'/>
-            </div>
-            <div className="field">
-              <label>Password:</label>
-              <input type="password" name="password" id='signUpPassword'/>
-            </div>
-            <span><button className="ui button" type="submit">Sign up!!</button></span>
-          </form>
+          <Grid centered columns={6}>
+            <Grid.Column>
+              <form className="ui form signupForm" onSubmit={(event) => {this.signUp(event)}}>
+                <div className="field">
+                  <label>Username:</label>
+                  <input type="text" name="username" id='signUpUsername'/>
+                </div>
+                <div className="field">
+                  <label>Password:</label>
+                  <input type="password" name="password" id='signUpPassword'/>
+                </div>
+                <div className="field">
+                  <label>Email:</label>
+                  <input type="text" name="email" placeholder="example@gmail.com"/>
+                </div>
+                <span><button className="ui button" type="submit">Sign up!!</button></span>
+              </form>
+            </Grid.Column>
+          </Grid>
         </div>
       )
   }
@@ -106,8 +123,3 @@ function mapDispatchToProps (dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);
-
-
-
-
-

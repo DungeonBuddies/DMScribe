@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const db = require('../database-mongo');
 const axios = require('axios');
 const cheerio = require('cheerio');
+const nodemailer = require('nodemailer');
+const helpers = require('./helpers.js');
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -91,9 +93,10 @@ app.post('/signUp', (req, res) => {
 })
 
 app.post('/login', (req, res) => {
+  console.log('username: ', req.body.username)
+  console.log('password: ', req.body.password)
   db.getUsers(req.body.username, (err, user) => {
     if (err) {
-      console.log(err)
     } else {
       if (user.length === 0) {
         res.sendStatus(400);
@@ -104,13 +107,54 @@ app.post('/login', (req, res) => {
             res.sendStatus(201);
           } else {
             // add user notification of "wrong password"
-            res.sendStatus(400);
+            res.send(400);
           }
         });
       }
     }
   })
 })
+
+// ** Password Recovery ** //
+
+app.get('/forgot', (req, res) => {
+  username = req.query.username;
+  password = helpers.makeid();
+
+  bcrypt.hash(password, saltRounds).then((hash) => {
+
+    db.resetPassword(username, hash, (err, user) => {
+      var email = user.email;
+
+      var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'dungeonbuddiesdmscribe@gmail.com',
+          pass: 'hackreactoratx31'
+        }
+      });
+
+      var mailOptions = {
+        from: 'dungeonbuddiesdmscribe@gmail.com',
+        to: email,
+        subject: 'Sending Email using Node.js',
+        text: 'your new password is ' + password
+      };
+
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+          res.send(error)
+        } else {
+          console.log('Email sent: ' + info.response);
+          res.send('Email sentto: ' + email);
+        }
+      });
+    })
+  })
+})
+
+// ** ** ** //
 
 app.post('/savePlayer', (req, res) => {
   db.savePlayer(req.body, (err, success) => {

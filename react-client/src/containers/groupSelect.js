@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
-import { Dropdown } from 'semantic-ui-react';
+import { Dropdown, Grid } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import {selectGroup} from '../actions/index';
 
@@ -68,26 +68,30 @@ class GroupSelect extends Component {
 
   render () {
     return (
-      <div>
-        <Dropdown
-        onSubmit={this.handleKeyPress}
-        className='monsterDropdown'
-        onClose={this.onClose}
-        onFocus={this.onFocus}
-        onChange={this.handleChange}
-        onKeyPress={this.handleKeyPress}
-        value={this.state.value}
-        defaultSearchQuery=''
-        placeholder='Gather Your Party!' 
-        fluid search selection options={this.props.groups} 
-        />
-        {/*this hooks up the dropdown select options to our monster urls*/}
-        {
-        /*<span>
-          <NumberDropDown />
-        </span>*/
-        }
-      </div>
+      <Grid centered columns={2}>
+        <Grid.Column>
+          <div>
+            <Dropdown
+            onSubmit={this.handleKeyPress}
+            className='monsterDropdown'
+            onClose={this.onClose}
+            onFocus={this.onFocus}
+            onChange={this.handleChange}
+            onKeyPress={this.handleKeyPress}
+            value={this.state.value}
+            defaultSearchQuery=''
+            placeholder='Gather Your Party!' 
+            fluid search selection options={this.props.groups} 
+            />
+            {/*this hooks up the dropdown select options to our monster urls*/}
+            {
+            /*<span>
+              <NumberDropDown />
+            </span>*/
+            }
+          </div>
+        </Grid.Column>
+      </Grid>
       )
   }
 }

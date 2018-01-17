@@ -7,6 +7,12 @@ import OrderList from '../orderList';
 import OrderButton from '../buttons/OrderButton';
 import ClearMonsters from '../buttons/ClearMonsters';
 import DropdownExampleSearchSelection from '../SearchBar';
+import styles from 'styled-components';
+
+const Wrapper = styles.div`
+  margin: .7% 8%;
+`;
+
 
 
 class Arena extends Component {
@@ -16,6 +22,7 @@ class Arena extends Component {
     }
 
     return (
+      <Wrapper>
       <div>
         <DropdownExampleSearchSelection />
         <OrderList />
@@ -26,6 +33,7 @@ class Arena extends Component {
           <ClearMonsters />
         </div>
       </div>
+      </Wrapper>
     );
   }
 }

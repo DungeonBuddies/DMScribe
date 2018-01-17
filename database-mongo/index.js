@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost/groups');
+mongoose.connect('mongodb://localhost/groups');
 // var uri = `mongodb://${cred.dbUsername}:${cred.dbPassword}@ds255787.mlab.com:55787/heroku_jhf97sfb`;
 // var cred = require('./dbCredentials');
 
@@ -16,7 +16,8 @@ db.once('open', function() {
 
 var users = mongoose.Schema({
   username: {type: String, unique: true},
-  password: String
+  password: String,
+  email: String // added
 })
 
 var players = mongoose.Schema({
@@ -38,7 +39,7 @@ var User = mongoose.model('User', users);
 var Player = mongoose.model('Player', players);
 
 var signUpUser = (user, callback) => {
-  var userEntry = new User({username: user.username, password: user.password});
+  var userEntry = new User({username: user.username, password: user.password, email: user.email}); // changed
   userEntry.save((error, model) => {
     if (error) {
       callback(error, null);
@@ -50,6 +51,7 @@ var signUpUser = (user, callback) => {
 }
 
 var getUsers = function (name, callback) {
+  console.log('getUsers: ', name)
   User.find({username: name}, function (err, users) {
     if (err) {
       callback(err, null)
@@ -100,6 +102,30 @@ var specificGroup = (target, callback) => {
       callback(null, players);
     }
   })
+} 
+
+var getUserEmail = (username, callback) => {
+  User.find({username: username}, function (err, users) {
+    if (err) {
+      callback(err, null)
+    } else {
+      users[0].password = 1234;
+      callback(null, users);
+    }
+  })
+}
+
+var resetPassword = (username, hash, callback) => {
+  User.findOne({ username: username }, function (err, doc){
+    if (err) {
+      callback(err, null);
+    } else {
+      //var random = 12345; // make random
+      doc.password = hash;
+      doc.save();
+      callback(null, doc)
+    }
+  });
 }
 
 exports.signUpUser = signUpUser;
@@ -107,12 +133,5 @@ exports.getUsers = getUsers;
 exports.savePlayer = savePlayer;
 exports.getGroups = getGroups;
 exports.specificGroup = specificGroup;
-
-
-
-
-
-
-
-
-
+exports.getUserEmail = getUserEmail;
+exports.resetPassword = resetPassword;
