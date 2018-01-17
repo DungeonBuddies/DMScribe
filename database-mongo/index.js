@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost/groups');
+mongoose.connect('mongodb://localhost/groups');
 // var uri = `mongodb://${cred.dbUsername}:${cred.dbPassword}@ds255787.mlab.com:55787/heroku_jhf97sfb`;
 // var cred = require('./dbCredentials');
 
@@ -16,7 +16,8 @@ db.once('open', function() {
 
 var users = mongoose.Schema({
   username: {type: String, unique: true},
-  password: String
+  password: String,
+  email: String // added
 })
 
 var players = mongoose.Schema({
@@ -38,7 +39,7 @@ var User = mongoose.model('User', users);
 var Player = mongoose.model('Player', players);
 
 var signUpUser = (user, callback) => {
-  var userEntry = new User({username: user.username, password: user.password});
+  var userEntry = new User({username: user.username, password: user.password, email: user.email}); // changed
   userEntry.save((error, model) => {
     if (error) {
       callback(error, null);

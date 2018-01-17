@@ -44,7 +44,24 @@ class Login extends Component {
     .catch(() => {
       console.log('Wrong username and password');
     })
+  }
 
+  forgotPw() { // added 
+    console.log('forgotPw')
+    return (
+      <div>TEST</div>
+    )
+
+
+
+    //console.log('user: ', user)
+    // var userObj = {
+    //   username: user[0].value
+    // }
+    // $('#loginUsername').val('');
+    // $.get('/forgotPw', userObj)
+    // .then(() => { console.log('Check your email') })
+    // .catch(() => { console.log('Wrong username') })
   }
 
   render() {
@@ -90,6 +107,7 @@ class Login extends Component {
                 </div>
                 <span><button className="ui button" type="submit">Login!</button></span>
               </form>
+              <button onClick={this.forgotPw}>Forgot password?</button>
             </Grid.Column>
           </Grid>
         </div>

@@ -30,11 +30,14 @@ class Signup extends Component {
     var user = $(event.target).serializeArray();
     var userObj = {
       username: user[0].value,
-      password: user[1].value
+      password: user[1].value,
+      email: user[2].value // added 
     }
     $('#signUpUsername').val('');
     $('#signUpPassword').val('');
-    if (userObj.username === '' || userObj.password === '') {
+    $('#signUpEmail').val(''); // added
+    if (userObj.username === '' || userObj.password === '' || userObj.email === '') {
+      alert('signup failed'); // added
       return;
     } else {
       $.post('/signUp', userObj)
@@ -86,6 +89,10 @@ class Signup extends Component {
                 <div className="field">
                   <label>Password:</label>
                   <input type="password" name="password" id='signUpPassword'/>
+                </div>
+                <div className="field">
+                  <label>Email:</label>
+                  <input type="text" name="email" placeholder="example@gmail.com"/>
                 </div>
                 <span><button className="ui button" type="submit">Sign up!!</button></span>
               </form>

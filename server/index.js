@@ -112,6 +112,10 @@ app.post('/login', (req, res) => {
   })
 })
 
+app.get('/forgotPw', (req, res) => {
+  console.log(req.body.username, ' forgot his password')
+})
+
 app.post('/savePlayer', (req, res) => {
   db.savePlayer(req.body, (err, success) => {
     if (err) {
